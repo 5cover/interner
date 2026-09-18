@@ -1,0 +1,35 @@
+import { isAtom, type Adapter, type Graph, type Node, type Ref } from './model.js'
+
+export function capture(value: unknown, describe: (value: object, location: string) => Adapter): Graph {
+  const sources = new WeakMap<object, number>()
+  const queue: object[] = []
+  const nodes: Node[] = []
+  const kinds = new Map<object, number>()
+  function ref(value: unknown, location: string): Ref {
+    if (isAtom(value)) return { atom: value }
+    if (typeof value !== 'object' || value === null) throw new TypeError(`Unsupported ${typeof value} at ${location}`)
+    let id = sources.get(value)
+    if (id === undefined) {
+      id = queue.length
+      sources.set(value, id)
+      queue.push(value)
+    }
+    return { node: id }
+  }
+  const root = ref(value, 'root')
+  for (let id = 0; id < queue.length; id++) {
+    const adapter = describe(queue[id]!, `node ${id}`)
+    let kind = kinds.get(adapter.kind)
+    if (kind === undefined) {
+      kind = kinds.size
+      kinds.set(adapter.kind, kind)
+    }
+    nodes.push({
+      kind,
+      atoms: adapter.atoms,
+      adapter,
+      edges: adapter.edges.map((edge, index) => ref(edge, `node ${id}, edge ${index}`)),
+    })
+  }
+  return { root, nodes, sources }
+}

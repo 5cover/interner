@@ -142,3 +142,7 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+# Generated validation artifacts
+reports/
+.stryker-tmp/
+benchmark-results.jsonl
