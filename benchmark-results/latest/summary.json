@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "run": {
-    "id": "2026-09-18T22-21-58.010Z-6a2f2011",
-    "createdAt": "2026-09-18T22:21:58.010Z",
+    "id": "2026-09-18T22-31-34.468Z-de32f285",
+    "createdAt": "2026-09-18T22:31:34.468Z",
     "profile": "quick",
     "only": "all"
   },
@@ -13,7 +13,7 @@
     "platform": "linux",
     "architecture": "x64",
     "packageVersion": "1.0.0",
-    "commit": "6a2f20112d9bfcc1f261ce23932cc6e154e29612",
+    "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
     "benchmarkSchemaVersion": "1.0.0",
     "structuralSizeModelVersion": null,
     "memlabVersion": "2.0.5",
@@ -48,10 +48,10 @@
         "after": 2354,
         "deltaPercent": -94.4801388172396
       },
-      "internMedianMilliseconds": 9.14127099999996,
-      "yamlBeforeMedianMilliseconds": 18.433825999999954,
-      "yamlAfterMedianMilliseconds": 9.864577999999938,
-      "internAndYamlMedianMilliseconds": 10.056578999999829
+      "internMedianMilliseconds": 8.823525000000018,
+      "yamlBeforeMedianMilliseconds": 18.014159999999947,
+      "yamlAfterMedianMilliseconds": 9.306641000000127,
+      "internAndYamlMedianMilliseconds": 9.58288000000016
     },
     {
       "id": "openapi-document",
@@ -80,10 +80,10 @@
         "after": 1567,
         "deltaPercent": -95.15924747459145
       },
-      "internMedianMilliseconds": 2.2321789999996327,
-      "yamlBeforeMedianMilliseconds": 9.477140999999392,
-      "yamlAfterMedianMilliseconds": 2.938713999999891,
-      "internAndYamlMedianMilliseconds": 2.768443999999363
+      "internMedianMilliseconds": 2.300336000000243,
+      "yamlBeforeMedianMilliseconds": 9.443778999999267,
+      "yamlAfterMedianMilliseconds": 2.7382669999997233,
+      "internAndYamlMedianMilliseconds": 2.78503499999988
     },
     {
       "id": "typescript-source-ast",
@@ -110,10 +110,10 @@
         "after": 13766,
         "deltaPercent": -30.050813008130085
       },
-      "internMedianMilliseconds": 3.5567040000005363,
-      "yamlBeforeMedianMilliseconds": 7.228924000000916,
-      "yamlAfterMedianMilliseconds": 6.676225999999588,
-      "internAndYamlMedianMilliseconds": 7.292552999999316
+      "internMedianMilliseconds": 3.7711550000003626,
+      "yamlBeforeMedianMilliseconds": 7.843086000000767,
+      "yamlAfterMedianMilliseconds": 7.38489600000139,
+      "internAndYamlMedianMilliseconds": 6.7415989999990416
     },
     {
       "id": "configuration-tree",
@@ -142,10 +142,10 @@
         "after": 699,
         "deltaPercent": -89.63523131672598
       },
-      "internMedianMilliseconds": 0.8184750000000349,
-      "yamlBeforeMedianMilliseconds": 4.4074099999998,
-      "yamlAfterMedianMilliseconds": 1.77325700000074,
-      "internAndYamlMedianMilliseconds": 1.5914759999977832
+      "internMedianMilliseconds": 0.7195600000013656,
+      "yamlBeforeMedianMilliseconds": 3.727363999998488,
+      "yamlAfterMedianMilliseconds": 1.369609000001219,
+      "internAndYamlMedianMilliseconds": 1.33382299999721
     },
     {
       "id": "duplicate-small-subtrees",
@@ -174,10 +174,10 @@
         "after": 4987,
         "deltaPercent": -96.66644385026738
       },
-      "internMedianMilliseconds": 11.895359000001918,
-      "yamlBeforeMedianMilliseconds": 59.189736000000266,
-      "yamlAfterMedianMilliseconds": 13.18252399999983,
-      "internAndYamlMedianMilliseconds": 12.549176000000443
+      "internMedianMilliseconds": 9.905334999999468,
+      "yamlBeforeMedianMilliseconds": 55.21297400000185,
+      "yamlAfterMedianMilliseconds": 11.232866000002105,
+      "internAndYamlMedianMilliseconds": 11.447098000000551
     },
     {
       "id": "already-shared",
@@ -206,10 +206,10 @@
         "after": 5103,
         "deltaPercent": -1.1046511627906976
       },
-      "internMedianMilliseconds": 1.00601800000004,
-      "yamlBeforeMedianMilliseconds": 2.024007999993046,
-      "yamlAfterMedianMilliseconds": 2.8139699999956065,
-      "internAndYamlMedianMilliseconds": 2.727106999998796
+      "internMedianMilliseconds": 0.9198450000003504,
+      "yamlBeforeMedianMilliseconds": 1.9895329999999376,
+      "yamlAfterMedianMilliseconds": 2.6418269999994664,
+      "internAndYamlMedianMilliseconds": 2.6381000000001222
     },
     {
       "id": "self-cycles",
@@ -238,10 +238,10 @@
         "after": 3026,
         "deltaPercent": -82.98470535312642
       },
-      "internMedianMilliseconds": 2.3413129999971716,
-      "yamlBeforeMedianMilliseconds": 18.868902999995044,
-      "yamlAfterMedianMilliseconds": 3.5391009999948437,
-      "internAndYamlMedianMilliseconds": 3.2988699999987148
+      "internMedianMilliseconds": 2.4071469999980764,
+      "yamlBeforeMedianMilliseconds": 17.679121000001032,
+      "yamlAfterMedianMilliseconds": 3.155030000001716,
+      "internAndYamlMedianMilliseconds": 3.008764999998675
     },
     {
       "id": "scaling-duplicate-small-1000",
@@ -271,10 +271,10 @@
         "after": 6154,
         "deltaPercent": -96.0038961038961
       },
-      "internMedianMilliseconds": 10.301649000000907,
-      "yamlBeforeMedianMilliseconds": 63.19563299999572,
-      "yamlAfterMedianMilliseconds": 12.523398000004818,
-      "internAndYamlMedianMilliseconds": 12.032686000005924
+      "internMedianMilliseconds": 9.831016000003729,
+      "yamlBeforeMedianMilliseconds": 58.83322700000281,
+      "yamlAfterMedianMilliseconds": 11.464860999993107,
+      "internAndYamlMedianMilliseconds": 11.592540999998164
     },
     {
       "id": "scaling-duplicate-small-2500",
@@ -304,10 +304,10 @@
         "after": 15154,
         "deltaPercent": -96.06389610389611
       },
-      "internMedianMilliseconds": 31.03753499999584,
-      "yamlBeforeMedianMilliseconds": 137.45139600000402,
-      "yamlAfterMedianMilliseconds": 34.632480000000214,
-      "internAndYamlMedianMilliseconds": 35.27223999999842
+      "internMedianMilliseconds": 28.95269299999927,
+      "yamlBeforeMedianMilliseconds": 121.99479599999904,
+      "yamlAfterMedianMilliseconds": 32.09524899999815,
+      "internAndYamlMedianMilliseconds": 33.269733000001
     },
     {
       "id": "seed-highly-duplicated",
@@ -342,10 +342,10 @@
         "after": 4122,
         "deltaPercent": -56.869310453071044
       },
-      "internMedianMilliseconds": 1.4523650000046473,
-      "yamlBeforeMedianMilliseconds": 5.809951000002911,
-      "yamlAfterMedianMilliseconds": 3.348562999999558,
-      "internAndYamlMedianMilliseconds": 3.380111999998917
+      "internMedianMilliseconds": 1.223576000003959,
+      "yamlBeforeMedianMilliseconds": 5.984287999999651,
+      "yamlAfterMedianMilliseconds": 3.300122000000556,
+      "internAndYamlMedianMilliseconds": 3.352029000001494
     },
     {
       "id": "seed-cyclic",
@@ -380,10 +380,10 @@
         "after": 8227,
         "deltaPercent": -21.099069722834948
       },
-      "internMedianMilliseconds": 2.5543929999985266,
-      "yamlBeforeMedianMilliseconds": 6.356106000006548,
-      "yamlAfterMedianMilliseconds": 6.719857999996748,
-      "internAndYamlMedianMilliseconds": 6.693719999995665
+      "internMedianMilliseconds": 2.2301139999981388,
+      "yamlBeforeMedianMilliseconds": 5.938262000003306,
+      "yamlAfterMedianMilliseconds": 5.566553999997268,
+      "internAndYamlMedianMilliseconds": 6.529891999998654
     }
   ]
 }

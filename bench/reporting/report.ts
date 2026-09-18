@@ -88,22 +88,59 @@ function fixtureSection(result: BenchmarkResult): string[] {
     `| Change | ${beforeHeap === null || afterHeap === null ? 'n/a' : bytes(afterHeap - beforeHeap)} | | | ${beforeHeap === null || afterHeap === null ? 'n/a' : percent(deltaPercent(beforeHeap, afterHeap))} |`,
     ''
   )
-  lines.push('### Serialization and timing', '', '| Measurement | Before | After |', '| --- | ---: | ---: |')
+  lines.push(
+    '### Serialization and timing',
+    '',
+    'Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time compares source YAML serialization with `intern()` plus YAML serialization.',
+    '',
+    '| Measurement | Before | After | Absolute delta | Percentage delta |',
+    '| --- | ---: | ---: | ---: | ---: |'
+  )
   if (result.serialization.yaml)
     lines.push(
-      `| YAML UTF-8 bytes | ${bytes(result.serialization.yaml.beforeBytes)} | ${bytes(result.serialization.yaml.afterBytes)} |`
+      comparisonRow(
+        'YAML UTF-8 bytes',
+        result.serialization.yaml.beforeBytes,
+        result.serialization.yaml.afterBytes,
+        bytes
+      )
     )
   if (result.serialization.json)
     lines.push(
-      `| JSON UTF-8 bytes | ${bytes(result.serialization.json.beforeBytes)} | ${bytes(result.serialization.json.afterBytes)} |`
+      comparisonRow(
+        'JSON UTF-8 bytes',
+        result.serialization.json.beforeBytes,
+        result.serialization.json.afterBytes,
+        bytes
+      )
     )
-  lines.push(`| Intern time | | ${milliseconds(result.timing.intern.medianMilliseconds)} |`)
+  lines.push(
+    `| Intern transformation time | n/a | ${milliseconds(result.timing.intern.medianMilliseconds)} | n/a | n/a |`
+  )
   if (result.timing.yamlBefore && result.timing.yamlAfter)
     lines.push(
-      `| YAML time | ${milliseconds(result.timing.yamlBefore.medianMilliseconds)} | ${milliseconds(result.timing.yamlAfter.medianMilliseconds)} |`
+      comparisonRow(
+        'YAML serialization time',
+        result.timing.yamlBefore.medianMilliseconds,
+        result.timing.yamlAfter.medianMilliseconds,
+        milliseconds
+      )
     )
   if (result.timing.internAndYaml)
-    lines.push(`| Intern plus YAML | | ${milliseconds(result.timing.internAndYaml.medianMilliseconds)} |`)
+    lines.push(
+      result.timing.yamlBefore
+        ? comparisonRow(
+            'End-to-end YAML time',
+            result.timing.yamlBefore.medianMilliseconds,
+            result.timing.internAndYaml.medianMilliseconds,
+            milliseconds
+          )
+        : `| End-to-end YAML time | n/a | ${milliseconds(result.timing.internAndYaml.medianMilliseconds)} | n/a | n/a |`
+    )
   lines.push('')
   return lines
+}
+
+function comparisonRow(label: string, before: number, after: number, format: (value: number) => string): string {
+  return `| ${label} | ${format(before)} | ${format(after)} | ${format(after - before)} | ${percent(deltaPercent(before, after))} |`
 }

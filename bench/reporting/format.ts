@@ -10,11 +10,12 @@ export function percent(value: number | null): string {
 export function bytes(value: number | null): string {
   if (value === null) return 'n/a'
   const units = ['B', 'KiB', 'MiB', 'GiB']
-  let amount = value
+  const sign = value < 0 ? '-' : ''
+  let amount = Math.abs(value)
   let unit = 0
   while (amount >= 1024 && unit < units.length - 1) {
     amount /= 1024
     unit++
   }
-  return `${amount.toFixed(unit === 0 ? 0 : 1)} ${units[unit]}`
+  return `${sign}${amount.toFixed(unit === 0 ? 0 : 1)} ${units[unit]}`
 }
