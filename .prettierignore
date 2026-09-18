@@ -3,5 +3,6 @@ dist
 coverage
 reports
 pnpm-lock.yaml
+benchmark-results/
 plan.md
 .stryker-tmp

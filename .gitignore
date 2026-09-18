@@ -145,4 +145,5 @@ vite.config.ts.timestamp-*
 # Generated validation artifacts
 reports/
 .stryker-tmp/
-benchmark-results.jsonl
+benchmark-results/raw/
+*.heapsnapshot

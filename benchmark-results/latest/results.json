@@ -1,0 +1,1471 @@
+{
+  "schemaVersion": "1.0.0",
+  "run": {
+    "id": "2026-09-18T12-10-43.195Z-1b0de31f",
+    "createdAt": "2026-09-18T12:10:43.195Z",
+    "profile": "quick",
+    "only": "all"
+  },
+  "environment": {
+    "node": "v26.2.0",
+    "nodeMajor": 26,
+    "v8": "14.6.202.34-node.20",
+    "platform": "linux",
+    "architecture": "x64",
+    "packageVersion": "1.0.0",
+    "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+    "benchmarkSchemaVersion": "1.0.0",
+    "structuralSizeModelVersion": null,
+    "memlabVersion": "2.0.5",
+    "yamlVersion": "2.9.1",
+    "zodVersion": "4.6.5"
+  },
+  "results": [
+    {
+      "fixture": {
+        "id": "zod-json-schema",
+        "family": "application",
+        "description": "JSON Schema generated from a checked-in Zod source definition using Zod's supported conversion API.",
+        "parameters": {
+          "fields": 16
+        }
+      },
+      "environment": {
+        "node": "v26.2.0",
+        "nodeMajor": 26,
+        "v8": "14.6.202.34-node.20",
+        "platform": "linux",
+        "architecture": "x64",
+        "packageVersion": "1.0.0",
+        "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+        "benchmarkSchemaVersion": "1.0.0",
+        "structuralSizeModelVersion": null,
+        "memlabVersion": "2.0.5",
+        "yamlVersion": "2.9.1",
+        "zodVersion": "4.6.5"
+      },
+      "structure": {
+        "before": {
+          "objectNodes": 377,
+          "arrayNodes": 59,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 1593,
+          "objectProperties": 1294,
+          "arrayElements": 299,
+          "arrayHoles": 0,
+          "strings": 745,
+          "stringCodeUnits": 7947,
+          "numbers": 355,
+          "bigints": 0,
+          "booleans": 58,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 436
+        },
+        "after": {
+          "objectNodes": 19,
+          "arrayNodes": 6,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 115,
+          "objectProperties": 79,
+          "arrayElements": 36,
+          "arrayHoles": 0,
+          "strings": 53,
+          "stringCodeUnits": 564,
+          "numbers": 8,
+          "bigints": 0,
+          "booleans": 5,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 25
+        }
+      },
+      "retainedHeap": {
+        "beforeBytes": 39824,
+        "afterBytes": 9088,
+        "beforeSamplesBytes": [
+          39824
+        ],
+        "afterSamplesBytes": [
+          9088
+        ],
+        "beforeMinimumBytes": 39824,
+        "beforeMaximumBytes": 39824,
+        "afterMinimumBytes": 9088,
+        "afterMaximumBytes": 9088
+      },
+      "serialization": {
+        "json": {
+          "beforeBytes": 26213,
+          "afterBytes": 26213
+        },
+        "yaml": {
+          "beforeBytes": 42646,
+          "afterBytes": 2354
+        }
+      },
+      "timing": {
+        "intern": {
+          "medianMilliseconds": 8.253937999999948,
+          "minimumMilliseconds": 7.981938000000014,
+          "maximumMilliseconds": 10.18132199999991,
+          "samplesMilliseconds": [
+            10.18132199999991,
+            8.225134000000025,
+            9.051774000000023,
+            7.981938000000014,
+            8.219093000000044,
+            8.253937999999948,
+            8.518343999999956
+          ]
+        },
+        "yamlBefore": {
+          "medianMilliseconds": 16.698242999999934,
+          "minimumMilliseconds": 16.14146900000003,
+          "maximumMilliseconds": 19.611605999999938,
+          "samplesMilliseconds": [
+            16.255462999999963,
+            18.4622609999999,
+            19.611605999999938,
+            16.908487000000036,
+            16.698242999999934,
+            16.143832999999972,
+            16.14146900000003
+          ]
+        },
+        "yamlAfter": {
+          "medianMilliseconds": 9.001189000000068,
+          "minimumMilliseconds": 8.45896300000004,
+          "maximumMilliseconds": 9.766585000000077,
+          "samplesMilliseconds": [
+            9.731890000000021,
+            8.924855999999977,
+            9.158954999999992,
+            8.45896300000004,
+            9.766585000000077,
+            8.611889999999903,
+            9.001189000000068
+          ]
+        },
+        "internAndYaml": {
+          "medianMilliseconds": 9.498061000000007,
+          "minimumMilliseconds": 8.48424,
+          "maximumMilliseconds": 10.163860000000113,
+          "samplesMilliseconds": [
+            9.621593000000075,
+            8.878067999999985,
+            10.163860000000113,
+            9.498061000000007,
+            9.937795000000051,
+            8.48424,
+            9.2044199999998
+          ]
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": "openapi-document",
+        "family": "application",
+        "description": "An OpenAPI-like document with repeated parameters, responses and schemas.",
+        "parameters": {
+          "paths": 24
+        }
+      },
+      "environment": {
+        "node": "v26.2.0",
+        "nodeMajor": 26,
+        "v8": "14.6.202.34-node.20",
+        "platform": "linux",
+        "architecture": "x64",
+        "packageVersion": "1.0.0",
+        "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+        "benchmarkSchemaVersion": "1.0.0",
+        "structuralSizeModelVersion": null,
+        "memlabVersion": "2.0.5",
+        "yamlVersion": "2.9.1",
+        "zodVersion": "4.6.5"
+      },
+      "structure": {
+        "before": {
+          "objectNodes": 483,
+          "arrayNodes": 48,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 1205,
+          "objectProperties": 1085,
+          "arrayElements": 120,
+          "arrayHoles": 0,
+          "strings": 411,
+          "stringCodeUnits": 3104,
+          "numbers": 240,
+          "bigints": 0,
+          "booleans": 24,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 531
+        },
+        "after": {
+          "objectNodes": 20,
+          "arrayNodes": 2,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 69,
+          "objectProperties": 64,
+          "arrayElements": 5,
+          "arrayHoles": 0,
+          "strings": 17,
+          "stringCodeUnits": 142,
+          "numbers": 4,
+          "bigints": 0,
+          "booleans": 1,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 22
+        }
+      },
+      "retainedHeap": {
+        "beforeBytes": 29200,
+        "afterBytes": 11048,
+        "beforeSamplesBytes": [
+          29200
+        ],
+        "afterSamplesBytes": [
+          11048
+        ],
+        "beforeMinimumBytes": 29200,
+        "beforeMaximumBytes": 29200,
+        "afterMinimumBytes": 11048,
+        "afterMaximumBytes": 11048
+      },
+      "serialization": {
+        "json": {
+          "beforeBytes": 17479,
+          "afterBytes": 17479
+        },
+        "yaml": {
+          "beforeBytes": 32371,
+          "afterBytes": 1567
+        }
+      },
+      "timing": {
+        "intern": {
+          "medianMilliseconds": 1.8935209999999643,
+          "minimumMilliseconds": 1.7075620000005074,
+          "maximumMilliseconds": 2.102382000000034,
+          "samplesMilliseconds": [
+            1.8935209999999643,
+            1.9653349999998682,
+            1.8832119999997303,
+            1.924087999999756,
+            1.7075620000005074,
+            1.7379889999992884,
+            2.102382000000034
+          ]
+        },
+        "yamlBefore": {
+          "medianMilliseconds": 10.208734000000732,
+          "minimumMilliseconds": 8.726163999999699,
+          "maximumMilliseconds": 15.716212000000269,
+          "samplesMilliseconds": [
+            8.896724000000177,
+            9.461591999999655,
+            8.726163999999699,
+            14.100201000000197,
+            15.716212000000269,
+            10.208734000000732,
+            10.419188000000759
+          ]
+        },
+        "yamlAfter": {
+          "medianMilliseconds": 2.5410549999996874,
+          "minimumMilliseconds": 2.482415000000401,
+          "maximumMilliseconds": 2.9277200000005905,
+          "samplesMilliseconds": [
+            2.559931000000688,
+            2.5410549999996874,
+            2.5108979999995427,
+            2.5128620000004958,
+            2.7438460000003033,
+            2.482415000000401,
+            2.9277200000005905
+          ]
+        },
+        "internAndYaml": {
+          "medianMilliseconds": 2.6788839999999254,
+          "minimumMilliseconds": 2.3332949999994526,
+          "maximumMilliseconds": 2.784301000000596,
+          "samplesMilliseconds": [
+            2.784301000000596,
+            2.6788839999999254,
+            2.711113999999725,
+            2.3332949999994526,
+            2.6951540000000023,
+            2.542787999999746,
+            2.552827000000434
+          ]
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": "configuration-tree",
+        "family": "application",
+        "description": "A generated service configuration tree with repeated runtime policies.",
+        "parameters": {
+          "services": 24
+        }
+      },
+      "environment": {
+        "node": "v26.2.0",
+        "nodeMajor": 26,
+        "v8": "14.6.202.34-node.20",
+        "platform": "linux",
+        "architecture": "x64",
+        "packageVersion": "1.0.0",
+        "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+        "benchmarkSchemaVersion": "1.0.0",
+        "structuralSizeModelVersion": null,
+        "memlabVersion": "2.0.5",
+        "yamlVersion": "2.9.1",
+        "zodVersion": "4.6.5"
+      },
+      "structure": {
+        "before": {
+          "objectNodes": 122,
+          "arrayNodes": 24,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 361,
+          "objectProperties": 337,
+          "arrayElements": 24,
+          "arrayHoles": 0,
+          "strings": 168,
+          "stringCodeUnits": 1056,
+          "numbers": 48,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 146
+        },
+        "after": {
+          "objectNodes": 7,
+          "arrayNodes": 1,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 39,
+          "objectProperties": 38,
+          "arrayElements": 1,
+          "arrayHoles": 0,
+          "strings": 7,
+          "stringCodeUnits": 44,
+          "numbers": 2,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 8
+        }
+      },
+      "retainedHeap": {
+        "beforeBytes": 8824,
+        "afterBytes": 4688,
+        "beforeSamplesBytes": [
+          8824
+        ],
+        "afterSamplesBytes": [
+          4688
+        ],
+        "beforeMinimumBytes": 8824,
+        "beforeMaximumBytes": 8824,
+        "afterMinimumBytes": 4688,
+        "afterMaximumBytes": 4688
+      },
+      "serialization": {
+        "json": {
+          "beforeBytes": 5596,
+          "afterBytes": 5596
+        },
+        "yaml": {
+          "beforeBytes": 6744,
+          "afterBytes": 699
+        }
+      },
+      "timing": {
+        "intern": {
+          "medianMilliseconds": 0.6147629999995843,
+          "minimumMilliseconds": 0.5764410000010685,
+          "maximumMilliseconds": 0.7742920000000595,
+          "samplesMilliseconds": [
+            0.7742920000000595,
+            0.6266550000000279,
+            0.5779529999999795,
+            0.6184290000001056,
+            0.5764410000010685,
+            0.6147629999995843,
+            0.612118000000919
+          ]
+        },
+        "yamlBefore": {
+          "medianMilliseconds": 3.104733000000124,
+          "minimumMilliseconds": 3.0527950000014243,
+          "maximumMilliseconds": 3.4401710000001913,
+          "samplesMilliseconds": [
+            3.2324420000004466,
+            3.114009000000806,
+            3.104733000000124,
+            3.0527950000014243,
+            3.0988410000009026,
+            3.4401710000001913,
+            3.07471600000099
+          ]
+        },
+        "yamlAfter": {
+          "medianMilliseconds": 1.2733179999995627,
+          "minimumMilliseconds": 1.1036600000006729,
+          "maximumMilliseconds": 1.453746000001047,
+          "samplesMilliseconds": [
+            1.3454830000009679,
+            1.2086469999994733,
+            1.3030040000012377,
+            1.1036600000006729,
+            1.2222120000005816,
+            1.453746000001047,
+            1.2733179999995627
+          ]
+        },
+        "internAndYaml": {
+          "medianMilliseconds": 1.2444039999991219,
+          "minimumMilliseconds": 1.186203999999634,
+          "maximumMilliseconds": 1.2716650000002119,
+          "samplesMilliseconds": [
+            1.2356270000000222,
+            1.186203999999634,
+            1.2556949999998324,
+            1.2141970000011497,
+            1.2555339999998978,
+            1.2444039999991219,
+            1.2716650000002119
+          ]
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": "duplicate-small-subtrees",
+        "family": "synthetic",
+        "description": "Many equal shallow schema fragments.",
+        "parameters": {
+          "nodes": 800
+        }
+      },
+      "environment": {
+        "node": "v26.2.0",
+        "nodeMajor": 26,
+        "v8": "14.6.202.34-node.20",
+        "platform": "linux",
+        "architecture": "x64",
+        "packageVersion": "1.0.0",
+        "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+        "benchmarkSchemaVersion": "1.0.0",
+        "structuralSizeModelVersion": null,
+        "memlabVersion": "2.0.5",
+        "yamlVersion": "2.9.1",
+        "zodVersion": "4.6.5"
+      },
+      "structure": {
+        "before": {
+          "objectNodes": 3200,
+          "arrayNodes": 801,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 10400,
+          "objectProperties": 8000,
+          "arrayElements": 2400,
+          "arrayHoles": 0,
+          "strings": 4800,
+          "stringCodeUnits": 29600,
+          "numbers": 1600,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 4001
+        },
+        "after": {
+          "objectNodes": 4,
+          "arrayNodes": 2,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 812,
+          "objectProperties": 10,
+          "arrayElements": 802,
+          "arrayHoles": 0,
+          "strings": 6,
+          "stringCodeUnits": 37,
+          "numbers": 2,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 6
+        }
+      },
+      "retainedHeap": {
+        "beforeBytes": 172848,
+        "afterBytes": 7712,
+        "beforeSamplesBytes": [
+          172848
+        ],
+        "afterSamplesBytes": [
+          7712
+        ],
+        "beforeMinimumBytes": 172848,
+        "beforeMaximumBytes": 172848,
+        "afterMinimumBytes": 7712,
+        "afterMaximumBytes": 7712
+      },
+      "serialization": {
+        "json": {
+          "beforeBytes": 130401,
+          "afterBytes": 130401
+        },
+        "yaml": {
+          "beforeBytes": 149600,
+          "afterBytes": 4987
+        }
+      },
+      "timing": {
+        "intern": {
+          "medianMilliseconds": 10.090210999998817,
+          "minimumMilliseconds": 8.922542000000249,
+          "maximumMilliseconds": 11.719275999999809,
+          "samplesMilliseconds": [
+            11.361053999999058,
+            11.719275999999809,
+            10.408457999999882,
+            10.090210999998817,
+            8.922542000000249,
+            8.925618000001123,
+            9.011399000000893
+          ]
+        },
+        "yamlBefore": {
+          "medianMilliseconds": 51.61745499999961,
+          "minimumMilliseconds": 45.05135199999859,
+          "maximumMilliseconds": 56.736134000000675,
+          "samplesMilliseconds": [
+            56.736134000000675,
+            45.05135199999859,
+            51.68147499999941,
+            54.566305000000284,
+            51.61745499999961,
+            51.32672000000093,
+            51.57641800000056
+          ]
+        },
+        "yamlAfter": {
+          "medianMilliseconds": 10.919095999999627,
+          "minimumMilliseconds": 10.489870999999766,
+          "maximumMilliseconds": 11.106127000000924,
+          "samplesMilliseconds": [
+            11.076600999998846,
+            10.752403999998933,
+            11.106127000000924,
+            10.985450000000128,
+            10.919095999999627,
+            10.489870999999766,
+            10.638520000000426
+          ]
+        },
+        "internAndYaml": {
+          "medianMilliseconds": 10.747192999999243,
+          "minimumMilliseconds": 10.35800300000119,
+          "maximumMilliseconds": 11.45811700000013,
+          "samplesMilliseconds": [
+            10.35800300000119,
+            10.747192999999243,
+            10.865335000000414,
+            11.45811700000013,
+            10.369354999998905,
+            10.470836000000418,
+            11.038810000000012
+          ]
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": "already-shared",
+        "family": "synthetic",
+        "description": "A source DAG whose repeated positions already share identities.",
+        "parameters": {
+          "edges": 800
+        }
+      },
+      "environment": {
+        "node": "v26.2.0",
+        "nodeMajor": 26,
+        "v8": "14.6.202.34-node.20",
+        "platform": "linux",
+        "architecture": "x64",
+        "packageVersion": "1.0.0",
+        "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+        "benchmarkSchemaVersion": "1.0.0",
+        "structuralSizeModelVersion": null,
+        "memlabVersion": "2.0.5",
+        "yamlVersion": "2.9.1",
+        "zodVersion": "4.6.5"
+      },
+      "structure": {
+        "before": {
+          "objectNodes": 8,
+          "arrayNodes": 2,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 823,
+          "objectProperties": 20,
+          "arrayElements": 803,
+          "arrayHoles": 0,
+          "strings": 6,
+          "stringCodeUnits": 39,
+          "numbers": 9,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 10
+        },
+        "after": {
+          "objectNodes": 7,
+          "arrayNodes": 2,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 820,
+          "objectProperties": 17,
+          "arrayElements": 803,
+          "arrayHoles": 0,
+          "strings": 5,
+          "stringCodeUnits": 33,
+          "numbers": 7,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 9
+        }
+      },
+      "retainedHeap": {
+        "beforeBytes": 8472,
+        "afterBytes": 8656,
+        "beforeSamplesBytes": [
+          8472
+        ],
+        "afterSamplesBytes": [
+          8656
+        ],
+        "beforeMinimumBytes": 8472,
+        "beforeMaximumBytes": 8472,
+        "afterMinimumBytes": 8656,
+        "afterMaximumBytes": 8656
+      },
+      "serialization": {
+        "json": {
+          "beforeBytes": 228801,
+          "afterBytes": 228801
+        },
+        "yaml": {
+          "beforeBytes": 5160,
+          "afterBytes": 5103
+        }
+      },
+      "timing": {
+        "intern": {
+          "medianMilliseconds": 0.8546529999985069,
+          "minimumMilliseconds": 0.7907230000018899,
+          "maximumMilliseconds": 1.2647020000003977,
+          "samplesMilliseconds": [
+            0.8659939999997732,
+            0.8712840000007418,
+            1.2647020000003977,
+            0.8205989999987651,
+            0.8546529999985069,
+            0.7907230000018899,
+            0.8142470000020694
+          ]
+        },
+        "yamlBefore": {
+          "medianMilliseconds": 1.7040960000013001,
+          "minimumMilliseconds": 1.580653999997594,
+          "maximumMilliseconds": 1.8898539999972854,
+          "samplesMilliseconds": [
+            1.7469559999990452,
+            1.580653999997594,
+            1.645356000000902,
+            1.7040960000013001,
+            1.7982519999968645,
+            1.6239050000003772,
+            1.8898539999972854
+          ]
+        },
+        "yamlAfter": {
+          "medianMilliseconds": 2.3866149999994377,
+          "minimumMilliseconds": 2.3325839999997697,
+          "maximumMilliseconds": 2.835656999999628,
+          "samplesMilliseconds": [
+            2.390862999996898,
+            2.3866149999994377,
+            2.3598350000029313,
+            2.835656999999628,
+            2.465061999999307,
+            2.3410100000000966,
+            2.3325839999997697
+          ]
+        },
+        "internAndYaml": {
+          "medianMilliseconds": 2.2613410000012664,
+          "minimumMilliseconds": 2.190427000001364,
+          "maximumMilliseconds": 2.68641800000114,
+          "samplesMilliseconds": [
+            2.3253509999995003,
+            2.68641800000114,
+            2.2198019999996177,
+            2.2414840000019467,
+            2.2613410000012664,
+            2.190427000001364,
+            2.314089999999851
+          ]
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": "self-cycles",
+        "family": "synthetic",
+        "description": "Independent equivalent self-cycles.",
+        "parameters": {
+          "nodes": 500
+        }
+      },
+      "environment": {
+        "node": "v26.2.0",
+        "nodeMajor": 26,
+        "v8": "14.6.202.34-node.20",
+        "platform": "linux",
+        "architecture": "x64",
+        "packageVersion": "1.0.0",
+        "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+        "benchmarkSchemaVersion": "1.0.0",
+        "structuralSizeModelVersion": null,
+        "memlabVersion": "2.0.5",
+        "yamlVersion": "2.9.1",
+        "zodVersion": "4.6.5"
+      },
+      "structure": {
+        "before": {
+          "objectNodes": 500,
+          "arrayNodes": 1,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 1500,
+          "objectProperties": 1000,
+          "arrayElements": 500,
+          "arrayHoles": 0,
+          "strings": 500,
+          "stringCodeUnits": 2000,
+          "numbers": 0,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 501
+        },
+        "after": {
+          "objectNodes": 1,
+          "arrayNodes": 1,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 502,
+          "objectProperties": 2,
+          "arrayElements": 500,
+          "arrayHoles": 0,
+          "strings": 1,
+          "stringCodeUnits": 4,
+          "numbers": 0,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 2
+        }
+      },
+      "retainedHeap": {
+        "beforeBytes": 40120,
+        "afterBytes": 4328,
+        "beforeSamplesBytes": [
+          40120
+        ],
+        "afterSamplesBytes": [
+          4328
+        ],
+        "beforeMinimumBytes": 40120,
+        "beforeMaximumBytes": 40120,
+        "afterMinimumBytes": 4328,
+        "afterMaximumBytes": 4328
+      },
+      "serialization": {
+        "yaml": {
+          "beforeBytes": 17784,
+          "afterBytes": 3026
+        }
+      },
+      "timing": {
+        "intern": {
+          "medianMilliseconds": 2.0344350000013947,
+          "minimumMilliseconds": 1.9787209999994957,
+          "maximumMilliseconds": 2.3431039999995846,
+          "samplesMilliseconds": [
+            2.1293929999992542,
+            2.0344350000013947,
+            2.3431039999995846,
+            2.0681279999989783,
+            1.9906530000007479,
+            2.033973999998125,
+            1.9787209999994957
+          ]
+        },
+        "yamlBefore": {
+          "medianMilliseconds": 15.751437999999325,
+          "minimumMilliseconds": 15.51141700000153,
+          "maximumMilliseconds": 16.26138400000127,
+          "samplesMilliseconds": [
+            15.51141700000153,
+            15.976339999997435,
+            15.751437999999325,
+            16.000073999999586,
+            15.596827000001213,
+            15.570718999999372,
+            16.26138400000127
+          ]
+        },
+        "yamlAfter": {
+          "medianMilliseconds": 3.0123290000010456,
+          "minimumMilliseconds": 2.794659999999567,
+          "maximumMilliseconds": 3.5667190000021947,
+          "samplesMilliseconds": [
+            3.0123290000010456,
+            2.968606999998883,
+            2.832592000002478,
+            3.5667190000021947,
+            2.794659999999567,
+            3.4090029999970284,
+            3.113177999999607
+          ]
+        },
+        "internAndYaml": {
+          "medianMilliseconds": 3.0698669999983395,
+          "minimumMilliseconds": 2.7685310000015306,
+          "maximumMilliseconds": 3.3137339999993856,
+          "samplesMilliseconds": [
+            3.2382830000024114,
+            3.3137339999993856,
+            2.801915000000008,
+            3.193387999999686,
+            2.7685310000015306,
+            3.0698669999983395,
+            2.952025999999023
+          ]
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": "scaling-duplicate-small-1000",
+        "family": "synthetic",
+        "description": "Parameterized duplicate-small-subtrees scaling fixture.",
+        "parameters": {
+          "nodes": 1000,
+          "scalingFamily": "duplicate-small-subtrees"
+        }
+      },
+      "environment": {
+        "node": "v26.2.0",
+        "nodeMajor": 26,
+        "v8": "14.6.202.34-node.20",
+        "platform": "linux",
+        "architecture": "x64",
+        "packageVersion": "1.0.0",
+        "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+        "benchmarkSchemaVersion": "1.0.0",
+        "structuralSizeModelVersion": null,
+        "memlabVersion": "2.0.5",
+        "yamlVersion": "2.9.1",
+        "zodVersion": "4.6.5"
+      },
+      "structure": {
+        "before": {
+          "objectNodes": 4000,
+          "arrayNodes": 1,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 10000,
+          "objectProperties": 9000,
+          "arrayElements": 1000,
+          "arrayHoles": 0,
+          "strings": 4000,
+          "stringCodeUnits": 30000,
+          "numbers": 2000,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 4001
+        },
+        "after": {
+          "objectNodes": 4,
+          "arrayNodes": 1,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 1009,
+          "objectProperties": 9,
+          "arrayElements": 1000,
+          "arrayHoles": 0,
+          "strings": 4,
+          "stringCodeUnits": 30,
+          "numbers": 2,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 5
+        }
+      },
+      "retainedHeap": {
+        "beforeBytes": 176048,
+        "afterBytes": 9152,
+        "beforeSamplesBytes": [
+          176048
+        ],
+        "afterSamplesBytes": [
+          9152
+        ],
+        "beforeMinimumBytes": 176048,
+        "beforeMaximumBytes": 176048,
+        "afterMinimumBytes": 9152,
+        "afterMaximumBytes": 9152
+      },
+      "serialization": {
+        "json": {
+          "beforeBytes": 137001,
+          "afterBytes": 137001
+        },
+        "yaml": {
+          "beforeBytes": 154000,
+          "afterBytes": 6154
+        }
+      },
+      "timing": {
+        "intern": {
+          "medianMilliseconds": 9.21879799999806,
+          "minimumMilliseconds": 8.886223999998037,
+          "maximumMilliseconds": 9.572299999999814,
+          "samplesMilliseconds": [
+            9.21879799999806,
+            9.202766999998858,
+            9.540310999997018,
+            9.572299999999814,
+            9.273670999999013,
+            8.886223999998037,
+            9.1946620000017
+          ]
+        },
+        "yamlBefore": {
+          "medianMilliseconds": 57.112960000002204,
+          "minimumMilliseconds": 38.42547700000068,
+          "maximumMilliseconds": 64.90526299999692,
+          "samplesMilliseconds": [
+            38.42547700000068,
+            64.90526299999692,
+            57.112960000002204,
+            59.10492599999998,
+            56.184658999998646,
+            61.93379100000311,
+            54.66577099999995
+          ]
+        },
+        "yamlAfter": {
+          "medianMilliseconds": 11.184975000000122,
+          "minimumMilliseconds": 10.777780000000348,
+          "maximumMilliseconds": 11.710650000000896,
+          "samplesMilliseconds": [
+            11.184975000000122,
+            11.220792000000074,
+            11.710650000000896,
+            11.064829999999347,
+            10.777780000000348,
+            11.235249000001204,
+            10.786737999998877
+          ]
+        },
+        "internAndYaml": {
+          "medianMilliseconds": 11.353259999999864,
+          "minimumMilliseconds": 10.651834999996936,
+          "maximumMilliseconds": 12.096744999998919,
+          "samplesMilliseconds": [
+            11.353259999999864,
+            11.083583999999973,
+            11.46250499999951,
+            11.244816999998875,
+            12.096744999998919,
+            11.383827000001475,
+            10.651834999996936
+          ]
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": "scaling-duplicate-small-2500",
+        "family": "synthetic",
+        "description": "Parameterized duplicate-small-subtrees scaling fixture.",
+        "parameters": {
+          "nodes": 2500,
+          "scalingFamily": "duplicate-small-subtrees"
+        }
+      },
+      "environment": {
+        "node": "v26.2.0",
+        "nodeMajor": 26,
+        "v8": "14.6.202.34-node.20",
+        "platform": "linux",
+        "architecture": "x64",
+        "packageVersion": "1.0.0",
+        "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+        "benchmarkSchemaVersion": "1.0.0",
+        "structuralSizeModelVersion": null,
+        "memlabVersion": "2.0.5",
+        "yamlVersion": "2.9.1",
+        "zodVersion": "4.6.5"
+      },
+      "structure": {
+        "before": {
+          "objectNodes": 10000,
+          "arrayNodes": 1,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 25000,
+          "objectProperties": 22500,
+          "arrayElements": 2500,
+          "arrayHoles": 0,
+          "strings": 10000,
+          "stringCodeUnits": 75000,
+          "numbers": 5000,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 10001
+        },
+        "after": {
+          "objectNodes": 4,
+          "arrayNodes": 1,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 2509,
+          "objectProperties": 9,
+          "arrayElements": 2500,
+          "arrayHoles": 0,
+          "strings": 4,
+          "stringCodeUnits": 30,
+          "numbers": 2,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 5
+        }
+      },
+      "retainedHeap": {
+        "beforeBytes": 440048,
+        "afterBytes": 21152,
+        "beforeSamplesBytes": [
+          440048
+        ],
+        "afterSamplesBytes": [
+          21152
+        ],
+        "beforeMinimumBytes": 440048,
+        "beforeMaximumBytes": 440048,
+        "afterMinimumBytes": 21152,
+        "afterMaximumBytes": 21152
+      },
+      "serialization": {
+        "json": {
+          "beforeBytes": 342501,
+          "afterBytes": 342501
+        },
+        "yaml": {
+          "beforeBytes": 385000,
+          "afterBytes": 15154
+        }
+      },
+      "timing": {
+        "intern": {
+          "medianMilliseconds": 28.014855000001262,
+          "minimumMilliseconds": 27.61138800000117,
+          "maximumMilliseconds": 30.889585000000807,
+          "samplesMilliseconds": [
+            28.756013999998686,
+            27.689744999999675,
+            30.889585000000807,
+            28.014855000001262,
+            27.61138800000117,
+            30.73848200000066,
+            27.62159800000154
+          ]
+        },
+        "yamlBefore": {
+          "medianMilliseconds": 120.49485600000116,
+          "minimumMilliseconds": 107.06988199999978,
+          "maximumMilliseconds": 124.29277799999909,
+          "samplesMilliseconds": [
+            124.28922199999943,
+            124.29277799999909,
+            109.16460999999981,
+            120.49485600000116,
+            122.58854299999803,
+            107.06988199999978,
+            119.1555449999978
+          ]
+        },
+        "yamlAfter": {
+          "medianMilliseconds": 33.125647999997454,
+          "minimumMilliseconds": 31.06013499999972,
+          "maximumMilliseconds": 35.4772890000022,
+          "samplesMilliseconds": [
+            31.06013499999972,
+            35.4772890000022,
+            33.125647999997454,
+            32.925844000001234,
+            34.07447800000227,
+            33.07982300000003,
+            33.13917399999991
+          ]
+        },
+        "internAndYaml": {
+          "medianMilliseconds": 32.1546070000004,
+          "minimumMilliseconds": 31.261852999999974,
+          "maximumMilliseconds": 33.54516499999954,
+          "samplesMilliseconds": [
+            33.54516499999954,
+            32.1546070000004,
+            31.914135999999417,
+            33.45284200000242,
+            31.261852999999974,
+            32.461943999998766,
+            31.817806000002747
+          ]
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": "seed-highly-duplicated",
+        "family": "test-derived",
+        "description": "Deterministic property-style graph seed representing highly duplicated data.",
+        "parameters": {
+          "id": "highly-duplicated",
+          "seed": 918273,
+          "shape": "mixed",
+          "duplication": 0.85,
+          "primitive": "balanced",
+          "cyclic": false,
+          "nodes": 240
+        }
+      },
+      "environment": {
+        "node": "v26.2.0",
+        "nodeMajor": 26,
+        "v8": "14.6.202.34-node.20",
+        "platform": "linux",
+        "architecture": "x64",
+        "packageVersion": "1.0.0",
+        "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+        "benchmarkSchemaVersion": "1.0.0",
+        "structuralSizeModelVersion": null,
+        "memlabVersion": "2.0.5",
+        "yamlVersion": "2.9.1",
+        "zodVersion": "4.6.5"
+      },
+      "structure": {
+        "before": {
+          "objectNodes": 121,
+          "arrayNodes": 121,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 961,
+          "objectProperties": 361,
+          "arrayElements": 600,
+          "arrayHoles": 0,
+          "strings": 240,
+          "stringCodeUnits": 1440,
+          "numbers": 240,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 242
+        },
+        "after": {
+          "objectNodes": 31,
+          "arrayNodes": 28,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 412,
+          "objectProperties": 91,
+          "arrayElements": 321,
+          "arrayHoles": 0,
+          "strings": 57,
+          "stringCodeUnits": 342,
+          "numbers": 57,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 59
+        }
+      },
+      "retainedHeap": {
+        "beforeBytes": 43528,
+        "afterBytes": 7488,
+        "beforeSamplesBytes": [
+          43528
+        ],
+        "afterSamplesBytes": [
+          7488
+        ],
+        "beforeMinimumBytes": 43528,
+        "beforeMaximumBytes": 43528,
+        "afterMinimumBytes": 7488,
+        "afterMaximumBytes": 7488
+      },
+      "serialization": {
+        "json": {
+          "beforeBytes": 25424,
+          "afterBytes": 25424
+        },
+        "yaml": {
+          "beforeBytes": 9557,
+          "afterBytes": 4122
+        }
+      },
+      "timing": {
+        "intern": {
+          "medianMilliseconds": 1.3386800000007497,
+          "minimumMilliseconds": 1.1768969999975525,
+          "maximumMilliseconds": 1.4479359999968437,
+          "samplesMilliseconds": [
+            1.434861000001547,
+            1.4479359999968437,
+            1.4191619999983232,
+            1.1768969999975525,
+            1.2177640000008978,
+            1.251497000004747,
+            1.3386800000007497
+          ]
+        },
+        "yamlBefore": {
+          "medianMilliseconds": 4.851747999993677,
+          "minimumMilliseconds": 4.680166999998619,
+          "maximumMilliseconds": 5.178571000004013,
+          "samplesMilliseconds": [
+            4.763763000002655,
+            4.92862199999945,
+            4.680166999998619,
+            4.719590000000608,
+            5.1215940000038245,
+            5.178571000004013,
+            4.851747999993677
+          ]
+        },
+        "yamlAfter": {
+          "medianMilliseconds": 3.181836999996449,
+          "minimumMilliseconds": 3.006227999998373,
+          "maximumMilliseconds": 4.101912000005541,
+          "samplesMilliseconds": [
+            3.189861999999266,
+            3.181836999996449,
+            3.1751939999958267,
+            3.006227999998373,
+            3.2378719999978784,
+            3.12536099999852,
+            4.101912000005541
+          ]
+        },
+        "internAndYaml": {
+          "medianMilliseconds": 3.799775999999838,
+          "minimumMilliseconds": 3.2475200000044424,
+          "maximumMilliseconds": 4.031430000002729,
+          "samplesMilliseconds": [
+            4.031430000002729,
+            3.3256560000008903,
+            3.2475200000044424,
+            3.799775999999838,
+            3.5247589999999036,
+            3.8703679999962333,
+            3.812439000001177
+          ]
+        }
+      }
+    },
+    {
+      "fixture": {
+        "id": "seed-cyclic",
+        "family": "test-derived",
+        "description": "Deterministic property-style graph seed representing cyclic data.",
+        "parameters": {
+          "id": "cyclic",
+          "seed": 77191,
+          "shape": "mixed",
+          "duplication": 0.4,
+          "primitive": "balanced",
+          "cyclic": true,
+          "nodes": 240
+        }
+      },
+      "environment": {
+        "node": "v26.2.0",
+        "nodeMajor": 26,
+        "v8": "14.6.202.34-node.20",
+        "platform": "linux",
+        "architecture": "x64",
+        "packageVersion": "1.0.0",
+        "commit": "1b0de31ff17e7eb0da148c681b52d7b26a003b7d",
+        "benchmarkSchemaVersion": "1.0.0",
+        "structuralSizeModelVersion": null,
+        "memlabVersion": "2.0.5",
+        "yamlVersion": "2.9.1",
+        "zodVersion": "4.6.5"
+      },
+      "structure": {
+        "before": {
+          "objectNodes": 121,
+          "arrayNodes": 121,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 963,
+          "objectProperties": 362,
+          "arrayElements": 601,
+          "arrayHoles": 0,
+          "strings": 240,
+          "stringCodeUnits": 1440,
+          "numbers": 240,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 242
+        },
+        "after": {
+          "objectNodes": 84,
+          "arrayNodes": 89,
+          "dateNodes": 0,
+          "regexpNodes": 0,
+          "edges": 756,
+          "objectProperties": 251,
+          "arrayElements": 505,
+          "arrayHoles": 0,
+          "strings": 171,
+          "stringCodeUnits": 1026,
+          "numbers": 171,
+          "bigints": 0,
+          "booleans": 0,
+          "nulls": 0,
+          "undefineds": 0,
+          "totalReferenceNodes": 173
+        }
+      },
+      "retainedHeap": {
+        "beforeBytes": 43744,
+        "afterBytes": 17840,
+        "beforeSamplesBytes": [
+          43744
+        ],
+        "afterSamplesBytes": [
+          17840
+        ],
+        "beforeMinimumBytes": 43744,
+        "beforeMaximumBytes": 43744,
+        "afterMinimumBytes": 17840,
+        "afterMaximumBytes": 17840
+      },
+      "serialization": {
+        "yaml": {
+          "beforeBytes": 10427,
+          "afterBytes": 8227
+        }
+      },
+      "timing": {
+        "intern": {
+          "medianMilliseconds": 2.197100000004866,
+          "minimumMilliseconds": 2.0290050000039628,
+          "maximumMilliseconds": 2.383028000003833,
+          "samplesMilliseconds": [
+            2.197100000004866,
+            2.1680560000022524,
+            2.370184999999765,
+            2.263124000004609,
+            2.383028000003833,
+            2.0290050000039628,
+            2.0976339999979245
+          ]
+        },
+        "yamlBefore": {
+          "medianMilliseconds": 4.971763000001374,
+          "minimumMilliseconds": 4.744908000000578,
+          "maximumMilliseconds": 6.049774999999499,
+          "samplesMilliseconds": [
+            4.971763000001374,
+            4.999203999999736,
+            6.049774999999499,
+            4.963227000000188,
+            4.987182000004395,
+            4.744908000000578,
+            4.926648000000569
+          ]
+        },
+        "yamlAfter": {
+          "medianMilliseconds": 5.862232999999833,
+          "minimumMilliseconds": 5.599540000002889,
+          "maximumMilliseconds": 6.966513999999734,
+          "samplesMilliseconds": [
+            5.862232999999833,
+            5.7932829999990645,
+            5.866620999993756,
+            5.634405999997398,
+            5.599540000002889,
+            6.966513999999734,
+            6.931286999999429
+          ]
+        },
+        "internAndYaml": {
+          "medianMilliseconds": 5.800937999993039,
+          "minimumMilliseconds": 5.347057000006316,
+          "maximumMilliseconds": 5.853407000002335,
+          "samplesMilliseconds": [
+            5.805295999998634,
+            5.800937999993039,
+            5.347057000006316,
+            5.8496999999988475,
+            5.853407000002335,
+            5.5377840000001015,
+            5.669692000003124
+          ]
+        }
+      }
+    }
+  ]
+}

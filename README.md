@@ -72,7 +72,28 @@ Built-ins take precedence, then the first matching extension in array order wins
 
 For V nodes, E edges and S observation bytes, expected DAG time and working space are O(V + E + S). Cyclic graphs currently use simple whole-graph refinement, with up to O(V * (V + E + S)) expected time and O(V + E + S) space. Extension callback costs are additional. Hash collisions never establish equality; full signatures are compared. Traversal is iterative, including deeply nested inputs.
 
-`pnpm bench` reports wall time, retained heap delta (noisy, not peak memory), node counts and compression ratios across unique, duplicated, deep, wide, schema, DAG and cyclic fixtures. It compares structured clone, intern, YAML and intern plus YAML. Set `BENCH_SIZE` and `BENCH_DEPTH` to adjust inputs. No universal speedup or serialized-size reduction is promised.
+The benchmark suite measures transformation time, exact structural reduction, V8 retained size through memlab, and YAML serialization effects. On included generated-schema fixtures, interning can substantially reduce distinct reachable objects, retained heap and YAML output. The exact benefit depends on structural duplication in the input.
+
+<!-- benchmark:start -->
+
+Published profile: `quick`, Node 26. Exact results depend on the input and runtime.
+
+| Fixture            | Reference nodes | V8 retained heap | YAML bytes | Intern time |
+| ------------------ | --------------: | ---------------: | ---------: | ----------: |
+| zod-json-schema    |          -94.3% |           -77.2% |     -94.5% |     8.25 ms |
+| openapi-document   |          -95.9% |           -62.2% |     -95.2% |     1.89 ms |
+| configuration-tree |          -94.5% |           -46.9% |     -89.6% |     0.61 ms |
+
+![V8 retained heap](benchmark-results/latest/plots/retained-size.svg)
+
+![YAML output size](benchmark-results/latest/plots/yaml-size.svg)
+
+![Intern scaling](benchmark-results/latest/plots/scaling.svg)
+
+[Methodology](BENCHMARKS.md) | [Full report](benchmark-results/latest/report.md) | [Machine-readable results](benchmark-results/latest/results.json) | [Fixture sources](bench/fixtures)
+<!-- benchmark:end -->
+
+See the [benchmark methodology](BENCHMARKS.md), [generated report](benchmark-results/latest/report.md), [machine-readable results](benchmark-results/latest/results.json), and [fixture sources](bench/fixtures).
 
 ## Structured clone and YAML
 
@@ -93,6 +114,7 @@ pnpm install --frozen-lockfile
 pnpm check
 pnpm mutate
 pnpm bench
+pnpm bench:full
 ```
 
 The property suite generates abstract semantic graphs, materializes them and checks against an independent pair-elimination bisimulation oracle. It verifies preservation, exact merging, maximality, freshness, input preservation, idempotence, allocation and replacement invariance. Failures persist minimized counterexamples and seed/path in `reports/counterexamples`. Replay with `FC_PROPERTY=... FC_SEED=... FC_PATH=... pnpm test`; `FC_RUNS` changes the run count. `FC_PROPERTY` selects the failed property so its shrink path is not applied to unrelated generators. `pnpm mutate:audit` lists surviving mutations from the latest JSON report for review. See [the mutation review](MUTATION_REVIEW.md) for the measured baseline and explanations of equivalent survivors.

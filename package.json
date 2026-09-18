@@ -23,7 +23,14 @@
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "smoke": "pnpm build && node scripts/smoke.mjs",
-    "bench": "pnpm build && node --expose-gc benchmark/run.mjs",
+    "bench": "pnpm build && node --expose-gc --import tsx bench/run.ts --profile quick",
+    "bench:quick": "pnpm build && node --expose-gc --import tsx bench/run.ts --profile quick",
+    "bench:full": "pnpm build && node --expose-gc --import tsx bench/run.ts --profile full",
+    "bench:memory": "pnpm build && node --expose-gc --import tsx bench/run.ts --profile quick --only memory",
+    "bench:report": "node --import tsx bench/report.ts",
+    "bench:plots": "node --import tsx bench/plots.ts",
+    "bench:readme": "node --import tsx bench/report.ts --readme",
+    "bench:compare": "node --import tsx bench/compare.ts",
     "mutate": "stryker run",
     "mutate:audit": "node scripts/mutation-audit.mjs",
     "check": "pnpm typecheck && pnpm test && pnpm lint && pnpm smoke"
@@ -43,6 +50,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@memlab/core": "^2.0.5",
+    "@memlab/heap-analysis": "^2.0.5",
     "@stryker-mutator/core": "^10.0.0",
     "@types/node": "^26.6.1",
     "eslint": "^10.10.0",
@@ -51,6 +60,9 @@
     "tsx": "^4.23.13",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.70.0",
-    "yaml": "^2.9.1"
+    "vega": "^6.4.0",
+    "vega-lite": "^6.4.3",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
   }
 }

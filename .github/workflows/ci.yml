@@ -38,11 +38,23 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm mutate
       - run: pnpm mutate:audit
-      - run: pnpm bench > benchmark-results.jsonl
+      - run: pnpm bench:full
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: broader-reports
           path: |
             reports
-            benchmark-results.jsonl
+            benchmark-results/latest
+  benchmark-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: node --expose-gc --import tsx bench/run.ts --profile quick --skip-memory
