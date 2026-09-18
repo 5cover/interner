@@ -1,5 +1,30 @@
 {
-  "name": "tempalace-workspace",
+  "name": "interner",
+  "version": "1.0.0",
+  "description": "Fresh maximally shared clones of JavaScript value graphs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "MODEL.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/**/*.test.ts",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "smoke": "pnpm build && node scripts/smoke.mjs",
+    "bench": "pnpm build && node --expose-gc benchmark/run.mjs",
+    "mutate": "stryker run",
+    "check": "pnpm typecheck && pnpm test && pnpm lint && pnpm smoke"
+  },
   "packageManager": "pnpm@11.20.0",
   "engines": {
     "node": ">=22.0.0"
@@ -12,5 +37,17 @@
     "bracketSameLine": true,
     "trailingComma": "es5",
     "semi": false
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stryker-mutator/core": "^10.0.0",
+    "@types/node": "^26.6.1",
+    "eslint": "^10.10.0",
+    "fast-check": "^4.10.1",
+    "prettier": "^3.9.7",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2",
+    "typescript-eslint": "^8.70.0",
+    "yaml": "^2.9.1"
   }
 }
