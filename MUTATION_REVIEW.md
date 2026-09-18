@@ -1,20 +1,12 @@
 # Mutation review
 
-Reviewed on 2026-09-18 with Node 26.2.0 and Stryker 10.0.0.
-The second full run produced 405 mutants: 355 killed, 31 timed out, 19 survived,
-zero uncovered and zero errors. Mutation score: 95.31%.
+Reviewed on 2026-09-18 with Node 26.2.0 and Stryker 10.0.0. The second full run produced 405 mutants: 355 killed, 31 timed out, 19 survived, zero uncovered and zero errors. Mutation score: 95.31%.
 
-The first run exposed gaps in symbol descriptor rejection, ordinary object
-`length` observations, malformed extension validation, useful error locations and
-the DAG fast path. Dedicated regressions now kill those mutations. The oracle
-generator also now accounts for Date normalization of negative zero and always
-records deterministic failure seeds.
+The first run exposed gaps in symbol descriptor rejection, ordinary object `length` observations, malformed extension validation, useful error locations and the DAG fast path. Dedicated regressions now kill those mutations. The oracle generator also now accounts for Date normalization of negative zero and always records deterministic failure seeds.
 
 ## Reviewed survivors
 
-These are equivalent under the public contract, not unexplained missing assertions.
-The IDs identify the report from this run; IDs and source lines are not stable API.
-Use `pnpm mutate:audit` after rerunning to review the current report.
+These are equivalent under the public contract, not unexplained missing assertions. The IDs identify the report from this run; IDs and source lines are not stable API. Use `pnpm mutate:audit` after rerunning to review the current report.
 
 | File                                 | Mutant IDs              | Explanation                                                                                                                                                                                                  |
 | ------------------------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -31,10 +23,7 @@ Use `pnpm mutate:audit` after rerunning to review the current report.
 | graph/signature.ts                   | 397                     | One extra hash round changes bucket selection, not equality: full signatures still resolve collisions. The hash function is not public API.                                                                  |
 | graph/signature.ts                   | 402                     | A dummy string bucket entry has no matching `key`, so lookup skips it; real entries are unchanged.                                                                                                           |
 
-No mutations are excluded from instrumentation to inflate the score. Timeouts
-include broken traversal termination and mutations that route the 20,000-node
-deep DAG into repeated refinement. They are reported separately from assertion
-failures; a timeout is not a proof of an observational mismatch.
+No mutations are excluded from instrumentation to inflate the score. Timeouts include broken traversal termination and mutations that route the 20,000-node deep DAG into repeated refinement. They are reported separately from assertion failures; a timeout is not a proof of an observational mismatch.
 
 ## Reproduction and maintenance
 
@@ -43,14 +32,6 @@ pnpm mutate
 pnpm mutate:audit
 ```
 
-The HTML and JSON reports are in `reports/mutation`. CI preserves them as
-artifacts. A 95% score floor catches aggregate regressions, but is not a substitute
-for reviewing every new survivor. Update this review when semantic code or tests
-change. Do not assert exact hashes, representative selection or error prose merely
-to kill equivalent mutants.
+The HTML and JSON reports are in `reports/mutation`. CI preserves them as artifacts. A 95% score floor catches aggregate regressions, but is not a substitute for reviewing every new survivor. Update this review when semantic code or tests change. Do not assert exact hashes, representative selection or error prose merely to kill equivalent mutants.
 
-The final ordinary test suite additionally exercises floating-point atoms and
-generated single-observation sensitivity. A separate run used 3,000 cases per
-property with seed 7183 and passed. These additions do not alter production code
-or the explanations above. Local validation used Node 26; Node 22 and 24 are
-configured in CI but were not downloaded or run locally.
+The final ordinary test suite additionally exercises floating-point atoms and generated single-observation sensitivity. A separate run used 3,000 cases per property with seed 7183 and passed. These additions do not alter production code or the explanations above. Local validation used Node 26; Node 22 and 24 are configured in CI but were not downloaded or run locally.
