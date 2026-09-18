@@ -32,6 +32,7 @@ for (const cyclic of [false, true])
           for (let j = 0; j < input.length; j++) {
             assert.equal(result[i] === result[j], expected[i]![j], `${i},${j}: exact quotient`)
           }
+
         for (const object of observe([result]).objects) assert.ok(!observe([input]).objects.includes(object))
         const outputRelation = relation(after.nodes)
         for (let i = 0; i < after.nodes.length; i++)
@@ -48,3 +49,35 @@ for (const cyclic of [false, true])
       })
     })
   }
+
+test('changing one intrinsic observation separates a node from its equivalent replacement', () => {
+  check('sensitivity', graphs(true, true), graph => {
+    const changed = { nodes: graph.nodes.map(node => ({ ...node, state: [...node.state] })) }
+    const node = changed.nodes[0]!
+    switch (node.kind) {
+      case 'object':
+        if (node.state.length === 0) {
+          node.state.push('newKey')
+          node.links = [{ value: null }]
+        } else node.state[0] = 'differentKey'
+        break
+      case 'array':
+        node.state[0] = Number(node.state[0]) + 1
+        break
+      case 'date':
+        node.state[0] = Number.isNaN(node.state[0]) ? 0 : Number(node.state[0]) + 1
+        break
+      case 'regexp':
+        node.state[0] = 'changed'
+        break
+      case 'vertex':
+        node.state[0] = `changed:${String(node.state[0])}`
+        break
+    }
+    const original = materialize(graph)[0]!
+    const replacement = materialize(changed)[0]!
+    assert.equal(equivalent(original, replacement), false)
+    const out = intern([original, replacement], { extensions: [vertexExtension] })
+    assert.notEqual(out[0], out[1])
+  })
+})

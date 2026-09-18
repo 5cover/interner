@@ -12,17 +12,20 @@
   "files": [
     "dist",
     "MODEL.md",
+    "MUTATION_REVIEW.md",
     "README.md"
   ],
   "scripts": {
+    "prepack": "pnpm build",
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test test/**/*.test.ts",
+    "test": "node --import tsx --test --test-isolation=none test/**/*.test.ts",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "smoke": "pnpm build && node scripts/smoke.mjs",
     "bench": "pnpm build && node --expose-gc benchmark/run.mjs",
     "mutate": "stryker run",
+    "mutate:audit": "node scripts/mutation-audit.mjs",
     "check": "pnpm typecheck && pnpm test && pnpm lint && pnpm smoke"
   },
   "packageManager": "pnpm@11.20.0",

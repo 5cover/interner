@@ -46,6 +46,7 @@ test('each object and array observation distinguishes nodes', () => {
     ],
     [{ a: 1 }, { b: 1 }],
     [{ a: undefined }, {}],
+    [{ length: 0 }, {}],
     [[undefined], new Array(1)],
     [[], new Array(1)],
     [{ 0: 1 }, [1]],

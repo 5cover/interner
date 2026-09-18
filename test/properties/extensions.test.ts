@@ -104,7 +104,7 @@ test('malformed definitions, descriptors and allocations fail; errors propagate'
     { atoms: [], edges: new Array(1) },
     { atoms: Object.defineProperty([], '0', { get: () => 1 }), edges: [] },
   ]) {
-    const ext = defineExtension({ ...base, describe: () => descriptor as ReturnType<typeof base.describe> })
+    const ext = defineExtension({ ...base, describe: () => descriptor as unknown as ReturnType<typeof base.describe> })
     assert.throws(() => intern(new Node('x'), { extensions: [ext] }), TypeError)
   }
   const source = new Node('source')
@@ -173,4 +173,52 @@ test('input-mutating callbacks are outside the extension laws, not silently repa
   })
   assert.equal(intern(source, { extensions: [ext] }).name, 'after')
   assert.equal(source.name, 'after')
+})
+
+test('malformed boundaries diagnose their extension without calling match on primitives', () => {
+  for (const name of [1, {}, null, false]) {
+    assert.throws(() => defineExtension({ ...base, name } as unknown as typeof base), TypeError)
+  }
+  assert.throws(
+    () => defineExtension(null as unknown as typeof base),
+    e => e instanceof TypeError && /extension/i.test(e.message)
+  )
+  assert.throws(
+    () => intern({}, { extensions: [{} as Extension] }),
+    e => e instanceof TypeError && /extension/i.test(e.message)
+  )
+  for (const descriptor of [
+    null,
+    1,
+    { atoms: {}, edges: [] },
+    { atoms: [], edges: {} },
+    { atoms: [Symbol()], edges: [] },
+    { atoms: new Array(1), edges: [] },
+  ]) {
+    const ext = defineExtension({ ...base, describe: () => descriptor as unknown as ReturnType<typeof base.describe> })
+    assert.throws(
+      () => intern(new Node('x'), { extensions: [ext] }),
+      e => e instanceof TypeError && /Node/.test(e.message) && /node/.test(e.message)
+    )
+  }
+  for (const allocation of [null, 1, () => 1]) {
+    const ext = defineExtension({
+      ...base,
+      match: (value): value is Node => {
+        assert.ok(typeof value === 'object' && value !== null, 'match must receive only objects')
+        return true
+      },
+      allocate: () => allocation as unknown as Node,
+    })
+    assert.throws(
+      () => intern(new Node('x'), { extensions: [ext] }),
+      e => e instanceof TypeError && /Node.*node/.test(e.message)
+    )
+  }
+  const source = new Node('source')
+  const ext = defineExtension({ ...base, allocate: () => source })
+  assert.throws(
+    () => intern(source, { extensions: [ext] }),
+    e => e instanceof TypeError && /class/.test(e.message)
+  )
 })

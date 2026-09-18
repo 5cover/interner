@@ -4,6 +4,7 @@ import type { Graph, Link, Observation } from '../reference/model.js'
 export const atom = fc.oneof(
   fc.constantFrom(undefined, null, true, false, NaN, 0, -0, Infinity, -Infinity),
   fc.integer(),
+  fc.double(),
   fc.string({ maxLength: 8 }),
   fc.bigInt()
 )
@@ -35,7 +36,11 @@ export function graphs(cyclic: boolean, extensions = false): fc.Arbitrary<Graph>
           return { ref: cyclic ? e.ref % raw.length : i + 1 + (e.ref % (raw.length - i - 1)) }
         })
         if (n.kind === 'date')
-          return { kind: n.kind, state: [Number.isFinite(n.atoms[0]) ? Number(n.atoms[0]) || 0 : NaN], links: [] }
+          return {
+            kind: n.kind,
+            state: [Number.isFinite(n.atoms[0]) ? Math.trunc(Number(n.atoms[0]) % 8640000000000000) || 0 : NaN],
+            links: [],
+          }
         if (n.kind === 'regexp')
           return { kind: n.kind, state: [n.reverse ? '(?:)' : 'a+', n.holes ? 'gi' : ''], links: [] }
         if (n.kind === 'vertex') return { kind: n.kind, state: n.atoms, links }

@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "testRunner": "command",
+  "commandRunner": { "command": "node --import tsx --test --test-isolation=none test/**/*.test.ts" },
+  "mutate": ["src/**/*.ts"],
+  "ignorePatterns": ["dist/**"],
+  "coverageAnalysis": "off",
+  "concurrency": 4,
+  "thresholds": { "high": 95, "low": 90, "break": 95 },
+  "timeoutMS": 10000,
+  "reporters": ["clear-text", "json", "html"],
+  "jsonReporter": { "fileName": "reports/mutation/mutation.json" },
+  "htmlReporter": { "fileName": "reports/mutation/index.html" }
+}
