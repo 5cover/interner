@@ -1,4 +1,4 @@
-import { unlink } from 'node:fs/promises'
+import { unlink, writeFile } from 'node:fs/promises'
 import { dumpNodeHeapSnapshot, type IHeapNode } from '@memlab/core'
 import { getFullHeapFromFile } from '@memlab/heap-analysis'
 import { intern } from '../../src/index.js'
@@ -13,6 +13,7 @@ interface WorkerArguments {
   readonly fixtureId: string
   readonly profile: 'quick' | 'full'
   readonly state: 'before' | 'after'
+  readonly resultPath: string
 }
 
 function argumentsFromProcess(): WorkerArguments {
@@ -22,9 +23,15 @@ function argumentsFromProcess(): WorkerArguments {
   const profile = values.get('--profile')
   const state = values.get('--state')
   const fixtureId = values.get('--fixture')
-  if (!fixtureId || (profile !== 'quick' && profile !== 'full') || (state !== 'before' && state !== 'after'))
+  const resultPath = values.get('--result')
+  if (
+    !fixtureId ||
+    !resultPath ||
+    (profile !== 'quick' && profile !== 'full') ||
+    (state !== 'before' && state !== 'after')
+  )
     throw new Error('Invalid memory worker arguments')
-  return { fixtureId, profile, state }
+  return { fixtureId, profile, state, resultPath }
 }
 
 const options = argumentsFromProcess()
@@ -43,7 +50,7 @@ const holderNode = holderNodes[0]
 if (!holderNode) throw new Error('Could not locate the benchmark heap holder')
 const rootNode = holderNode.getReferenceNode('rootValue', 'property')
 if (!rootNode) throw new Error('Could not follow the benchmark holder rootValue edge')
-process.stdout.write(`${JSON.stringify({ retainedBytes: rootNode.retainedSize })}\n`)
+await writeFile(options.resultPath, JSON.stringify({ retainedBytes: rootNode.retainedSize }))
 await unlink(snapshotFile)
 
 function createHolder(): InternerBenchmarkHeapHolder {

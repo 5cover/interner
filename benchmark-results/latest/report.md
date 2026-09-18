@@ -61,9 +61,9 @@ Parameters: `{"fields":16}`
 | --- | ---: | ---: |
 | YAML UTF-8 bytes | 41.6 KiB | 2.3 KiB |
 | JSON UTF-8 bytes | 25.6 KiB | 25.6 KiB |
-| Intern time | | 8.25 ms |
-| YAML time | 16.7 ms | 9.00 ms |
-| Intern plus YAML | | 9.50 ms |
+| Intern time | | 9.14 ms |
+| YAML time | 18.4 ms | 9.86 ms |
+| Intern plus YAML | | 10.1 ms |
 
 ## openapi-document
 
@@ -97,8 +97,8 @@ Parameters: `{"paths":24}`
 | State | Median | Minimum | Maximum | Samples |
 | --- | ---: | ---: | ---: | ---: |
 | Before | 28.5 KiB | 28.5 KiB | 28.5 KiB | 1 |
-| After | 10.8 KiB | 10.8 KiB | 10.8 KiB | 1 |
-| Change | -18152 B | | | -62.2% |
+| After | 10.7 KiB | 10.7 KiB | 10.7 KiB | 1 |
+| Change | -18280 B | | | -62.6% |
 
 ### Serialization and timing
 
@@ -106,9 +106,54 @@ Parameters: `{"paths":24}`
 | --- | ---: | ---: |
 | YAML UTF-8 bytes | 31.6 KiB | 1.5 KiB |
 | JSON UTF-8 bytes | 17.1 KiB | 17.1 KiB |
-| Intern time | | 1.89 ms |
-| YAML time | 10.2 ms | 2.54 ms |
-| Intern plus YAML | | 2.68 ms |
+| Intern time | | 2.23 ms |
+| YAML time | 9.48 ms | 2.94 ms |
+| Intern plus YAML | | 2.77 ms |
+
+## typescript-source-ast
+
+A portable TypeScript AST parsed from the source of its own fixture module.
+
+Parameters: `{}`
+
+### Structure
+
+| Metric | Before | After | Absolute delta | Percentage delta |
+| --- | ---: | ---: | ---: | ---: |
+| Object nodes | 219 | 144 | -75 | -34.2% |
+| Array nodes | 219 | 98 | -121 | -55.3% |
+| Date nodes | 0 | 0 | 0 | n/a |
+| RegExp nodes | 0 | 0 | 0 | n/a |
+| Edges | 747 | 521 | -226 | -30.3% |
+| Object properties | 529 | 324 | -205 | -38.8% |
+| Array elements | 218 | 197 | -21 | -9.6% |
+| Array holes | 0 | 0 | 0 | n/a |
+| String occurrences | 310 | 180 | -130 | -41.9% |
+| String code units | 3,692 | 2,499 | -1,193 | -32.3% |
+| Numbers | 0 | 0 | 0 | n/a |
+| BigInts | 0 | 0 | 0 | n/a |
+| Booleans | 0 | 0 | 0 | n/a |
+| Nulls | 0 | 0 | 0 | n/a |
+| Undefined values | 0 | 0 | 0 | n/a |
+| Reference nodes | 438 | 242 | -196 | -44.7% |
+
+### Retained heap
+
+| State | Median | Minimum | Maximum | Samples |
+| --- | ---: | ---: | ---: | ---: |
+| Before | 32.6 KiB | 32.6 KiB | 32.6 KiB | 1 |
+| After | 14.4 KiB | 14.4 KiB | 14.4 KiB | 1 |
+| Change | -18640 B | | | -55.8% |
+
+### Serialization and timing
+
+| Measurement | Before | After |
+| --- | ---: | ---: |
+| YAML UTF-8 bytes | 19.2 KiB | 13.4 KiB |
+| JSON UTF-8 bytes | 9.9 KiB | 9.9 KiB |
+| Intern time | | 3.56 ms |
+| YAML time | 7.23 ms | 6.68 ms |
+| Intern plus YAML | | 7.29 ms |
 
 ## configuration-tree
 
@@ -142,8 +187,8 @@ Parameters: `{"services":24}`
 | State | Median | Minimum | Maximum | Samples |
 | --- | ---: | ---: | ---: | ---: |
 | Before | 8.6 KiB | 8.6 KiB | 8.6 KiB | 1 |
-| After | 4.6 KiB | 4.6 KiB | 4.6 KiB | 1 |
-| Change | -4136 B | | | -46.9% |
+| After | 4.5 KiB | 4.5 KiB | 4.5 KiB | 1 |
+| Change | -4248 B | | | -48.1% |
 
 ### Serialization and timing
 
@@ -151,9 +196,9 @@ Parameters: `{"services":24}`
 | --- | ---: | ---: |
 | YAML UTF-8 bytes | 6.6 KiB | 699 B |
 | JSON UTF-8 bytes | 5.5 KiB | 5.5 KiB |
-| Intern time | | 0.61 ms |
-| YAML time | 3.10 ms | 1.27 ms |
-| Intern plus YAML | | 1.24 ms |
+| Intern time | | 0.82 ms |
+| YAML time | 4.41 ms | 1.77 ms |
+| Intern plus YAML | | 1.59 ms |
 
 ## duplicate-small-subtrees
 
@@ -196,9 +241,9 @@ Parameters: `{"nodes":800}`
 | --- | ---: | ---: |
 | YAML UTF-8 bytes | 146.1 KiB | 4.9 KiB |
 | JSON UTF-8 bytes | 127.3 KiB | 127.3 KiB |
-| Intern time | | 10.1 ms |
-| YAML time | 51.6 ms | 10.9 ms |
-| Intern plus YAML | | 10.7 ms |
+| Intern time | | 11.9 ms |
+| YAML time | 59.2 ms | 13.2 ms |
+| Intern plus YAML | | 12.5 ms |
 
 ## already-shared
 
@@ -241,9 +286,9 @@ Parameters: `{"edges":800}`
 | --- | ---: | ---: |
 | YAML UTF-8 bytes | 5.0 KiB | 5.0 KiB |
 | JSON UTF-8 bytes | 223.4 KiB | 223.4 KiB |
-| Intern time | | 0.85 ms |
-| YAML time | 1.70 ms | 2.39 ms |
-| Intern plus YAML | | 2.26 ms |
+| Intern time | | 1.01 ms |
+| YAML time | 2.02 ms | 2.81 ms |
+| Intern plus YAML | | 2.73 ms |
 
 ## self-cycles
 
@@ -285,9 +330,9 @@ Parameters: `{"nodes":500}`
 | Measurement | Before | After |
 | --- | ---: | ---: |
 | YAML UTF-8 bytes | 17.4 KiB | 3.0 KiB |
-| Intern time | | 2.03 ms |
-| YAML time | 15.8 ms | 3.01 ms |
-| Intern plus YAML | | 3.07 ms |
+| Intern time | | 2.34 ms |
+| YAML time | 18.9 ms | 3.54 ms |
+| Intern plus YAML | | 3.30 ms |
 
 ## scaling-duplicate-small-1000
 
@@ -330,9 +375,9 @@ Parameters: `{"nodes":1000,"scalingFamily":"duplicate-small-subtrees"}`
 | --- | ---: | ---: |
 | YAML UTF-8 bytes | 150.4 KiB | 6.0 KiB |
 | JSON UTF-8 bytes | 133.8 KiB | 133.8 KiB |
-| Intern time | | 9.22 ms |
-| YAML time | 57.1 ms | 11.2 ms |
-| Intern plus YAML | | 11.4 ms |
+| Intern time | | 10.3 ms |
+| YAML time | 63.2 ms | 12.5 ms |
+| Intern plus YAML | | 12.0 ms |
 
 ## scaling-duplicate-small-2500
 
@@ -375,9 +420,9 @@ Parameters: `{"nodes":2500,"scalingFamily":"duplicate-small-subtrees"}`
 | --- | ---: | ---: |
 | YAML UTF-8 bytes | 376.0 KiB | 14.8 KiB |
 | JSON UTF-8 bytes | 334.5 KiB | 334.5 KiB |
-| Intern time | | 28.0 ms |
-| YAML time | 120.5 ms | 33.1 ms |
-| Intern plus YAML | | 32.2 ms |
+| Intern time | | 31.0 ms |
+| YAML time | 137.5 ms | 34.6 ms |
+| Intern plus YAML | | 35.3 ms |
 
 ## seed-highly-duplicated
 
@@ -420,9 +465,9 @@ Parameters: `{"id":"highly-duplicated","seed":918273,"shape":"mixed","duplicatio
 | --- | ---: | ---: |
 | YAML UTF-8 bytes | 9.3 KiB | 4.0 KiB |
 | JSON UTF-8 bytes | 24.8 KiB | 24.8 KiB |
-| Intern time | | 1.34 ms |
-| YAML time | 4.85 ms | 3.18 ms |
-| Intern plus YAML | | 3.80 ms |
+| Intern time | | 1.45 ms |
+| YAML time | 5.81 ms | 3.35 ms |
+| Intern plus YAML | | 3.38 ms |
 
 ## seed-cyclic
 
@@ -464,7 +509,7 @@ Parameters: `{"id":"cyclic","seed":77191,"shape":"mixed","duplication":0.4,"prim
 | Measurement | Before | After |
 | --- | ---: | ---: |
 | YAML UTF-8 bytes | 10.2 KiB | 8.0 KiB |
-| Intern time | | 2.20 ms |
-| YAML time | 4.97 ms | 5.86 ms |
-| Intern plus YAML | | 5.80 ms |
+| Intern time | | 2.55 ms |
+| YAML time | 6.36 ms | 6.72 ms |
+| Intern plus YAML | | 6.69 ms |
 

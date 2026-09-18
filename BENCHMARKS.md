@@ -28,6 +28,8 @@ pnpm bench:compare -- baseline/results.json candidate/results.json
 
 Every fixture implements `BenchmarkFixture` from `bench/types.ts`. It supplies a stable ID, family, description, optional parameters, serialization capabilities and a `create()` function. A new registered fixture automatically participates in structural analysis, intern timing and retained-size measurement. YAML and JSON measurements depend only on declared capabilities.
 
+Application object sources live in `fixtures/application/`, outside the benchmark harness. The benchmark registry and `test/fixtures/application.test.ts` consume the same source definitions. This keeps realistic fixture inputs under correctness coverage while benchmark-specific metadata remains in `bench/`. The TypeScript AST source parses its own module using TypeScript's compiler API and projects it to ordinary objects, since compiler AST nodes have internal state outside interner's supported domain.
+
 Synthetic fixtures isolate graph properties and scaling. Test-derived fixtures record deterministic seeds and generator configuration. Application fixtures generate realistic documents from small checked-in definitions. The flagship fixture calls Zod's supported `z.toJSONSchema()` API; `interner` itself has no knowledge of Zod. Zod 4.6 attaches a non-enumerable `~standard` protocol property to the returned payload. The fixture removes that protocol metadata and passes the enumerable JSON Schema object to `intern()`, whose supported domain deliberately rejects hidden properties.
 
 ## Structural metrics
@@ -55,7 +57,7 @@ Exact deltas use `(after - before) / before * 100`, so reductions are negative. 
 
 V8 retained size is the heap memory attributed by the heap graph to objects that would become collectible if the benchmark root were no longer reachable.
 
-Each fixture and state runs in a fresh Node process. The worker constructs either the source or interned value, places it behind a uniquely named holder, forces GC with `--expose-gc`, and writes a heap snapshot. memlab parses the snapshot and calculates dominators and retained sizes. The worker locates the holder, follows its `rootValue` property edge, returns that heap node's `retainedSize`, deletes the snapshot and exits.
+Each fixture and state runs in a fresh Node process. The worker constructs either the source or interned value, places it behind a uniquely named holder, forces GC with `--expose-gc`, and writes a heap snapshot. memlab parses the snapshot and calculates dominators and retained sizes. The worker locates the holder, follows its `rootValue` property edge, writes that heap node's `retainedSize` to a per-worker temporary JSON file, deletes the snapshot and exits.
 
 The full profile records three independent samples for each before and after state. Reports show the median, minimum, maximum and raw samples. Retained bytes are engine-specific, so every record includes Node, V8, platform and architecture.
 

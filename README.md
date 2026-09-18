@@ -78,11 +78,12 @@ The benchmark suite measures transformation time, exact structural reduction, V8
 
 Published profile: `quick`, Node 26. Exact results depend on the input and runtime.
 
-| Fixture            | Reference nodes | V8 retained heap | YAML bytes | Intern time |
-| ------------------ | --------------: | ---------------: | ---------: | ----------: |
-| zod-json-schema    |          -94.3% |           -77.2% |     -94.5% |     8.25 ms |
-| openapi-document   |          -95.9% |           -62.2% |     -95.2% |     1.89 ms |
-| configuration-tree |          -94.5% |           -46.9% |     -89.6% |     0.61 ms |
+| Fixture               | Reference nodes | V8 retained heap | YAML bytes | Intern time |
+| --------------------- | --------------: | ---------------: | ---------: | ----------: |
+| zod-json-schema       |          -94.3% |           -77.2% |     -94.5% |     15.3 ms |
+| openapi-document      |          -95.9% |           -62.6% |     -95.2% |     3.03 ms |
+| typescript-source-ast |          -44.7% |           -55.8% |     -30.1% |     4.77 ms |
+| configuration-tree    |          -94.5% |           -48.1% |     -89.6% |     1.33 ms |
 
 ![V8 retained heap](benchmark-results/latest/plots/retained-size.svg)
 

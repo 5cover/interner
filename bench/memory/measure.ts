@@ -1,4 +1,7 @@
 import { spawn } from 'node:child_process'
+import { mkdtemp, readFile, rm } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { median } from '../statistics.js'
 import type { RetainedHeapMetrics } from '../types.js'
@@ -29,37 +32,57 @@ export async function measureRetainedHeap(
 }
 
 function runWorker(fixtureId: string, profile: 'quick' | 'full', state: 'before' | 'after'): Promise<number> {
-  return new Promise((resolve, reject) => {
-    const child = spawn(
-      process.execPath,
-      ['--expose-gc', '--import', 'tsx', worker, '--fixture', fixtureId, '--profile', profile, '--state', state],
-      {
-        cwd: process.cwd(),
-        stdio: ['ignore', 'pipe', 'pipe'],
-        env: { ...process.env, FORCE_COLOR: '0' },
-      }
-    )
-    let stdout = ''
-    let stderr = ''
-    child.stdout.setEncoding('utf8').on('data', chunk => {
-      stdout += chunk
+  return readWorkerResult(fixtureId, profile, state)
+}
+
+async function readWorkerResult(
+  fixtureId: string,
+  profile: 'quick' | 'full',
+  state: 'before' | 'after'
+): Promise<number> {
+  const directory = await mkdtemp(join(tmpdir(), 'interner-benchmark-'))
+  const resultFile = join(directory, 'retained-heap.json')
+  try {
+    await new Promise<void>((resolve, reject) => {
+      const child = spawn(
+        process.execPath,
+        [
+          '--expose-gc',
+          '--import',
+          'tsx',
+          worker,
+          '--fixture',
+          fixtureId,
+          '--profile',
+          profile,
+          '--state',
+          state,
+          '--result',
+          resultFile,
+        ],
+        {
+          cwd: process.cwd(),
+          stdio: ['ignore', 'ignore', 'pipe'],
+          env: { ...process.env, FORCE_COLOR: '0' },
+        }
+      )
+      let stderr = ''
+      child.stderr.setEncoding('utf8').on('data', chunk => {
+        stderr += chunk
+      })
+      child.on('error', reject)
+      child.on('close', code => {
+        if (code === 0) resolve()
+        else reject(new Error(`Memory worker failed for ${fixtureId}/${state}: ${stderr}`))
+      })
     })
-    child.stderr.setEncoding('utf8').on('data', chunk => {
-      stderr += chunk
-    })
-    child.on('error', reject)
-    child.on('close', code => {
-      if (code !== 0) return reject(new Error(`Memory worker failed for ${fixtureId}/${state}: ${stderr || stdout}`))
-      try {
-        const lines = stdout.trim().split('\n')
-        const parsed = JSON.parse(lines.at(-1) ?? '') as { retainedBytes?: unknown }
-        if (typeof parsed.retainedBytes !== 'number') throw new Error('Missing retainedBytes')
-        resolve(parsed.retainedBytes)
-      } catch (error) {
-        reject(new Error(`Invalid memory worker output for ${fixtureId}/${state}: ${stdout}`, { cause: error }))
-      }
-    })
-  })
+    const parsed = JSON.parse(await readFile(resultFile, 'utf8')) as { retainedBytes?: unknown }
+    if (typeof parsed.retainedBytes !== 'number')
+      throw new Error(`Memory worker did not report retained bytes for ${fixtureId}/${state}`)
+    return parsed.retainedBytes
+  } finally {
+    await rm(directory, { recursive: true, force: true })
+  }
 }
 
 export function unavailableRetainedHeap(): RetainedHeapMetrics {

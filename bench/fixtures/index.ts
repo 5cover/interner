@@ -9,6 +9,7 @@ export function fixturesForProfile(profile: 'quick' | 'full'): BenchmarkFixture[
   const quickIds = new Set([
     'zod-json-schema',
     'openapi-document',
+    'typescript-source-ast',
     'configuration-tree',
     'duplicate-small-subtrees',
     'already-shared',
