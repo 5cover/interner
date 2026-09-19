@@ -1,14 +1,24 @@
 import { createZodJsonSchema } from './zod.js'
 import { createTypeScriptSourceAst } from './typescript-ast.js'
+import {
+  createDescriptorFeatureGraph,
+  createOpaqueAtomFeatureGraph,
+  createPrototypeFeatureGraph,
+} from './language-features.js'
 
 export type ApplicationFixtureProfile = 'quick' | 'full'
 export type ApplicationFixtureParameters = Readonly<Record<string, number>>
+export interface ApplicationFixtureCapabilities {
+  readonly yaml: boolean
+  readonly json: boolean
+}
 
 export interface ApplicationObjectSource {
   readonly id: string
   readonly description: string
   readonly parameters: (profile: ApplicationFixtureProfile) => ApplicationFixtureParameters
   readonly create: (profile: ApplicationFixtureProfile) => unknown
+  readonly capabilities?: ApplicationFixtureCapabilities
 }
 
 const textRule = () => ({ type: 'string', minLength: 1, maxLength: 160 })
@@ -165,5 +175,26 @@ export const applicationObjectSources: readonly ApplicationObjectSource[] = [
     description: 'A localization catalog with repeated messages, metadata and placeholder definitions.',
     parameters: profile => ({ messagesPerLocale: size(profile) }),
     create: profile => messageCatalog(size(profile)),
+  },
+  {
+    id: 'language-descriptors',
+    description: 'Repeated objects with descriptor flags, accessor descriptors and symbol keys.',
+    parameters: profile => ({ records: profile === 'quick' ? 12 : 96 }),
+    capabilities: { yaml: false, json: false },
+    create: createDescriptorFeatureGraph,
+  },
+  {
+    id: 'language-opaque-atoms',
+    description: 'Repeated and distinct function and symbol values, including symbol property keys.',
+    parameters: profile => ({ records: profile === 'quick' ? 12 : 96 }),
+    capabilities: { yaml: false, json: false },
+    create: createOpaqueAtomFeatureGraph,
+  },
+  {
+    id: 'language-prototypes',
+    description: 'Custom and null prototypes, inherited behavior, opaque prototype references and cycles.',
+    parameters: profile => ({ records: profile === 'quick' ? 12 : 96 }),
+    capabilities: { yaml: false, json: false },
+    create: createPrototypeFeatureGraph,
   },
 ]
