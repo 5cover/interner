@@ -1,7 +1,11 @@
 import type { Atom } from '../types.js'
 
-export type DirectAtom = Exclude<Atom, symbol>
-export type AtomObservation = { readonly atom: DirectAtom } | { readonly symbol: symbol; readonly identity: number }
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+export type DirectAtom = Exclude<Atom, symbol | Function>
+export type AtomObservation =
+  | { readonly atom: DirectAtom }
+  | { readonly symbol: symbol; readonly identity: number }
+  | { readonly callable: unknown; readonly identity: number }
 export type Ref =
   | { readonly atom: DirectAtom }
   | { readonly symbol: symbol; readonly identity: number }
@@ -11,8 +15,8 @@ export interface Adapter {
   readonly kind: object
   readonly atoms: readonly Atom[]
   readonly edges: readonly unknown[]
-  readonly allocate: () => object
-  readonly hydrate: (target: object, edges: readonly unknown[]) => void
+  readonly allocate: () => unknown
+  readonly hydrate: (target: unknown, edges: readonly unknown[]) => void
 }
 export interface Node {
   readonly kind: number
@@ -24,6 +28,7 @@ export interface Graph {
   readonly root: Ref
   readonly nodes: readonly Node[]
   readonly sources: WeakMap<object, number>
+  readonly sourceSymbols: ReadonlySet<symbol>
 }
 
 export function isAtom(value: unknown): value is Atom {
@@ -34,6 +39,7 @@ export function isAtom(value: unknown): value is Atom {
     typeof value === 'string' ||
     typeof value === 'number' ||
     typeof value === 'bigint' ||
-    typeof value === 'symbol'
+    typeof value === 'symbol' ||
+    typeof value === 'function'
   )
 }

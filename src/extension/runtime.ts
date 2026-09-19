@@ -14,7 +14,7 @@ function denseArray(value: unknown, label: string): unknown[] {
 }
 
 export function extensionAdapter(
-  value: object,
+  value: unknown,
   handle: Extension,
   extension: RuntimeExtension,
   location: string
@@ -35,7 +35,13 @@ export function extensionAdapter(
     edges,
     allocate: () => {
       const target = extension.allocate([...atoms])
-      if (typeof target !== 'object' || target === null || !extension.match(target)) {
+      const sameCategory =
+        typeof value === 'symbol'
+          ? typeof target === 'symbol'
+          : typeof value === 'function'
+            ? typeof target === 'function'
+            : typeof target === 'object' && target !== null
+      if (!sameCategory || !extension.match(target)) {
         throw new TypeError(`Invalid ${extension.name} allocation at ${location}`)
       }
       return target

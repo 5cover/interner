@@ -98,7 +98,6 @@ test('malformed definitions, descriptors and allocations fail; errors propagate'
     { atoms: {}, edges: [] },
     { atoms: [], edges: {} },
     { atoms: [{}], edges: [] },
-    { atoms: [() => 1], edges: [] },
     { atoms: new Array(1), edges: [] },
     { atoms: [], edges: new Array(1) },
     { atoms: Object.defineProperty([], '0', { get: () => 1 }), edges: [] },
@@ -174,7 +173,7 @@ test('input-mutating callbacks are outside the extension laws, not silently repa
   assert.equal(source.name, 'after')
 })
 
-test('malformed boundaries diagnose their extension without calling match on primitives', () => {
+test('malformed boundaries diagnose their extension and validate allocation categories', () => {
   for (const name of [1, {}, null, false]) {
     assert.throws(() => defineExtension({ ...base, name } as unknown as typeof base), TypeError)
   }
@@ -196,7 +195,7 @@ test('malformed boundaries diagnose their extension without calling match on pri
     const ext = defineExtension({ ...base, describe: () => descriptor as unknown as ReturnType<typeof base.describe> })
     assert.throws(
       () => intern(new Node('x'), { extensions: [ext] }),
-      e => e instanceof TypeError && /Node/.test(e.message) && /node/.test(e.message)
+      e => e instanceof TypeError && /Node/.test(e.message) && /(root|node)/.test(e.message)
     )
   }
   for (const allocation of [null, 1, () => 1]) {
@@ -210,7 +209,7 @@ test('malformed boundaries diagnose their extension without calling match on pri
     })
     assert.throws(
       () => intern(new Node('x'), { extensions: [ext] }),
-      e => e instanceof TypeError && /Node.*node/.test(e.message)
+      e => e instanceof TypeError && /Node.*(root|node)/.test(e.message)
     )
   }
   const source = new Node('source')

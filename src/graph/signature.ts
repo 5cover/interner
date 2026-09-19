@@ -8,7 +8,9 @@ function atomKey(value: DirectAtom): string {
 }
 
 function observationKey(value: AtomObservation): readonly [string, string | number] {
-  return 'symbol' in value ? ['s', value.identity] : ['a', atomKey(value.atom)]
+  if ('symbol' in value) return ['s', value.identity]
+  if ('callable' in value) return ['f', value.identity]
+  return ['a', atomKey(value.atom)]
 }
 
 export function signature(node: Node, classes?: readonly number[]): string {

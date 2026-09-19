@@ -10,6 +10,6 @@ export function arrayAdapter(value: unknown[], location: string): Adapter {
     atoms: [length, ...keys],
     edges: values,
     allocate: () => new Array(length),
-    hydrate: (target, edges) => hydrateProperties(target, keys, edges),
+    hydrate: (target, edges) => hydrateProperties(target as object, keys, edges),
   }
 }

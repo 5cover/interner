@@ -55,7 +55,7 @@ test('function identity participates in containing-node equivalence', () => {
   assert.equal(output[2]!.callable, distinct)
 })
 
-test('functions are forwarded through extension edges without extension dispatch', () => {
+test('unmatched functions are forwarded through extension edges after extension dispatch', () => {
   class Holder {
     constructor(public edge: unknown = null) {}
   }
@@ -77,7 +77,58 @@ test('functions are forwarded through extension edges without extension dispatch
 
   assert.notEqual(output.edge, null)
   assert.equal(output.edge, callable)
-  assert.equal(matches, 2)
+  assert.equal(matches, 3)
   assert.equal(intern(callable, { extensions: [extension] }), callable)
-  assert.equal(matches, 2)
+  assert.equal(matches, 4)
+})
+
+test('extensions can assign domain semantics to functions', () => {
+  type TaggedFunction = (() => string) & { tag: string; next: TaggedFunction | null }
+  const create = (tag: string): TaggedFunction => {
+    const callable = (() => tag) as TaggedFunction
+    callable.tag = tag
+    callable.next = null
+    return callable
+  }
+  const extension = defineExtension<TaggedFunction, readonly [string], readonly [TaggedFunction | null]>({
+    name: 'TaggedFunction',
+    match: (value): value is TaggedFunction => typeof value === 'function' && 'tag' in value,
+    describe: value => ({ atoms: [value.tag], edges: [value.next] }),
+    allocate: ([tag]) => create(tag),
+    hydrate: (target, [next]) => {
+      target.next = next
+    },
+  })
+  const first = create('same')
+  const second = create('same')
+  first.next = first
+  second.next = second
+  const output = intern([first, second], { extensions: [extension] })
+
+  assert.equal(output[0], output[1])
+  assert.notEqual(output[0], first)
+  assert.notEqual(output[0], second)
+  assert.equal(output[0]!(), 'same')
+  assert.equal(output[0]!.next, output[0])
+})
+
+test('functions can be extension atoms compared by identity', () => {
+  class FunctionAtom {
+    constructor(public callable: () => number) {}
+  }
+  const extension = defineExtension<FunctionAtom, readonly [() => number], readonly []>({
+    name: 'FunctionAtom',
+    match: (value): value is FunctionAtom => value instanceof FunctionAtom,
+    describe: value => ({ atoms: [value.callable], edges: [] }),
+    allocate: ([callable]) => new FunctionAtom(callable),
+    hydrate: () => {},
+  })
+  const shared = () => 1
+  const distinct = () => 1
+  const output = intern([new FunctionAtom(shared), new FunctionAtom(shared), new FunctionAtom(distinct)], {
+    extensions: [extension],
+  })
+  assert.equal(output[0], output[1])
+  assert.notEqual(output[0], output[2])
+  assert.equal(output[0]!.callable, shared)
 })

@@ -106,16 +106,16 @@ test('unsupported failures carry useful locations', () => {
     Object.defineProperty(value, 'hidden', { value: 1 })
     assert.throws(
       () => intern(value),
-      error => error instanceof TypeError && /node/.test(error.message)
+      error => error instanceof TypeError && /(root|node)/.test(error.message)
     )
   }
   const frozenLength = Object.defineProperty([], 'length', { writable: false })
   assert.throws(
     () => intern(frozenLength),
-    error => error instanceof TypeError && /node/.test(error.message)
+    error => error instanceof TypeError && /(root|node)/.test(error.message)
   )
   assert.throws(
     () => intern(new Map()),
-    error => error instanceof TypeError && /node/.test(error.message)
+    error => error instanceof TypeError && /(root|node)/.test(error.message)
   )
 })

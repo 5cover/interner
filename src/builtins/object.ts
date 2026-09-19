@@ -39,6 +39,6 @@ export function objectAdapter(value: object, location: string): Adapter {
     atoms: keys,
     edges: values,
     allocate: () => ({}),
-    hydrate: (target, edges) => hydrateProperties(target, keys, edges),
+    hydrate: (target, edges) => hydrateProperties(target as object, keys, edges),
   }
 }

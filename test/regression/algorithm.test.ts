@@ -6,7 +6,9 @@ import { bottomUp } from '../../src/graph/acyclic.js'
 
 test('DAG fast path counts only reference edges, including repeated references', () => {
   const leaf = { n: 1 }
-  const graph = capture({ x: leaf, y: leaf, z: 'primitive' }, (value, location) => builtin(value, location)!)
+  const graph = capture({ x: leaf, y: leaf, z: 'primitive' }, (value, location) =>
+    typeof value === 'object' && value !== null ? builtin(value, location) : undefined
+  )
   const order = bottomUp(graph.nodes)
   assert.ok(order)
   assert.equal(order.length, graph.nodes.length)

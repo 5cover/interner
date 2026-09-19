@@ -8,17 +8,19 @@ export interface Extension {
 
 export interface RuntimeExtension {
   readonly name: string
-  readonly match: (value: object) => boolean
-  readonly describe: (value: object) => unknown
-  readonly allocate: (atoms: readonly Atom[]) => object
-  readonly hydrate: (target: object, edges: readonly unknown[]) => void
+  readonly match: (value: unknown) => boolean
+  readonly describe: (value: unknown) => unknown
+  readonly allocate: (atoms: readonly Atom[]) => unknown
+  readonly hydrate: (target: unknown, edges: readonly unknown[]) => void
 }
 const definitions = new WeakMap<Extension, RuntimeExtension>()
 
 /**
  * Defines structure, not equality or hashing. Atoms are intrinsic SameValue
- * observations; ordered edges describe recursive values. Built-ins take precedence,
- * then the first matching extension wins. This does not register a global adapter.
+ * observations; ordered edges describe recursive values. Object built-ins take
+ * precedence. Otherwise the first matching extension wins, including for functions
+ * and symbols before their default identity-forwarding fallback. This does not
+ * register a global adapter.
  *
  * Capture calls match/describe before reconstruction. All classes are allocated
  * before any hydrate callback. Definitions must be deterministic, input-preserving,
@@ -28,7 +30,7 @@ const definitions = new WeakMap<Extension, RuntimeExtension>()
  * the registry. Malformed or inconsistent extensions invalidate their guarantees;
  * detectable violations throw TypeError and callback exceptions propagate unchanged.
  */
-export function defineExtension<T extends object, const A extends readonly Atom[], const E extends readonly unknown[]>(
+export function defineExtension<T, const A extends readonly Atom[], const E extends readonly unknown[]>(
   extension: ExtensionDefinition<T, A, E>
 ): Extension {
   if (

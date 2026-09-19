@@ -1,6 +1,6 @@
 # interner
 
-`interner` creates a quotienting clone of a JavaScript value graph with maximal sharing of equivalent subvalues. Reconstructed graph nodes are fresh; symbol and function leaves are forwarded unchanged.
+`interner` creates a quotienting clone of a JavaScript value graph with maximal sharing of equivalent subvalues. By default, symbol and function leaves are forwarded unchanged; extensions may give them domain-specific graph semantics.
 
 ```ts
 import { intern } from 'interner'
@@ -14,16 +14,16 @@ Repetitive generated schemas are a natural use case: YAML serializers can emit a
 
 ## Guarantees
 
-- A fresh result, with no source graph nodes reused and no intentional input mutation. Opaque symbols and functions are forwarded by identity.
+- A fresh result, with no source graph nodes reused and no intentional input mutation. Unmatched opaque symbols and functions are forwarded by identity.
 - Preservation of the supported observations, including property order, array holes and the distinction between `0` and `-0`.
 - Maximal sharing, including for cyclic graphs, not best-effort deduplication.
-- No reconstructed identities are pooled across calls; the same input symbols and functions are forwarded on every call.
+- No reconstructed identities are pooled across calls; unmatched input symbols and functions are forwarded on every call.
 
 Do not modify the reachable input during a call. Output remains mutable. Identity and identity-derived observations are deliberately not preserved: changing `output.a.type` also changes `output.b.type` above. Treat the result as a value when relying on preservation. No implicit freezing occurs.
 
 ## Mental model
 
-Objects are graph nodes. Ordered properties or extension edges connect nodes; primitive and built-in state are local observations. Symbols and functions are opaque identity-bearing leaves. Equivalent nodes become one representative in the quotient graph. For trees and DAGs this is bottom-up hash-consing. For cycles it is bisimulation minimization: a homogeneous two-node cycle can become a self-cycle, because its permitted observations are identical.
+Objects are graph nodes. Ordered properties or extension edges connect nodes; primitive and built-in state are local observations. Symbols and functions are opaque identity-bearing leaves by default, or graph nodes when claimed by an extension. Equivalent nodes become one representative in the quotient graph. For trees and DAGs this is bottom-up hash-consing. For cycles it is bisimulation minimization: a homogeneous two-node cycle can become a self-cycle, because its permitted observations are identical.
 
 See [MODEL.md](MODEL.md) for the normative supported domain and equivalence laws.
 
@@ -32,18 +32,20 @@ See [MODEL.md](MODEL.md) for the normative supported domain and equivalence laws
 | Kind                                             | Preserved observations                                                                                             |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | undefined, null, boolean, string, number, bigint | SameValue, including NaN and signed zero                                                                           |
-| Symbol                                           | Original symbol identity; supported as a value, property key, edge or extension atom                               |
+| Symbol                                           | Original identity by default; value, property key, edge, extension atom or extension node                          |
 | Plain object                                     | Ordered own enumerable string and symbol data properties with normal descriptors                                   |
 | Array                                            | Native Array brand and exact local `Array.prototype`; length, holes, ordered own string and symbol data properties |
 | Date                                             | Native time value, including invalid dates                                                                         |
 | RegExp                                           | Source and flags; `lastIndex` resets to zero like structured clone                                                 |
-| Function                                         | Original function identity; forwarded without traversal or interning                                               |
+| Function                                         | Original identity by default; opaque forwarding or domain-specific extension node                                  |
 
 Built-ins require exact local standard prototypes. Arrays additionally require the native Array brand, checked with `Array.isArray`, and writable standard `length`. Date has no own properties; RegExp has only normal `lastIndex`. Abnormal descriptors and structural accessors are rejected with `TypeError`. String and symbol keys receive the same normal data-descriptor validation and reconstruction; symbol-key identity and `Reflect.ownKeys` order are preserved. No user structural getters are evaluated by ordinary built-in capture. Proxies are outside the contract and cannot reliably be detected; traps may run.
 
 Classes, null or foreign prototypes, boxed values, errors, promises, weak collections, buffers, views, shared memory and host objects are unsupported by default. “Unsupported” means that capture throws `TypeError` at the root or any reachable edge. A built-in adapter or extension failing to match is different: dispatch continues, and throws only when no adapter accepts the object. Map and Set are intentionally excluded: merging equivalent keys or elements can lose entries. Explicit extensions can supply semantics for otherwise unsupported objects.
 
-Symbols and functions are explicit pass-through cases. The original value is returned at the root and installed unchanged on every corresponding output edge. The same symbol or function identity can permit containing nodes to merge; distinct identities keep otherwise equivalent containing nodes separate. Function own properties, prototypes, closures and behavior are not inspected or cloned, and functions never reach extension dispatch. Symbols may also be used as extension atoms.
+Symbols and functions use identity forwarding as their default semantics. When no extension matches, the original value is returned at the root and installed unchanged on every corresponding output edge. The same identity can permit containing nodes to merge; distinct identities keep otherwise equivalent containing nodes separate. Function own properties, prototypes, closures and behavior are not inspected by default.
+
+Extensions are consulted before that fallback. A matching extension can describe a function or symbol with domain-specific atoms and edges, causing distinct inputs to merge and producing a fresh function or symbol per quotient class. Functions and symbols may also be extension atoms, where they retain opaque identity semantics.
 
 ## Extensions
 
@@ -66,11 +68,11 @@ const urls = intern([new URL('https://example.org'), new URL('https://example.or
 urls[0] === urls[1] // true
 ```
 
-Atoms are intrinsic primitive observations, including symbols compared by identity. Edges are ordered recursive values, including primitives, opaque functions and cycles. Description tuples must be dense arrays. Capture finishes before allocation. One instance is allocated per equivalence class, and all instances exist before hydration begins. Hydration receives canonical output edges and must mutate only its target, regardless of hydration order. The opaque handles do not register anything globally.
+Atoms are intrinsic observations, including symbols and functions compared by identity. Edges are ordered recursive values, including primitives, functions and cycles. Description tuples must be dense arrays. Capture finishes before allocation. One value is allocated per equivalence class, and all values exist before hydration begins. Hydration receives canonical output edges and must mutate only its target, regardless of hydration order. The opaque handles do not register anything globally.
 
 Definitions must be deterministic, input-preserving, complete, position-stable and traversal-independent. Allocation must return fresh matching instances, without hidden input references. Reconstructed descriptions must retain the same atoms and equivalent edges. Do not mutate the registry from callbacks. Undetectable violations invalidate the extension's guarantees; detectable malformed descriptors or allocations throw `TypeError`. Callback exceptions propagate unchanged.
 
-Built-ins take precedence, then the first matching extension in array order wins. Each handle defines a distinct kind; names are diagnostic, not kind identifiers. There are no `equals` or `hash` callbacks: interner owns equivalence, collisions, cycles and maximality. See the callback JSDoc and [extension laws](MODEL.md#extensions).
+Standard object built-ins take precedence, then the first matching extension in array order wins. Functions and symbols reach extensions before their opaque forwarding fallback. Each handle defines a distinct kind; names are diagnostic, not kind identifiers. There are no `equals` or `hash` callbacks: interner owns equivalence, collisions, cycles and maximality. See the callback JSDoc and [extension laws](MODEL.md#extensions).
 
 ## Complexity and performance
 
@@ -102,7 +104,7 @@ See the [benchmark methodology](BENCHMARKS.md), [generated report](benchmark-res
 
 ## Structured clone and YAML
 
-The explicit model is structured-clone-like, not a wrapper around the host clone implementation. Tests compare the common domain against native `structuredClone` using an independent identity-erasing oracle. Symbols and functions are outside that common domain: native structured clone rejects their values, while `interner` forwards them. Unlike structured clone, arbitrary class semantics and malformed structural shapes are not silently flattened.
+The explicit model is structured-clone-like, not a wrapper around the host clone implementation. Tests compare the common domain against native `structuredClone` using an independent identity-erasing oracle. Symbols and functions are outside that common domain: native structured clone rejects their values, while `interner` applies matching extensions or forwards them. Unlike structured clone, arbitrary class semantics and malformed structural shapes are not silently flattened.
 
 ```ts
 import { stringify } from 'yaml' // separate consumer dependency

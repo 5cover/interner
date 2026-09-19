@@ -86,3 +86,24 @@ test('symbol atoms and edges are available to extensions', () => {
   const atom: Atom = tag
   assert.equal(atom, tag)
 })
+
+test('extensions can assign domain semantics to symbols', () => {
+  const extension = defineExtension<symbol, readonly [string], readonly []>({
+    name: 'NamedSymbol',
+    match: (value): value is symbol => typeof value === 'symbol' && value.description?.startsWith('domain:') === true,
+    describe: value => ({ atoms: [value.description!], edges: [] }),
+    allocate: ([description]) => Symbol(description),
+    hydrate: () => {},
+  })
+  const first = Symbol('domain:same')
+  const second = Symbol('domain:same')
+  const untouched = Symbol('other')
+  const output = intern([first, second, untouched], { extensions: [extension] })
+  const canonical = output[0] as symbol
+
+  assert.equal(canonical, output[1])
+  assert.notEqual(canonical, first)
+  assert.notEqual(canonical, second)
+  assert.equal(canonical.description, 'domain:same')
+  assert.equal(output[2], untouched)
+})

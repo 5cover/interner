@@ -1,19 +1,22 @@
 import type { Extension } from './extension/define.js'
 
-export type Atom = undefined | null | boolean | number | bigint | string | symbol
+// Function identity is valid intrinsic extension state. Function behavior and
+// properties remain opaque to the core.
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+export type Atom = undefined | null | boolean | number | bigint | string | symbol | Function
 
 export interface InternOptions {
-  /** Ordered, per-call semantics for otherwise unsupported object kinds. */
+  /** Ordered, per-call semantics for custom nodes, functions, and symbols. */
   readonly extensions?: readonly Extension[]
 }
 
-export interface ExtensionDefinition<T extends object, A extends readonly Atom[], E extends readonly unknown[]> {
+export interface ExtensionDefinition<T, A extends readonly Atom[], E extends readonly unknown[]> {
   readonly name: string
-  /** Called during capture, and to validate allocated objects. Must be pure. */
-  readonly match: (value: object) => value is T
-  /** Called once per accepted source object. Describe all observations without mutation. */
+  /** Called during capture, and to validate allocated values. Must be pure. */
+  readonly match: (value: unknown) => value is T
+  /** Called once per accepted source value. Describe all observations without mutation. */
   readonly describe: (value: T) => { readonly atoms: A; readonly edges: E }
-  /** Called once per output class. Return a fresh matching object with no input references. */
+  /** Called once per output class. Return a fresh matching value with no input references. */
   readonly allocate: (atoms: A) => T
   /**
    * Called once per output class after ALL representatives have been allocated.
