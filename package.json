@@ -2,6 +2,27 @@
   "name": "interner",
   "version": "1.0.0",
   "description": "Fresh maximally shared clones of JavaScript value graphs",
+  "keywords": [
+    "interning",
+    "hash-consing",
+    "structural-sharing",
+    "graph",
+    "deduplication",
+    "bisimulation"
+  ],
+  "author": "Scover",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5cover/interner.git"
+  },
+  "homepage": "https://github.com/5cover/interner#readme",
+  "bugs": {
+    "url": "https://github.com/5cover/interner/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "exports": {
     ".": {
@@ -11,9 +32,8 @@
   },
   "files": [
     "dist",
-    "MODEL.md",
-    "MUTATION_REVIEW.md",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "prepack": "pnpm build",
