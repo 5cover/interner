@@ -15,7 +15,7 @@ export type { Atom, ExtensionDefinition, InternOptions } from './types.js'
  * Returns a quotienting clone with maximal sharing of equivalent subvalues.
  * Reconstructed graph nodes are fresh; unmatched opaque symbol and function leaves
  * are returned unchanged.
- * Supports primitives, normal data-only objects/arrays, Date and RegExp. Unmatched
+ * Supports primitives, plain objects/arrays with all own property descriptors, Date and RegExp. Unmatched
  * symbols and functions are forwarded by identity as opaque leaves. Extensions may
  * instead give matching symbols and functions domain-specific graph semantics.
  * Other unsupported values throw TypeError. Explicit extensions supply custom

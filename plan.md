@@ -180,18 +180,18 @@ Version 1 should support:
 | `string`              | exact primitive value                                                                           |
 | `number`              | SameValue semantics, including `NaN` and `-0`                                                   |
 | `bigint`              | exact numeric value                                                                             |
-| ordinary plain object | ordered own data properties and recursively observed values                                     |
-| `Array`               | length, holes, ordered own elements/properties, recursively observed values                     |
+| ordinary plain object | ordered own property descriptors and recursively observed data values or accessor functions     |
+| `Array`               | length, holes, ordered own elements/properties and descriptors, recursively observed edges      |
 | `Date`                | standard Date brand and time value                                                              |
 | `RegExp`              | standard RegExp brand, source and flags, with structured-clone-compatible `lastIndex` semantics |
 
-Plain object support should initially require a normal, data-only shape:
+Plain object support requires the exact standard prototype:
 
 ```ts
 Object.getPrototypeOf(value) === Object.prototype
 ```
 
-Properties participating in the value model must be ordinary own enumerable string-keyed data properties with normal descriptors.
+Every own string or symbol property participates through its complete descriptor. Data descriptors contribute their flags and value; accessor descriptors contribute their flags and getter/setter references without invoking either function.
 
 Arrays receive analogous validation while treating `length` and holes according to Array semantics.
 
@@ -207,10 +207,6 @@ Reject rather than guess for:
 
 - application-defined class instances;
 - objects with unfamiliar prototypes;
-- accessor properties in the structural surface;
-- symbol-keyed structural properties;
-- functions;
-- symbol values;
 - promises;
 - proxies;
 - weak collections;
@@ -573,7 +569,7 @@ because:
 
 differs.
 
-Array length, hole positions, key order, extra supported enumerable string properties, and their values must all participate in equivalence.
+Array length, its writable flag, hole positions, key order, every own property descriptor, and corresponding value or accessor-function edges must all participate in equivalence.
 
 ## 15. Primitive equality
 
@@ -1222,7 +1218,7 @@ The README should explicitly answer:
 
 > Why doesn't `interner` inspect arbitrary class instances?
 
-Because enumerable properties are not a definition of an application's object semantics. `interner` refuses to invent one.
+Because properties alone are not a definition of an application's object semantics. `interner` refuses to invent one for unfamiliar prototypes; it fully specifies the standard plain-object and Array descriptor model.
 
 > Why aren't mutation semantics preserved?
 

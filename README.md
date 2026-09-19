@@ -29,17 +29,17 @@ See [MODEL.md](MODEL.md) for the normative supported domain and equivalence laws
 
 ## Supported values
 
-| Kind                                             | Preserved observations                                                                                             |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| undefined, null, boolean, string, number, bigint | SameValue, including NaN and signed zero                                                                           |
-| Symbol                                           | Original identity by default; value, property key, edge, extension atom or extension node                          |
-| Plain object                                     | Ordered own enumerable string and symbol data properties with normal descriptors                                   |
-| Array                                            | Native Array brand and exact local `Array.prototype`; length, holes, ordered own string and symbol data properties |
-| Date                                             | Native time value, including invalid dates                                                                         |
-| RegExp                                           | Source and flags; `lastIndex` resets to zero like structured clone                                                 |
-| Function                                         | Original identity by default; opaque forwarding or domain-specific extension node                                  |
+| Kind                                             | Preserved observations                                                                                            |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| undefined, null, boolean, string, number, bigint | SameValue, including NaN and signed zero                                                                          |
+| Symbol                                           | Original identity by default; value, property key, edge, extension atom or extension node                         |
+| Plain object                                     | Ordered own string and symbol keys; complete data and accessor descriptors, including flags and referenced values |
+| Array                                            | Native Array brand and exact local `Array.prototype`; length, holes, ordered own keys and complete descriptors    |
+| Date                                             | Native time value, including invalid dates                                                                        |
+| RegExp                                           | Source and flags; `lastIndex` resets to zero like structured clone                                                |
+| Function                                         | Original identity by default; opaque forwarding or domain-specific extension node                                 |
 
-Built-ins require exact local standard prototypes. Arrays additionally require the native Array brand, checked with `Array.isArray`, and writable standard `length`. Date has no own properties; RegExp has only normal `lastIndex`. Abnormal descriptors and structural accessors are rejected with `TypeError`. String and symbol keys receive the same normal data-descriptor validation and reconstruction; symbol-key identity and `Reflect.ownKeys` order are preserved. No user structural getters are evaluated by ordinary built-in capture. Proxies are outside the contract and cannot reliably be detected; traps may run.
+Built-ins require exact local standard prototypes. Object and Array descriptors are preserved exactly: data descriptor flags and values, or accessor descriptor flags and getter/setter references. No user getter or setter is evaluated during capture. Under default function semantics, accessor functions are forwarded by identity; an extension may instead claim them. Arrays additionally require the native Array brand, checked with `Array.isArray`; their standard non-enumerable, non-configurable `length` has preserved value and writable flag. Date has no own properties; RegExp has only normal writable `lastIndex`. Extra Date or RegExp properties and abnormal `lastIndex` are rejected with `TypeError`. String and symbol keys receive the same descriptor treatment; symbol-key identity and `Reflect.ownKeys` order are preserved. Proxies are outside the contract and cannot reliably be detected; traps may run.
 
 Classes, null or foreign prototypes, boxed values, errors, promises, weak collections, buffers, views, shared memory and host objects are unsupported by default. “Unsupported” means that capture throws `TypeError` at the root or any reachable edge. A built-in adapter or extension failing to match is different: dispatch continues, and throws only when no adapter accepts the object. Map and Set are intentionally excluded: merging equivalent keys or elements can lose entries. Explicit extensions can supply semantics for otherwise unsupported objects.
 

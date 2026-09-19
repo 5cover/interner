@@ -56,7 +56,13 @@ test('dispatch precedence, registry order and distinct extension kinds', () => {
     hydrate: () => {},
   })
   intern([{}, [], new Date(), /a/], { extensions: [catchAll] })
-  assert.throws(() => intern(Object.freeze({ x: 1 }), { extensions: [catchAll] }), TypeError)
+  const frozen = intern(Object.freeze({ x: 1 }), { extensions: [catchAll] })
+  assert.deepEqual(Object.getOwnPropertyDescriptor(frozen, 'x'), {
+    value: 1,
+    enumerable: true,
+    writable: false,
+    configurable: false,
+  })
 })
 
 test('all allocation precedes hydration; cycles and per-class callback counts', () => {
