@@ -30,6 +30,8 @@ Every fixture implements `BenchmarkFixture` from `bench/types.ts`. It supplies a
 
 Application object sources live in `fixtures/application/`, outside the benchmark harness. The benchmark registry and `test/fixtures/application.test.ts` consume the same source definitions. This keeps realistic fixture inputs under correctness coverage while benchmark-specific metadata remains in `bench/`. The TypeScript AST source parses its own module using TypeScript's compiler API and projects it to ordinary objects, since compiler AST nodes have internal state outside interner's supported domain.
 
+Fixtures whose traversal depth is on the order of a thousand nodes disable YAML serialization. They remain structural, interning-time and retained-heap benchmarks without coupling the full suite to the recursive depth limit of a serializer.
+
 Synthetic fixtures isolate graph properties and scaling. Test-derived fixtures record deterministic seeds and generator configuration. Application fixtures generate realistic documents from small checked-in definitions. The flagship fixture calls Zod's supported `z.toJSONSchema()` API; `interner` itself has no knowledge of Zod. Zod 4.6 attaches a non-enumerable `~standard` protocol property to the returned payload. The fixture removes that protocol metadata and passes the enumerable JSON Schema object to `intern()`, whose supported domain deliberately rejects hidden properties.
 
 ## Structural metrics
@@ -64,6 +66,8 @@ The full profile records three independent samples for each before and after sta
 ## Timing
 
 Timing uses `performance.now()`, warmup iterations and repeated measured iterations. Quick runs use two warmups and seven samples; full runs use five warmups and 21 samples. The displayed value is the median, with minimum, maximum and every raw sample preserved.
+
+Benchmark progress is written to stderr by default. Fixture setup, serialization, every timing warmup and sample, and every retained-heap worker are logged as they run.
 
 Each intern sample calls the fixture factory before starting the timer, then measures only `intern(value)`. The source is therefore equivalent and fresh rather than an already-interned result. YAML measurements separately time source serialization, interned serialization, and the end-to-end `intern()` plus YAML workflow.
 

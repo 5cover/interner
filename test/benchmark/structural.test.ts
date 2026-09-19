@@ -24,6 +24,8 @@ test('structural metrics count identities once and primitive occurrences by reac
     booleans: 0,
     nulls: 0,
     undefineds: 1,
+    functions: 0,
+    symbols: 0,
     totalReferenceNodes: 5,
   })
 })

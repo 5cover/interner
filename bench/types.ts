@@ -33,6 +33,8 @@ export interface StructuralMetrics {
   readonly booleans: number
   readonly nulls: number
   readonly undefineds: number
+  readonly symbols: number
+  readonly functions: number
   readonly totalReferenceNodes: number
 }
 

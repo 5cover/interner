@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0.0",
   "run": {
-    "id": "2026-09-19T07-25-05.774Z-304e0b36",
-    "createdAt": "2026-09-19T07:25:05.774Z",
-    "profile": "quick",
+    "id": "2026-09-19T10-08-09.051Z-c005d84a",
+    "createdAt": "2026-09-19T10:08:09.051Z",
+    "profile": "full",
     "only": "all"
   },
   "environment": {
@@ -13,7 +13,7 @@
     "platform": "linux",
     "architecture": "x64",
     "packageVersion": "1.0.0",
-    "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
+    "commit": "c005d84a9260b15d9ee76b99809e1e3436b33a00",
     "benchmarkSchemaVersion": "1.0.0",
     "structuralSizeModelVersion": null,
     "memlabVersion": "2.0.5",
@@ -27,64 +27,128 @@
       "family": "application",
       "description": "JSON Schema generated from a checked-in Zod source definition using Zod's supported conversion API.",
       "parameters": {
-        "fields": 16
+        "fields": 96
       },
       "referenceNodes": {
-        "before": 436,
+        "before": 2276,
         "after": 25,
-        "deltaPercent": -94.26605504587155
+        "deltaPercent": -98.90158172231986
       },
       "edges": {
-        "before": 1593,
-        "after": 115,
-        "deltaPercent": -92.78091650973008
+        "before": 8393,
+        "after": 275,
+        "deltaPercent": -96.72346002621232
       },
       "retainedHeap": {
-        "before": 39824,
-        "after": 9088,
-        "deltaPercent": -77.17959019686622
+        "before": 193000,
+        "after": 19480,
+        "deltaPercent": -89.90673575129534
       },
       "yaml": {
-        "before": 42646,
-        "after": 2441,
-        "deltaPercent": -94.27613375228626
+        "before": 228566,
+        "after": 5801,
+        "deltaPercent": -97.4620022225528
       },
-      "internMedianMilliseconds": 9.779818999999975,
-      "yamlBeforeMedianMilliseconds": 11.445774999999912,
-      "yamlAfterMedianMilliseconds": 9.588629999999966,
-      "internAndYamlMedianMilliseconds": 9.247009999999818
+      "internMedianMilliseconds": 79.26482199999919,
+      "yamlBeforeMedianMilliseconds": 12.574432999999772,
+      "yamlAfterMedianMilliseconds": 0.8752319999994143,
+      "internAndYamlMedianMilliseconds": 78.2440770000012
+    },
+    {
+      "id": "json-schema-bundle",
+      "family": "application",
+      "description": "A deterministic bundle of related JSON Schema definitions.",
+      "parameters": {
+        "definitions": 250
+      },
+      "referenceNodes": {
+        "before": 3002,
+        "after": 11,
+        "deltaPercent": -99.63357761492338
+      },
+      "edges": {
+        "before": 9252,
+        "after": 279,
+        "deltaPercent": -96.98443579766537
+      },
+      "retainedHeap": {
+        "before": 163368,
+        "after": 28992,
+        "deltaPercent": -82.25356250918172
+      },
+      "yaml": {
+        "before": 193951,
+        "after": 5511,
+        "deltaPercent": -97.15856066738506
+      },
+      "internMedianMilliseconds": 98.56868099999701,
+      "yamlBeforeMedianMilliseconds": 13.171834000000672,
+      "yamlAfterMedianMilliseconds": 1.0496189999976195,
+      "internAndYamlMedianMilliseconds": 100.19194799999968
     },
     {
       "id": "openapi-document",
       "family": "application",
       "description": "An OpenAPI-like document with repeated parameters, responses and schemas.",
       "parameters": {
-        "paths": 24
+        "paths": 250
       },
       "referenceNodes": {
-        "before": 531,
+        "before": 5503,
         "after": 22,
-        "deltaPercent": -95.85687382297552
+        "deltaPercent": -99.60021806287479
       },
       "edges": {
-        "before": 1205,
-        "after": 69,
-        "deltaPercent": -94.27385892116182
+        "before": 12505,
+        "after": 295,
+        "deltaPercent": -97.64094362255098
       },
       "retainedHeap": {
-        "before": 29200,
-        "after": 10920,
-        "deltaPercent": -62.6027397260274
+        "before": 297736,
+        "after": 35376,
+        "deltaPercent": -88.11833301985652
       },
       "yaml": {
-        "before": 32371,
-        "after": 1651,
-        "deltaPercent": -94.89975595440363
+        "before": 336717,
+        "after": 6773,
+        "deltaPercent": -97.98851854821706
       },
-      "internMedianMilliseconds": 2.1629979999997886,
-      "yamlBeforeMedianMilliseconds": 4.118677000000389,
-      "yamlAfterMedianMilliseconds": 2.33260700000028,
-      "internAndYamlMedianMilliseconds": 2.1146779999999126
+      "internMedianMilliseconds": 188.77628499999992,
+      "yamlBeforeMedianMilliseconds": 18.782341000005545,
+      "yamlAfterMedianMilliseconds": 1.3382309999869904,
+      "internAndYamlMedianMilliseconds": 188.42967499999213
+    },
+    {
+      "id": "ast-graph",
+      "family": "application",
+      "description": "A generated ESTree-like syntax graph with repeated node shapes.",
+      "parameters": {
+        "declarations": 1000
+      },
+      "referenceNodes": {
+        "before": 8002,
+        "after": 4027,
+        "deltaPercent": -49.67508122969257
+      },
+      "edges": {
+        "before": 18002,
+        "after": 10052,
+        "deltaPercent": -44.16175980446617
+      },
+      "retainedHeap": {
+        "before": 408240,
+        "after": 258912,
+        "deltaPercent": -36.57848324514991
+      },
+      "yaml": {
+        "before": 350910,
+        "after": 182989,
+        "deltaPercent": -47.85301074349548
+      },
+      "internMedianMilliseconds": 244.83993600000395,
+      "yamlBeforeMedianMilliseconds": 22.98474499999429,
+      "yamlAfterMedianMilliseconds": 15.751043999989633,
+      "internAndYamlMedianMilliseconds": 264.74117699998897
     },
     {
       "id": "typescript-source-ast",
@@ -111,81 +175,468 @@
         "after": 14139,
         "deltaPercent": -28.15548780487805
       },
-      "internMedianMilliseconds": 3.2620500000011816,
-      "yamlBeforeMedianMilliseconds": 3.1615419999998267,
-      "yamlAfterMedianMilliseconds": 4.375508999999511,
-      "internAndYamlMedianMilliseconds": 4.5371330000016314
+      "internMedianMilliseconds": 12.416996999992989,
+      "yamlBeforeMedianMilliseconds": 2.2741669999959413,
+      "yamlAfterMedianMilliseconds": 1.909321999992244,
+      "internAndYamlMedianMilliseconds": 13.007564999978058
     },
     {
       "id": "configuration-tree",
       "family": "application",
       "description": "A generated service configuration tree with repeated runtime policies.",
       "parameters": {
-        "services": 24
+        "services": 250
       },
       "referenceNodes": {
-        "before": 146,
+        "before": 1502,
         "after": 8,
-        "deltaPercent": -94.52054794520548
+        "deltaPercent": -99.46737683089214
       },
       "edges": {
-        "before": 361,
-        "after": 39,
-        "deltaPercent": -89.19667590027701
+        "before": 3751,
+        "after": 265,
+        "deltaPercent": -92.93521727539323
       },
       "retainedHeap": {
-        "before": 8824,
-        "after": 4576,
-        "deltaPercent": -48.14143245693563
+        "before": 91136,
+        "after": 29032,
+        "deltaPercent": -68.1443117977528
       },
       "yaml": {
-        "before": 6744,
-        "after": 771,
-        "deltaPercent": -88.56761565836298
+        "before": 70400,
+        "after": 5667,
+        "deltaPercent": -91.9502840909091
       },
-      "internMedianMilliseconds": 0.6734140000007756,
-      "yamlBeforeMedianMilliseconds": 1.2889779999968596,
-      "yamlAfterMedianMilliseconds": 0.9448329999977432,
-      "internAndYamlMedianMilliseconds": 0.9630169999982172
+      "internMedianMilliseconds": 51.369814000005135,
+      "yamlBeforeMedianMilliseconds": 6.860462999989977,
+      "yamlAfterMedianMilliseconds": 0.791254999989178,
+      "internAndYamlMedianMilliseconds": 53.6891750000068
+    },
+    {
+      "id": "message-catalog",
+      "family": "application",
+      "description": "A localization catalog with repeated messages, metadata and placeholder definitions.",
+      "parameters": {
+        "messagesPerLocale": 250
+      },
+      "referenceNodes": {
+        "before": 3005,
+        "after": 6,
+        "deltaPercent": -99.80033277870216
+      },
+      "edges": {
+        "before": 6004,
+        "after": 262,
+        "deltaPercent": -95.63624250499667
+      },
+      "retainedHeap": {
+        "before": 145696,
+        "after": 28304,
+        "deltaPercent": -80.57324840764332
+      },
+      "yaml": {
+        "before": 130248,
+        "after": 7135,
+        "deltaPercent": -94.52198882132548
+      },
+      "internMedianMilliseconds": 120.18012000000454,
+      "yamlBeforeMedianMilliseconds": 10.138792999990983,
+      "yamlAfterMedianMilliseconds": 0.9205570000049192,
+      "internAndYamlMedianMilliseconds": 122.0187600000063
+    },
+    {
+      "id": "language-descriptors",
+      "family": "application",
+      "description": "Repeated objects with descriptor flags, accessor descriptors and symbol keys.",
+      "parameters": {
+        "records": 96
+      },
+      "referenceNodes": {
+        "before": 98,
+        "after": 3,
+        "deltaPercent": -96.93877551020408
+      },
+      "edges": {
+        "before": 194,
+        "after": 99,
+        "deltaPercent": -48.96907216494845
+      },
+      "retainedHeap": {
+        "before": 15112,
+        "after": 3128,
+        "deltaPercent": -79.30121757543674
+      },
+      "yaml": {
+        "before": null,
+        "after": null,
+        "deltaPercent": null
+      },
+      "internMedianMilliseconds": 11.763091000000713,
+      "yamlBeforeMedianMilliseconds": null,
+      "yamlAfterMedianMilliseconds": null,
+      "internAndYamlMedianMilliseconds": null
+    },
+    {
+      "id": "language-opaque-atoms",
+      "family": "application",
+      "description": "Repeated and distinct function and symbol values, including symbol property keys.",
+      "parameters": {
+        "records": 96
+      },
+      "referenceNodes": {
+        "before": 195,
+        "after": 100,
+        "deltaPercent": -48.717948717948715
+      },
+      "edges": {
+        "before": 581,
+        "after": 391,
+        "deltaPercent": -32.70223752151463
+      },
+      "retainedHeap": {
+        "before": 20040,
+        "after": 16536,
+        "deltaPercent": -17.485029940119762
+      },
+      "yaml": {
+        "before": null,
+        "after": null,
+        "deltaPercent": null
+      },
+      "internMedianMilliseconds": 9.153052999987267,
+      "yamlBeforeMedianMilliseconds": null,
+      "yamlAfterMedianMilliseconds": null,
+      "internAndYamlMedianMilliseconds": null
+    },
+    {
+      "id": "language-prototypes",
+      "family": "application",
+      "description": "Custom and null prototypes, inherited behavior, opaque prototype references and cycles.",
+      "parameters": {
+        "records": 96
+      },
+      "referenceNodes": {
+        "before": 196,
+        "after": 6,
+        "deltaPercent": -96.93877551020408
+      },
+      "edges": {
+        "before": 486,
+        "after": 201,
+        "deltaPercent": -58.64197530864198
+      },
+      "retainedHeap": {
+        "before": 26304,
+        "after": 3808,
+        "deltaPercent": -85.52311435523114
+      },
+      "yaml": {
+        "before": null,
+        "after": null,
+        "deltaPercent": null
+      },
+      "internMedianMilliseconds": 9.557682999991812,
+      "yamlBeforeMedianMilliseconds": null,
+      "yamlAfterMedianMilliseconds": null,
+      "internAndYamlMedianMilliseconds": null
+    },
+    {
+      "id": "unique-flat",
+      "family": "synthetic",
+      "description": "A flat array of unique records.",
+      "parameters": {
+        "nodes": 5000
+      },
+      "referenceNodes": {
+        "before": 5001,
+        "after": 5001,
+        "deltaPercent": 0
+      },
+      "edges": {
+        "before": 15000,
+        "after": 15000,
+        "deltaPercent": 0
+      },
+      "retainedHeap": {
+        "before": 399248,
+        "after": 479472,
+        "deltaPercent": 20.093776299442954
+      },
+      "yaml": {
+        "before": 167780,
+        "after": 167780,
+        "deltaPercent": 0
+      },
+      "internMedianMilliseconds": 190.1999369999976,
+      "yamlBeforeMedianMilliseconds": 19.320891000010306,
+      "yamlAfterMedianMilliseconds": 18.963270999956876,
+      "internAndYamlMedianMilliseconds": 215.77846000000136
+    },
+    {
+      "id": "unique-deep",
+      "family": "synthetic",
+      "description": "A unique linked object chain.",
+      "parameters": {
+        "nodes": 2500
+      },
+      "referenceNodes": {
+        "before": 2501,
+        "after": 2501,
+        "deltaPercent": 0
+      },
+      "edges": {
+        "before": 7502,
+        "after": 7502,
+        "deltaPercent": 0
+      },
+      "retainedHeap": {
+        "before": 120192,
+        "after": 140456,
+        "deltaPercent": 16.859691160809373
+      },
+      "yaml": {
+        "before": null,
+        "after": null,
+        "deltaPercent": null
+      },
+      "internMedianMilliseconds": 97.99219000001904,
+      "yamlBeforeMedianMilliseconds": null,
+      "yamlAfterMedianMilliseconds": null,
+      "internAndYamlMedianMilliseconds": null
+    },
+    {
+      "id": "unique-wide",
+      "family": "synthetic",
+      "description": "A wide object with unique child records.",
+      "parameters": {
+        "nodes": 5000
+      },
+      "referenceNodes": {
+        "before": 5001,
+        "after": 5001,
+        "deltaPercent": 0
+      },
+      "edges": {
+        "before": 15000,
+        "after": 15000,
+        "deltaPercent": 0
+      },
+      "retainedHeap": {
+        "before": 555896,
+        "after": 636120,
+        "deltaPercent": 14.43147639126743
+      },
+      "yaml": {
+        "before": 211670,
+        "after": 211670,
+        "deltaPercent": 0
+      },
+      "internMedianMilliseconds": 194.50592600001255,
+      "yamlBeforeMedianMilliseconds": 20.82964200002607,
+      "yamlAfterMedianMilliseconds": 20.983961999998428,
+      "internAndYamlMedianMilliseconds": 213.6212120000273
+    },
+    {
+      "id": "duplicate-leaves",
+      "family": "synthetic",
+      "description": "Many structurally equal leaf objects.",
+      "parameters": {
+        "nodes": 5000
+      },
+      "referenceNodes": {
+        "before": 5001,
+        "after": 2,
+        "deltaPercent": -99.96000799840033
+      },
+      "edges": {
+        "before": 15000,
+        "after": 5002,
+        "deltaPercent": -66.65333333333334
+      },
+      "retainedHeap": {
+        "before": 240048,
+        "after": 40328,
+        "deltaPercent": -83.2000266613344
+      },
+      "yaml": {
+        "before": 150000,
+        "after": 45030,
+        "deltaPercent": -69.98
+      },
+      "internMedianMilliseconds": 187.9569879999617,
+      "yamlBeforeMedianMilliseconds": 19.410279000003356,
+      "yamlAfterMedianMilliseconds": 1.438659000035841,
+      "internAndYamlMedianMilliseconds": 181.30504700000165
     },
     {
       "id": "duplicate-small-subtrees",
       "family": "synthetic",
       "description": "Many equal shallow schema fragments.",
       "parameters": {
-        "nodes": 800
+        "nodes": 5000
       },
       "referenceNodes": {
-        "before": 4001,
+        "before": 25001,
         "after": 6,
-        "deltaPercent": -99.85003749062734
+        "deltaPercent": -99.9760009599616
       },
       "edges": {
-        "before": 10400,
-        "after": 812,
-        "deltaPercent": -92.1923076923077
+        "before": 65000,
+        "after": 5012,
+        "deltaPercent": -92.28923076923077
       },
       "retainedHeap": {
-        "before": 172848,
-        "after": 7712,
-        "deltaPercent": -95.53827640470239
+        "before": 1080048,
+        "after": 41312,
+        "deltaPercent": -96.17498481548968
       },
       "yaml": {
-        "before": 149600,
-        "after": 7387,
-        "deltaPercent": -95.06216577540107
+        "before": 935000,
+        "after": 45187,
+        "deltaPercent": -95.16716577540107
       },
-      "internMedianMilliseconds": 11.398636999998416,
-      "yamlBeforeMedianMilliseconds": 13.241884999999456,
-      "yamlAfterMedianMilliseconds": 10.883791000000201,
-      "internAndYamlMedianMilliseconds": 11.22414999999819
+      "internMedianMilliseconds": 799.6148950000061,
+      "yamlBeforeMedianMilliseconds": 78.87327799998457,
+      "yamlAfterMedianMilliseconds": 1.4298530000378378,
+      "internAndYamlMedianMilliseconds": 787.2434929999872
+    },
+    {
+      "id": "duplicate-large-subtrees",
+      "family": "synthetic",
+      "description": "Many equal nested configuration subtrees.",
+      "parameters": {
+        "nodes": 625
+      },
+      "referenceNodes": {
+        "before": 5626,
+        "after": 9,
+        "deltaPercent": -99.84002843938855
+      },
+      "edges": {
+        "before": 15000,
+        "after": 645,
+        "deltaPercent": -95.7
+      },
+      "retainedHeap": {
+        "before": 245048,
+        "after": 7256,
+        "deltaPercent": -97.03894747151578
+      },
+      "yaml": {
+        "before": 225000,
+        "after": 5934,
+        "deltaPercent": -97.36266666666667
+      },
+      "internMedianMilliseconds": 200.30121000000509,
+      "yamlBeforeMedianMilliseconds": 21.27788299997337,
+      "yamlAfterMedianMilliseconds": 0.43311300000641495,
+      "internAndYamlMedianMilliseconds": 195.76041899999836
+    },
+    {
+      "id": "low-redundancy",
+      "family": "synthetic",
+      "description": "A graph with approximately ten percent repeated records.",
+      "parameters": {
+        "nodes": 5000,
+        "redundancy": 0.1
+      },
+      "referenceNodes": {
+        "before": 10001,
+        "after": 4512,
+        "deltaPercent": -54.88451154884512
+      },
+      "edges": {
+        "before": 25000,
+        "after": 14022,
+        "deltaPercent": -43.912
+      },
+      "retainedHeap": {
+        "before": 440048,
+        "after": 293040,
+        "deltaPercent": -33.407264662036866
+      },
+      "yaml": {
+        "before": 278000,
+        "after": 139807,
+        "deltaPercent": -49.70971223021583
+      },
+      "internMedianMilliseconds": 388.57334900001297,
+      "yamlBeforeMedianMilliseconds": 30.406611000013072,
+      "yamlAfterMedianMilliseconds": 18.628633000014815,
+      "internAndYamlMedianMilliseconds": 388.5134069999913
+    },
+    {
+      "id": "medium-redundancy",
+      "family": "synthetic",
+      "description": "A graph with approximately half repeated records.",
+      "parameters": {
+        "nodes": 5000,
+        "redundancy": 0.5
+      },
+      "referenceNodes": {
+        "before": 10001,
+        "after": 2504,
+        "deltaPercent": -74.96250374962504
+      },
+      "edges": {
+        "before": 25000,
+        "after": 10006,
+        "deltaPercent": -59.976
+      },
+      "retainedHeap": {
+        "before": 440048,
+        "after": 180592,
+        "deltaPercent": -58.960840635567024
+      },
+      "yaml": {
+        "before": 272500,
+        "after": 97593,
+        "deltaPercent": -64.18605504587156
+      },
+      "internMedianMilliseconds": 416.027500999975,
+      "yamlBeforeMedianMilliseconds": 31.10649400006514,
+      "yamlAfterMedianMilliseconds": 15.001026000012644,
+      "internAndYamlMedianMilliseconds": 387.49290199996904
+    },
+    {
+      "id": "high-redundancy",
+      "family": "synthetic",
+      "description": "A graph with approximately ninety percent repeated records.",
+      "parameters": {
+        "nodes": 5000,
+        "redundancy": 0.9
+      },
+      "referenceNodes": {
+        "before": 10001,
+        "after": 21,
+        "deltaPercent": -99.79002099790021
+      },
+      "edges": {
+        "before": 25000,
+        "after": 5040,
+        "deltaPercent": -79.84
+      },
+      "retainedHeap": {
+        "before": 440048,
+        "after": 41544,
+        "deltaPercent": -90.55921172235756
+      },
+      "yaml": {
+        "before": 265000,
+        "after": 45530,
+        "deltaPercent": -82.8188679245283
+      },
+      "internMedianMilliseconds": 384.6042220001109,
+      "yamlBeforeMedianMilliseconds": 29.540486000012606,
+      "yamlAfterMedianMilliseconds": 1.5952030000044033,
+      "internAndYamlMedianMilliseconds": 365.9649900000077
     },
     {
       "id": "already-shared",
       "family": "synthetic",
       "description": "A source DAG whose repeated positions already share identities.",
       "parameters": {
-        "edges": 800
+        "edges": 5000
       },
       "referenceNodes": {
         "before": 10,
@@ -193,24 +644,24 @@
         "deltaPercent": -10
       },
       "edges": {
-        "before": 823,
-        "after": 820,
-        "deltaPercent": -0.3645200486026731
+        "before": 5023,
+        "after": 5020,
+        "deltaPercent": -0.05972526378658173
       },
       "retainedHeap": {
-        "before": 8472,
-        "after": 8656,
-        "deltaPercent": 2.1718602455146363
+        "before": 42072,
+        "after": 42256,
+        "deltaPercent": 0.43734550294732844
       },
       "yaml": {
-        "before": 7560,
-        "after": 7509,
-        "deltaPercent": -0.6746031746031746
+        "before": 45360,
+        "after": 45309,
+        "deltaPercent": -0.11243386243386243
       },
-      "internMedianMilliseconds": 1.349982000003365,
-      "yamlBeforeMedianMilliseconds": 0.6185299999997369,
-      "yamlAfterMedianMilliseconds": 1.7451750000000175,
-      "internAndYamlMedianMilliseconds": 1.3751109999975597
+      "internMedianMilliseconds": 9.213197000091895,
+      "yamlBeforeMedianMilliseconds": 1.232651999918744,
+      "yamlAfterMedianMilliseconds": 1.6402979999547824,
+      "internAndYamlMedianMilliseconds": 10.00169599999208
     },
     {
       "id": "self-cycles",
@@ -239,10 +690,205 @@
         "after": 4529,
         "deltaPercent": -78.20500481231953
       },
-      "internMedianMilliseconds": 3.199723999998241,
-      "yamlBeforeMedianMilliseconds": 4.232650999998441,
-      "yamlAfterMedianMilliseconds": 2.5389629999990575,
-      "internAndYamlMedianMilliseconds": 3.155631000001449
+      "internMedianMilliseconds": 24.50178299995605,
+      "yamlBeforeMedianMilliseconds": 3.9282700000330806,
+      "yamlAfterMedianMilliseconds": 0.3303089999826625,
+      "internAndYamlMedianMilliseconds": 24.132680000038818
+    },
+    {
+      "id": "equivalent-cycles",
+      "family": "synthetic",
+      "description": "Many equivalent cyclic components.",
+      "parameters": {
+        "components": 300
+      },
+      "referenceNodes": {
+        "before": 1201,
+        "after": 3,
+        "deltaPercent": -99.75020815986679
+      },
+      "edges": {
+        "before": 3000,
+        "after": 305,
+        "deltaPercent": -89.83333333333333
+      },
+      "retainedHeap": {
+        "before": 88976,
+        "after": 2800,
+        "deltaPercent": -96.85308397770184
+      },
+      "yaml": {
+        "before": 43880,
+        "after": 2763,
+        "deltaPercent": -93.70328167730173
+      },
+      "internMedianMilliseconds": 43.00201299996115,
+      "yamlBeforeMedianMilliseconds": 4.258230000035837,
+      "yamlAfterMedianMilliseconds": 0.25247399997897446,
+      "internAndYamlMedianMilliseconds": 41.52042399998754
+    },
+    {
+      "id": "large-strongly-connected-component",
+      "family": "synthetic",
+      "description": "One strongly connected component with repeating local observations.",
+      "parameters": {
+        "nodes": 1000
+      },
+      "referenceNodes": {
+        "before": 1001,
+        "after": 9,
+        "deltaPercent": -99.1008991008991
+      },
+      "edges": {
+        "before": 3000,
+        "after": 1016,
+        "deltaPercent": -66.13333333333333
+      },
+      "retainedHeap": {
+        "before": 80120,
+        "after": 8720,
+        "deltaPercent": -89.1163255117324
+      },
+      "yaml": {
+        "before": null,
+        "after": null,
+        "deltaPercent": null
+      },
+      "internMedianMilliseconds": 44.410506000043824,
+      "yamlBeforeMedianMilliseconds": null,
+      "yamlAfterMedianMilliseconds": null,
+      "internAndYamlMedianMilliseconds": null
+    },
+    {
+      "id": "mixed-cyclic-and-acyclic",
+      "family": "synthetic",
+      "description": "Repeated trees connected to equivalent cycles.",
+      "parameters": {
+        "nodes": 500
+      },
+      "referenceNodes": {
+        "before": 7501,
+        "after": 16,
+        "deltaPercent": -99.78669510731902
+      },
+      "edges": {
+        "before": 19500,
+        "after": 540,
+        "deltaPercent": -97.23076923076923
+      },
+      "retainedHeap": {
+        "before": 404176,
+        "after": 7216,
+        "deltaPercent": -98.21463916709551
+      },
+      "yaml": {
+        "before": 332280,
+        "after": 5137,
+        "deltaPercent": -98.45401468640905
+      },
+      "internMedianMilliseconds": 286.5235059999395,
+      "yamlBeforeMedianMilliseconds": 24.474300000001676,
+      "yamlAfterMedianMilliseconds": 0.5810700000729412,
+      "internAndYamlMedianMilliseconds": 281.8769880000036
+    },
+    {
+      "id": "scaling-duplicate-small-100",
+      "family": "synthetic",
+      "description": "Parameterized duplicate-small-subtrees scaling fixture.",
+      "parameters": {
+        "nodes": 100,
+        "scalingFamily": "duplicate-small-subtrees"
+      },
+      "referenceNodes": {
+        "before": 401,
+        "after": 5,
+        "deltaPercent": -98.75311720698254
+      },
+      "edges": {
+        "before": 1000,
+        "after": 109,
+        "deltaPercent": -89.1
+      },
+      "retainedHeap": {
+        "before": 17648,
+        "after": 1952,
+        "deltaPercent": -88.93925657298277
+      },
+      "yaml": {
+        "before": 15400,
+        "after": 1054,
+        "deltaPercent": -93.15584415584416
+      },
+      "internMedianMilliseconds": 19.95197499997448,
+      "yamlBeforeMedianMilliseconds": 3.4895869999891147,
+      "yamlAfterMedianMilliseconds": 0.32461899996269494,
+      "internAndYamlMedianMilliseconds": 19.071202999912202
+    },
+    {
+      "id": "scaling-duplicate-small-250",
+      "family": "synthetic",
+      "description": "Parameterized duplicate-small-subtrees scaling fixture.",
+      "parameters": {
+        "nodes": 250,
+        "scalingFamily": "duplicate-small-subtrees"
+      },
+      "referenceNodes": {
+        "before": 1001,
+        "after": 5,
+        "deltaPercent": -99.5004995004995
+      },
+      "edges": {
+        "before": 2500,
+        "after": 259,
+        "deltaPercent": -89.64
+      },
+      "retainedHeap": {
+        "before": 44048,
+        "after": 3152,
+        "deltaPercent": -92.8441699963676
+      },
+      "yaml": {
+        "before": 38500,
+        "after": 2404,
+        "deltaPercent": -93.75584415584416
+      },
+      "internMedianMilliseconds": 44.68297700001858,
+      "yamlBeforeMedianMilliseconds": 5.07613499998115,
+      "yamlAfterMedianMilliseconds": 0.37729799991939217,
+      "internAndYamlMedianMilliseconds": 42.67881700000726
+    },
+    {
+      "id": "scaling-duplicate-small-500",
+      "family": "synthetic",
+      "description": "Parameterized duplicate-small-subtrees scaling fixture.",
+      "parameters": {
+        "nodes": 500,
+        "scalingFamily": "duplicate-small-subtrees"
+      },
+      "referenceNodes": {
+        "before": 2001,
+        "after": 5,
+        "deltaPercent": -99.75012493753124
+      },
+      "edges": {
+        "before": 5000,
+        "after": 509,
+        "deltaPercent": -89.82
+      },
+      "retainedHeap": {
+        "before": 88048,
+        "after": 5152,
+        "deltaPercent": -94.14864619298564
+      },
+      "yaml": {
+        "before": 77000,
+        "after": 4654,
+        "deltaPercent": -93.95584415584416
+      },
+      "internMedianMilliseconds": 84.09481399995275,
+      "yamlBeforeMedianMilliseconds": 8.583734999992885,
+      "yamlAfterMedianMilliseconds": 0.4534010000061244,
+      "internAndYamlMedianMilliseconds": 76.37379800004419
     },
     {
       "id": "scaling-duplicate-small-1000",
@@ -272,10 +918,10 @@
         "after": 9154,
         "deltaPercent": -94.05584415584416
       },
-      "internMedianMilliseconds": 12.52573200000188,
-      "yamlBeforeMedianMilliseconds": 12.799455000000307,
-      "yamlAfterMedianMilliseconds": 11.52198800000042,
-      "internAndYamlMedianMilliseconds": 11.116798000002746
+      "internMedianMilliseconds": 153.41491799999494,
+      "yamlBeforeMedianMilliseconds": 13.078449000022374,
+      "yamlAfterMedianMilliseconds": 0.5428489999612793,
+      "internAndYamlMedianMilliseconds": 148.5967880000826
     },
     {
       "id": "scaling-duplicate-small-2500",
@@ -305,10 +951,114 @@
         "after": 22654,
         "deltaPercent": -94.11584415584416
       },
-      "internMedianMilliseconds": 33.25052699999651,
-      "yamlBeforeMedianMilliseconds": 33.23701200000505,
-      "yamlAfterMedianMilliseconds": 36.54967699999543,
-      "internAndYamlMedianMilliseconds": 34.40907100000186
+      "internMedianMilliseconds": 384.0454439999303,
+      "yamlBeforeMedianMilliseconds": 30.48438699997496,
+      "yamlAfterMedianMilliseconds": 1.0029820000054315,
+      "internAndYamlMedianMilliseconds": 372.7986319999909
+    },
+    {
+      "id": "scaling-duplicate-small-5000",
+      "family": "synthetic",
+      "description": "Parameterized duplicate-small-subtrees scaling fixture.",
+      "parameters": {
+        "nodes": 5000,
+        "scalingFamily": "duplicate-small-subtrees"
+      },
+      "referenceNodes": {
+        "before": 20001,
+        "after": 5,
+        "deltaPercent": -99.9750012499375
+      },
+      "edges": {
+        "before": 50000,
+        "after": 5009,
+        "deltaPercent": -89.982
+      },
+      "retainedHeap": {
+        "before": 880048,
+        "after": 41152,
+        "deltaPercent": -95.32389142410413
+      },
+      "yaml": {
+        "before": 770000,
+        "after": 45154,
+        "deltaPercent": -94.13584415584415
+      },
+      "internMedianMilliseconds": 822.1930879999418,
+      "yamlBeforeMedianMilliseconds": 68.88374499999918,
+      "yamlAfterMedianMilliseconds": 1.542414000025019,
+      "internAndYamlMedianMilliseconds": 746.6636639999924
+    },
+    {
+      "id": "scaling-duplicate-small-10000",
+      "family": "synthetic",
+      "description": "Parameterized duplicate-small-subtrees scaling fixture.",
+      "parameters": {
+        "nodes": 10000,
+        "scalingFamily": "duplicate-small-subtrees"
+      },
+      "referenceNodes": {
+        "before": 40001,
+        "after": 5,
+        "deltaPercent": -99.98750031249219
+      },
+      "edges": {
+        "before": 100000,
+        "after": 10009,
+        "deltaPercent": -89.991
+      },
+      "retainedHeap": {
+        "before": 1760048,
+        "after": 81152,
+        "deltaPercent": -95.38921665772752
+      },
+      "yaml": {
+        "before": 1540000,
+        "after": 90154,
+        "deltaPercent": -94.14584415584416
+      },
+      "internMedianMilliseconds": 1622.7130819999147,
+      "yamlBeforeMedianMilliseconds": 131.7481249999255,
+      "yamlAfterMedianMilliseconds": 2.472539000213146,
+      "internAndYamlMedianMilliseconds": 1524.817182000028
+    },
+    {
+      "id": "seed-mostly-unique",
+      "family": "test-derived",
+      "description": "Deterministic property-style graph seed representing mostly unique data.",
+      "parameters": {
+        "id": "mostly-unique",
+        "seed": 192837,
+        "shape": "mixed",
+        "duplication": 0.05,
+        "primitive": "balanced",
+        "cyclic": false,
+        "nodes": 2000
+      },
+      "referenceNodes": {
+        "before": 2002,
+        "after": 1900,
+        "deltaPercent": -5.094905094905095
+      },
+      "edges": {
+        "before": 8001,
+        "after": 7695,
+        "deltaPercent": -3.824521934758155
+      },
+      "retainedHeap": {
+        "before": 359952,
+        "after": 183504,
+        "deltaPercent": -49.019869315908785
+      },
+      "yaml": {
+        "before": 102537,
+        "after": 99203,
+        "deltaPercent": -3.2515092113090884
+      },
+      "internMedianMilliseconds": 56.42727299989201,
+      "yamlBeforeMedianMilliseconds": 9.608697999967262,
+      "yamlAfterMedianMilliseconds": 12.59185600001365,
+      "internAndYamlMedianMilliseconds": 68.23961600009352
     },
     {
       "id": "seed-highly-duplicated",
@@ -321,32 +1071,108 @@
         "duplication": 0.85,
         "primitive": "balanced",
         "cyclic": false,
-        "nodes": 240
+        "nodes": 2000
       },
       "referenceNodes": {
-        "before": 242,
-        "after": 59,
-        "deltaPercent": -75.6198347107438
+        "before": 2002,
+        "after": 295,
+        "deltaPercent": -85.26473526473526
       },
       "edges": {
-        "before": 961,
-        "after": 412,
-        "deltaPercent": -57.12799167533819
+        "before": 8001,
+        "after": 2880,
+        "deltaPercent": -64.0044994375703
       },
       "retainedHeap": {
-        "before": 43528,
-        "after": 7488,
-        "deltaPercent": -82.79727991178092
+        "before": 359952,
+        "after": 42160,
+        "deltaPercent": -88.2873271991821
       },
       "yaml": {
-        "before": 10384,
-        "after": 4908,
-        "deltaPercent": -52.73497688751926
+        "before": 86106,
+        "after": 33626,
+        "deltaPercent": -60.94813369567742
       },
-      "internMedianMilliseconds": 1.270262999998522,
-      "yamlBeforeMedianMilliseconds": 2.289084999996703,
-      "yamlAfterMedianMilliseconds": 2.284375999995973,
-      "internAndYamlMedianMilliseconds": 2.6945160000032047
+      "internMedianMilliseconds": 50.635687000118196,
+      "yamlBeforeMedianMilliseconds": 9.825424999929965,
+      "yamlAfterMedianMilliseconds": 3.028442000038922,
+      "internAndYamlMedianMilliseconds": 50.40793899982236
+    },
+    {
+      "id": "seed-deep",
+      "family": "test-derived",
+      "description": "Deterministic property-style graph seed representing deep data.",
+      "parameters": {
+        "id": "deep",
+        "seed": 41041,
+        "shape": "deep",
+        "duplication": 0.2,
+        "primitive": "balanced",
+        "cyclic": false,
+        "nodes": 2000
+      },
+      "referenceNodes": {
+        "before": 2002,
+        "after": 2002,
+        "deltaPercent": 0
+      },
+      "edges": {
+        "before": 8001,
+        "after": 8001,
+        "deltaPercent": 0
+      },
+      "retainedHeap": {
+        "before": 359952,
+        "after": 192576,
+        "deltaPercent": -46.49953327110282
+      },
+      "yaml": {
+        "before": null,
+        "after": null,
+        "deltaPercent": null
+      },
+      "internMedianMilliseconds": 55.20720300008543,
+      "yamlBeforeMedianMilliseconds": null,
+      "yamlAfterMedianMilliseconds": null,
+      "internAndYamlMedianMilliseconds": null
+    },
+    {
+      "id": "seed-wide",
+      "family": "test-derived",
+      "description": "Deterministic property-style graph seed representing wide data.",
+      "parameters": {
+        "id": "wide",
+        "seed": 88231,
+        "shape": "wide",
+        "duplication": 0.25,
+        "primitive": "balanced",
+        "cyclic": false,
+        "nodes": 2000
+      },
+      "referenceNodes": {
+        "before": 2002,
+        "after": 1535,
+        "deltaPercent": -23.326673326673326
+      },
+      "edges": {
+        "before": 8001,
+        "after": 6600,
+        "deltaPercent": -17.51031121109861
+      },
+      "retainedHeap": {
+        "before": 359952,
+        "after": 151568,
+        "deltaPercent": -57.89216339956439
+      },
+      "yaml": {
+        "before": 99827,
+        "after": 83574,
+        "deltaPercent": -16.281166417902973
+      },
+      "internMedianMilliseconds": 56.54638700000942,
+      "yamlBeforeMedianMilliseconds": 7.226107999915257,
+      "yamlAfterMedianMilliseconds": 8.588975999969989,
+      "internAndYamlMedianMilliseconds": 59.51458600000478
     },
     {
       "id": "seed-cyclic",
@@ -359,32 +1185,146 @@
         "duplication": 0.4,
         "primitive": "balanced",
         "cyclic": true,
-        "nodes": 240
+        "nodes": 2000
       },
       "referenceNodes": {
-        "before": 242,
-        "after": 173,
-        "deltaPercent": -28.512396694214875
+        "before": 2002,
+        "after": 1209,
+        "deltaPercent": -39.61038961038961
       },
       "edges": {
-        "before": 963,
-        "after": 756,
-        "deltaPercent": -21.49532710280374
+        "before": 8003,
+        "after": 5624,
+        "deltaPercent": -29.726352617768338
       },
       "retainedHeap": {
-        "before": 43744,
-        "after": 17840,
-        "deltaPercent": -59.21726408193123
+        "before": 360224,
+        "after": 123192,
+        "deltaPercent": -65.80127920405081
       },
       "yaml": {
-        "before": 11437,
-        "after": 9181,
-        "deltaPercent": -19.725452478796885
+        "before": 96977,
+        "after": 69479,
+        "deltaPercent": -28.355177000732134
       },
-      "internMedianMilliseconds": 3.0773540000081994,
-      "yamlBeforeMedianMilliseconds": 3.2576830000034533,
-      "yamlAfterMedianMilliseconds": 4.681944000010844,
-      "internAndYamlMedianMilliseconds": 4.122053999992204
+      "internMedianMilliseconds": 82.24136699992232,
+      "yamlBeforeMedianMilliseconds": 13.629533000057563,
+      "yamlAfterMedianMilliseconds": 8.482615999877453,
+      "internAndYamlMedianMilliseconds": 83.71794799994677
+    },
+    {
+      "id": "seed-mixed-arrays-objects",
+      "family": "test-derived",
+      "description": "Deterministic property-style graph seed representing mixed arrays objects data.",
+      "parameters": {
+        "id": "mixed-arrays-objects",
+        "seed": 55661,
+        "shape": "mixed",
+        "duplication": 0.35,
+        "primitive": "balanced",
+        "cyclic": false,
+        "nodes": 2000
+      },
+      "referenceNodes": {
+        "before": 2002,
+        "after": 1310,
+        "deltaPercent": -34.565434565434565
+      },
+      "edges": {
+        "before": 8001,
+        "after": 5925,
+        "deltaPercent": -25.946756655418074
+      },
+      "retainedHeap": {
+        "before": 359824,
+        "after": 131696,
+        "deltaPercent": -63.39988438792299
+      },
+      "yaml": {
+        "before": 97614,
+        "after": 73544,
+        "deltaPercent": -24.65834818775995
+      },
+      "internMedianMilliseconds": 53.28590900008567,
+      "yamlBeforeMedianMilliseconds": 9.943507000105456,
+      "yamlAfterMedianMilliseconds": 9.524961999850348,
+      "internAndYamlMedianMilliseconds": 57.71698300004937
+    },
+    {
+      "id": "seed-primitive-heavy",
+      "family": "test-derived",
+      "description": "Deterministic property-style graph seed representing primitive heavy data.",
+      "parameters": {
+        "id": "primitive-heavy",
+        "seed": 60293,
+        "shape": "wide",
+        "duplication": 0.2,
+        "primitive": "heavy",
+        "cyclic": false,
+        "nodes": 2000
+      },
+      "referenceNodes": {
+        "before": 4002,
+        "after": 3214,
+        "deltaPercent": -19.69015492253873
+      },
+      "edges": {
+        "before": 16001,
+        "after": 13235,
+        "deltaPercent": -17.286419598775076
+      },
+      "retainedHeap": {
+        "before": 567952,
+        "after": 324600,
+        "deltaPercent": -42.847282868974844
+      },
+      "yaml": {
+        "before": 184376,
+        "after": 153868,
+        "deltaPercent": -16.54662212001562
+      },
+      "internMedianMilliseconds": 76.00051699997857,
+      "yamlBeforeMedianMilliseconds": 11.355767000000924,
+      "yamlAfterMedianMilliseconds": 11.903503999812528,
+      "internAndYamlMedianMilliseconds": 85.96078600012697
+    },
+    {
+      "id": "seed-string-heavy",
+      "family": "test-derived",
+      "description": "Deterministic property-style graph seed representing string heavy data.",
+      "parameters": {
+        "id": "string-heavy",
+        "seed": 34039,
+        "shape": "wide",
+        "duplication": 0.45,
+        "primitive": "strings",
+        "cyclic": false,
+        "nodes": 2000
+      },
+      "referenceNodes": {
+        "before": 2002,
+        "after": 783,
+        "deltaPercent": -60.88911088911089
+      },
+      "edges": {
+        "before": 8001,
+        "after": 4344,
+        "deltaPercent": -45.70678665166854
+      },
+      "retainedHeap": {
+        "before": 423952,
+        "after": 110208,
+        "deltaPercent": -74.00460429482582
+      },
+      "yaml": {
+        "before": 109665,
+        "after": 59318,
+        "deltaPercent": -45.90981625860575
+      },
+      "internMedianMilliseconds": 54.34766099997796,
+      "yamlBeforeMedianMilliseconds": 8.356509000062943,
+      "yamlAfterMedianMilliseconds": 6.641831999877468,
+      "internAndYamlMedianMilliseconds": 54.982983000110835
     }
   ]
 }

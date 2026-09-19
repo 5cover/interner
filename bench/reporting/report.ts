@@ -16,6 +16,8 @@ const metricLabels: Readonly<Record<keyof StructuralMetrics, string>> = {
   numbers: 'Numbers',
   bigints: 'BigInts',
   booleans: 'Booleans',
+  symbols: 'Symbols',
+  functions: 'Functions',
   nulls: 'Nulls',
   undefineds: 'Undefined values',
   totalReferenceNodes: 'Reference nodes',

@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
+import { performance } from 'node:perf_hooks'
 import { benchmarkEnvironment } from './environment.js'
 import { fixturesForProfile } from './fixtures/index.js'
 import { generateArtifacts, json } from './reporting/generate.js'
@@ -16,8 +17,11 @@ await mkdir(rawDirectory, { recursive: true })
 const results = []
 const fixtures = fixturesForProfile(options.profile)
 for (const [index, fixture] of fixtures.entries()) {
-  process.stderr.write(`[${index + 1}/${fixtures.length}] ${fixture.id}\n`)
+  const label = `[${index + 1}/${fixtures.length}] ${fixture.id}`
+  process.stderr.write(`${label}: start\n`)
+  const start = performance.now()
   results.push(await runFixture(fixture, { ...options, environment }))
+  process.stderr.write(`${label}: complete in ${((performance.now() - start) / 1_000).toFixed(2)} s\n`)
 }
 const run: BenchmarkRun = {
   schemaVersion: BENCHMARK_SCHEMA_VERSION,

@@ -16,8 +16,8 @@ export function fixturesForProfile(profile: 'quick' | 'full'): BenchmarkFixture[
     'self-cycles',
     'seed-highly-duplicated',
     'seed-cyclic',
-    'scaling-duplicate-small-1000',
-    'scaling-duplicate-small-2500',
+    'scaling-duplicate-small-100',
+    'scaling-duplicate-small-250',
   ])
   return fixtures.filter(fixture => quickIds.has(fixture.id))
 }

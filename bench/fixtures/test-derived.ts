@@ -30,7 +30,7 @@ export function testDerivedFixtures(profile: 'quick' | 'full'): BenchmarkFixture
     family: 'test-derived',
     description: `Deterministic property-style graph seed representing ${config.id.replaceAll('-', ' ')} data.`,
     parameters: { ...config, nodes },
-    capabilities: { yaml: true, json: !config.cyclic },
+    capabilities: { yaml: config.shape !== 'deep', json: !config.cyclic },
     create: () => generate(config, nodes),
   }))
 }

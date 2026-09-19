@@ -2,6 +2,7 @@ import type { BenchmarkFixture } from '../types.js'
 
 const both = { yaml: true, json: true } as const
 const yamlOnly = { yaml: true, json: false } as const
+const structuralOnly = { yaml: false, json: false } as const
 
 function chain(size: number, duplicate: boolean): unknown {
   let value: unknown = { kind: 'leaf', value: duplicate ? 1 : size }
@@ -20,7 +21,7 @@ function cycle(size: number, labels: number): unknown {
 
 export function syntheticFixtures(profile: 'quick' | 'full'): BenchmarkFixture[] {
   const size = profile === 'quick' ? 800 : 5_000
-  const scalingSizes = profile === 'quick' ? [1_000, 2_500] : [1_000, 2_500, 5_000, 10_000, 25_000, 50_000, 100_000]
+  const scalingSizes = profile === 'quick' ? [100, 250] : [100, 250, 500, 1_000, 2_500, 5_000, 10_000]
   const fixtures: BenchmarkFixture[] = [
     {
       id: 'unique-flat',
@@ -35,7 +36,7 @@ export function syntheticFixtures(profile: 'quick' | 'full'): BenchmarkFixture[]
       family: 'synthetic',
       description: 'A unique linked object chain.',
       parameters: { nodes: Math.min(size, 2_500) },
-      capabilities: { yaml: false, json: false },
+      capabilities: structuralOnly,
       create: () => chain(Math.min(size, 2_500), false),
     },
     {
@@ -139,7 +140,7 @@ export function syntheticFixtures(profile: 'quick' | 'full'): BenchmarkFixture[]
       family: 'synthetic',
       description: 'One strongly connected component with repeating local observations.',
       parameters: { nodes: Math.min(size, 1_000) },
-      capabilities: yamlOnly,
+      capabilities: structuralOnly,
       create: () => cycle(Math.min(size, 1_000), 8),
     },
     {

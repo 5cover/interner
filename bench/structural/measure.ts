@@ -19,6 +19,8 @@ export function measureStructure(root: unknown): StructuralMetrics {
     booleans: 0,
     nulls: 0,
     undefineds: 0,
+    functions: 0,
+    symbols: 0,
     totalReferenceNodes: 0,
   }
   const seen = new Set<object>()
@@ -46,10 +48,14 @@ export function measureStructure(root: unknown): StructuralMetrics {
       case 'boolean':
         metrics.booleans++
         continue
+      case 'function':
+        metrics.functions++
+        continue
+      case 'symbol':
+        metrics.symbols++
+        continue
       case 'object':
         break
-      default:
-        throw new TypeError(`Unsupported benchmark value: ${typeof value}`)
     }
     if (seen.has(value)) continue
     seen.add(value)

@@ -2,6 +2,7 @@ import { spawn } from 'node:child_process'
 import { mkdtemp, readFile, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { performance } from 'node:perf_hooks'
 import { fileURLToPath } from 'node:url'
 import { median } from '../statistics.js'
 import type { RetainedHeapMetrics } from '../types.js'
@@ -16,8 +17,8 @@ export async function measureRetainedHeap(
   const beforeSamplesBytes: number[] = []
   const afterSamplesBytes: number[] = []
   for (let sample = 0; sample < samples; sample++) {
-    beforeSamplesBytes.push(await runWorker(fixtureId, profile, 'before'))
-    afterSamplesBytes.push(await runWorker(fixtureId, profile, 'after'))
+    beforeSamplesBytes.push(await memorySample(fixtureId, profile, 'before', sample, samples))
+    afterSamplesBytes.push(await memorySample(fixtureId, profile, 'after', sample, samples))
   }
   return {
     beforeBytes: median(beforeSamplesBytes),
@@ -28,6 +29,25 @@ export async function measureRetainedHeap(
     beforeMaximumBytes: Math.max(...beforeSamplesBytes),
     afterMinimumBytes: Math.min(...afterSamplesBytes),
     afterMaximumBytes: Math.max(...afterSamplesBytes),
+  }
+}
+
+async function memorySample(
+  fixtureId: string,
+  profile: 'quick' | 'full',
+  state: 'before' | 'after',
+  sample: number,
+  samples: number
+): Promise<number> {
+  process.stderr.write(`  [${fixtureId}] retained heap ${state} sample ${sample + 1}/${samples}: run`)
+  const start = performance.now()
+  try {
+    const bytes = await runWorker(fixtureId, profile, state)
+    process.stderr.write(`, ${(performance.now() - start).toFixed(2)} ms, ${bytes} B\n`)
+    return bytes
+  } catch (error) {
+    process.stderr.write(', failed\n')
+    throw error
   }
 }
 
