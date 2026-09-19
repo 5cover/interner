@@ -29,17 +29,17 @@ See [MODEL.md](MODEL.md) for the normative supported domain and equivalence laws
 
 ## Supported values
 
-| Kind                                             | Preserved observations                                                      |
-| ------------------------------------------------ | --------------------------------------------------------------------------- |
-| undefined, null, boolean, string, number, bigint | SameValue, including NaN and signed zero                                    |
-| Plain object                                     | Ordered own enumerable string data properties with normal descriptors       |
-| Array                                            | Length, holes, ordered own elements and extra normal string data properties |
-| Date                                             | Native time value, including invalid dates                                  |
-| RegExp                                           | Source and flags; `lastIndex` resets to zero like structured clone          |
+| Kind                                             | Preserved observations                                                                                                            |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| undefined, null, boolean, string, number, bigint | SameValue, including NaN and signed zero                                                                                          |
+| Plain object                                     | Ordered own enumerable string data properties with normal descriptors                                                             |
+| Array                                            | Native Array brand and exact local `Array.prototype`; length, holes, ordered own elements and extra normal string data properties |
+| Date                                             | Native time value, including invalid dates                                                                                        |
+| RegExp                                           | Source and flags; `lastIndex` resets to zero like structured clone                                                                |
 
-Built-ins require exact local standard prototypes. Arrays require writable standard `length`. Date has no own properties; RegExp has only normal `lastIndex`. Abnormal descriptors, structural accessors and symbol keys are rejected with `TypeError`. No user structural getters are evaluated by ordinary built-in capture. Proxies are outside the contract and cannot reliably be detected; traps may run.
+Built-ins require exact local standard prototypes. Arrays additionally require the native Array brand, checked with `Array.isArray`, and writable standard `length`. Date has no own properties; RegExp has only normal `lastIndex`. Abnormal descriptors, structural accessors and symbol keys are rejected with `TypeError`. No user structural getters are evaluated by ordinary built-in capture. Proxies are outside the contract and cannot reliably be detected; traps may run.
 
-Classes, null or foreign prototypes, functions, symbols, boxed values, errors, promises, weak collections, buffers, views, shared memory and host objects are unsupported by default. Map and Set are intentionally excluded: merging equivalent keys or elements can lose entries. Explicit extensions can supply semantics for otherwise unsupported objects, but not functions or symbols.
+Classes, null or foreign prototypes, functions, symbols, boxed values, errors, promises, weak collections, buffers, views, shared memory and host objects are unsupported by default. “Unsupported” means that capture throws `TypeError` at the root or any reachable edge. It does not mean pass-through, preservation by identity or “do not merge.” A built-in adapter or extension failing to match is different: dispatch continues, and throws only when no adapter accepts the object. Map and Set are intentionally excluded: merging equivalent keys or elements can lose entries. Explicit extensions can supply semantics for otherwise unsupported objects, but not functions or symbols. Functions are rejected even if they have ordinary own properties; extensions never receive them.
 
 ## Extensions
 

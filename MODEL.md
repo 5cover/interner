@@ -4,20 +4,24 @@
 
 ## Domain and observations
 
-Atoms are undefined, null, booleans, strings, numbers and bigints. Atom equality is SameValue (`Object.is`), including equal NaNs and distinct positive and negative zero. Functions and symbols are not atoms.
+Atoms are undefined, null, booleans, strings, numbers and bigints. Atom equality is SameValue (`Object.is`), including equal NaNs and distinct positive and negative zero. Functions and symbols are not atoms. A function value, whether the root or reachable through an edge, is unsupported: `intern()` throws `TypeError`. Functions are not offered to extensions, including callable objects with ordinary own properties, because version 1 gives functions no structural semantics.
 
 Built-in objects must have their exact local standard prototype. Cross-realm objects and subclasses are not built-ins. Supported built-ins are:
 
-| Kind   | Observations and accepted shape                                                                                                                                   |
-| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Object | Exact `Object.prototype`; ordered own string keys and their values; every property enumerable, writable, configurable and data-only                               |
-| Array  | Exact `Array.prototype`; length, holes, ordered own keys and values; normal data descriptors, with the standard non-enumerable, non-configurable, writable length |
-| Date   | Exact `Date.prototype`, valid native brand; SameValue time, including invalid dates; no own properties                                                            |
-| RegExp | Exact `RegExp.prototype`, valid native brand; source and standard flags; only the normal own `lastIndex` data property, whose value is ignored and resets to zero |
+| Kind   | Observations and accepted shape                                                                                                                                                                                         |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Object | Exact `Object.prototype`; ordered own string keys and their values; every property enumerable, writable, configurable and data-only                                                                                     |
+| Array  | Native Array brand (`Array.isArray(value)`) and exact local `Array.prototype`; length, holes, ordered own keys and values; normal data descriptors, with the standard non-enumerable, non-configurable, writable length |
+| Date   | Exact `Date.prototype`, valid native brand; SameValue time, including invalid dates; no own properties                                                                                                                  |
+| RegExp | Exact `RegExp.prototype`, valid native brand; source and standard flags; only the normal own `lastIndex` data property, whose value is ignored and resets to zero                                                       |
 
 Non-extensible containers with otherwise normal descriptors are accepted; extensibility is normalized, as with structured clone. Frozen or sealed populated containers generally fail descriptor validation. Built-in structural accessors, symbol keys, abnormal descriptors and extra Date/RegExp properties are rejected, not silently discarded. A malformed built-in candidate cannot fall through to an extension. Array holes are distinct from present undefined properties. Keys such as `__proto__` are ordinary data. Property enumeration order is semantic.
 
-Unsupported by default: custom or null prototypes, class instances, boxed primitives, Map, Set, errors, promises, weak collections, buffers and views, shared memory, host objects, functions and symbols. An explicit extension can give otherwise unsupported objects semantics. Functions and symbols remain unsupported. Proxies are outside the contract: portable JavaScript cannot detect them reliably, and traps may run or a proxy may go undetected.
+### Unsupported input and adapter dispatch
+
+In this model, **unsupported input** has one operational meaning: if capture reaches an unsupported value, `intern()` throws `TypeError`; it never returns that value unchanged, retains it as an opaque reference, or merely declines to merge it. This applies at the root and at every reachable edge. Detectable malformed built-in shapes are also unsupported input and throw `TypeError`.
+
+Adapter dispatch has a separate meaning. A built-in adapter or extension may simply **not accept** an object. That is not a result and does not itself throw: capture continues through the remaining adapters. Built-ins are checked first, then extensions in option order. If no adapter accepts the object, it is unsupported input and `intern()` throws `TypeError`. An extension may give an otherwise unsupported **object** semantics, but cannot receive functions or symbols. Proxies are outside the contract: portable JavaScript cannot detect them reliably, and traps may run or a proxy may go undetected.
 
 ## Equivalence and quotient
 
