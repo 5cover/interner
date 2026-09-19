@@ -12,9 +12,11 @@ export type { Extension } from './extension/define.js'
 export type { Atom, ExtensionDefinition, InternOptions } from './types.js'
 
 /**
- * Returns a fresh quotienting clone with maximal sharing of equivalent subvalues.
+ * Returns a quotienting clone with maximal sharing of equivalent subvalues.
+ * Reconstructed graph nodes are fresh; opaque function leaves are returned unchanged.
  * Supports primitives except symbols, normal data-only objects/arrays, Date and
- * RegExp. Unsupported values throw TypeError. Explicit extensions supply semantics
+ * RegExp. Functions are forwarded by identity as opaque leaves and never interned.
+ * Other unsupported values throw TypeError. Explicit extensions supply semantics
  * only for otherwise unsupported objects; their callback errors propagate unchanged.
  * Input is not intentionally mutated. Identity-derived observations are not preserved:
  * mutating the mutable output may expose new sharing. No identities are pooled across

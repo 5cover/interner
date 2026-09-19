@@ -12,7 +12,11 @@ export function signature(node: Node, classes?: readonly number[]): string {
   return JSON.stringify([
     node.kind,
     node.atoms.map(atomKey),
-    node.edges.map(edge => ('atom' in edge ? ['a', atomKey(edge.atom)] : ['n', classes ? classes[edge.node] : 0])),
+    node.edges.map(edge => {
+      if ('atom' in edge) return ['a', atomKey(edge.atom)]
+      if ('callable' in edge) return ['f', edge.identity]
+      return ['n', classes ? classes[edge.node] : 0]
+    }),
   ])
 }
 

@@ -2,11 +2,21 @@ import { isAtom, type Adapter, type Graph, type Node, type Ref } from './model.j
 
 export function capture(value: unknown, describe: (value: object, location: string) => Adapter): Graph {
   const sources = new WeakMap<object, number>()
+  const functions = new WeakMap<object, number>()
+  let functionCount = 0
   const queue: object[] = []
   const nodes: Node[] = []
   const kinds = new Map<object, number>()
   function ref(value: unknown, location: string): Ref {
     if (isAtom(value)) return { atom: value }
+    if (typeof value === 'function') {
+      let identity = functions.get(value)
+      if (identity === undefined) {
+        identity = functionCount++
+        functions.set(value, identity)
+      }
+      return { callable: value, identity }
+    }
     if (typeof value !== 'object' || value === null) throw new TypeError(`Unsupported ${typeof value} at ${location}`)
     let id = sources.get(value)
     if (id === undefined) {

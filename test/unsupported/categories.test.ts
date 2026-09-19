@@ -14,7 +14,6 @@ test('unsupported semantic categories reject predictably', () => {
     new ArraySubclass(),
     new DateSubclass(),
     new RegExpSubclass('a'),
-    () => 1,
     Symbol('x'),
     Promise.resolve(),
     new WeakMap(),
@@ -105,7 +104,7 @@ test('normal symbol descriptors are rejected and failures carry useful locations
     () => intern(new Map()),
     error => error instanceof TypeError && /node/.test(error.message)
   )
-  for (const value of [Symbol(), () => 1]) {
+  for (const value of [Symbol()]) {
     assert.throws(
       () => intern(value),
       error => error instanceof TypeError && /root/.test(error.message)

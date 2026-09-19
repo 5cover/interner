@@ -17,7 +17,11 @@ export function reconstruct(graph: Graph, classes: readonly number[]): unknown {
     allocated.add(value)
     outputs.set(cls, value)
   }
-  const resolve = (ref: Ref): unknown => ('atom' in ref ? ref.atom : outputs.get(classes[ref.node]!)!)
+  const resolve = (ref: Ref): unknown => {
+    if ('atom' in ref) return ref.atom
+    if ('callable' in ref) return ref.callable
+    return outputs.get(classes[ref.node]!)!
+  }
   for (const [cls, node] of representatives) node.adapter.hydrate(outputs.get(cls)!, node.edges.map(resolve))
   return resolve(graph.root)
 }

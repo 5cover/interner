@@ -1,10 +1,10 @@
 # Value model, version 1
 
-`intern` returns a fresh quotienting clone of a finite supported graph. All equivalent reachable object nodes are represented by exactly one output object. There is no global pool. Input observations are not intentionally mutated.
+`intern` returns a quotienting clone of a finite supported graph. Every reconstructed graph node is fresh, while opaque function leaves are forwarded unchanged. All equivalent reachable graph nodes are represented by exactly one output object. There is no global pool. Input observations are not intentionally mutated.
 
 ## Domain and observations
 
-Atoms are undefined, null, booleans, strings, numbers and bigints. Atom equality is SameValue (`Object.is`), including equal NaNs and distinct positive and negative zero. Functions and symbols are not atoms. A function value, whether the root or reachable through an edge, is unsupported: `intern()` throws `TypeError`. Functions are not offered to extensions, including callable objects with ordinary own properties, because version 1 gives functions no structural semantics.
+Atoms are undefined, null, booleans, strings, numbers and bigints. Atom equality is SameValue (`Object.is`), including equal NaNs and distinct positive and negative zero. Symbols are not atoms. Functions are opaque identity-bearing leaves rather than atoms or graph nodes. A function value is forwarded unchanged, whether it is the root or occurs on an edge. It is never cloned, interned, offered to extensions, or traversed through its own properties or prototype.
 
 Built-in objects must have their exact local standard prototype. Cross-realm objects and subclasses are not built-ins. Supported built-ins are:
 
@@ -19,17 +19,17 @@ Non-extensible containers with otherwise normal descriptors are accepted; extens
 
 ### Unsupported input and adapter dispatch
 
-In this model, **unsupported input** has one operational meaning: if capture reaches an unsupported value, `intern()` throws `TypeError`; it never returns that value unchanged, retains it as an opaque reference, or merely declines to merge it. This applies at the root and at every reachable edge. Detectable malformed built-in shapes are also unsupported input and throw `TypeError`.
+In this model, **unsupported input** has one operational meaning: if capture reaches an unsupported value, `intern()` throws `TypeError`; it never returns that value unchanged, retains it as an opaque reference, or merely declines to merge it. This applies at the root and at every reachable edge. Detectable malformed built-in shapes are also unsupported input and throw `TypeError`. Functions are supported opaque leaves, so this rule does not apply to them.
 
-Adapter dispatch has a separate meaning. A built-in adapter or extension may simply **not accept** an object. That is not a result and does not itself throw: capture continues through the remaining adapters. Built-ins are checked first, then extensions in option order. If no adapter accepts the object, it is unsupported input and `intern()` throws `TypeError`. An extension may give an otherwise unsupported **object** semantics, but cannot receive functions or symbols. Proxies are outside the contract: portable JavaScript cannot detect them reliably, and traps may run or a proxy may go undetected.
+Adapter dispatch has a separate meaning. A built-in adapter or extension may simply **not accept** an object. That is not a result and does not itself throw: capture continues through the remaining adapters. Built-ins are checked first, then extensions in option order. If no adapter accepts the object, it is unsupported input and `intern()` throws `TypeError`. An extension may give an otherwise unsupported **object** semantics, but cannot receive functions or symbols. Functions bypass adapter dispatch and are forwarded. Proxies are outside the contract: portable JavaScript cannot detect them reliably, and traps may run or a proxy may go undetected.
 
 ## Equivalence and quotient
 
-A node consists of its semantic kind, an ordered atom tuple and ordered edges. Each edge targets either an atom or a node. Property labels are part of the atom tuple. Two nodes are equivalent exactly when their kinds and atoms agree and corresponding edges contain SameValue atoms or equivalent nodes. This is the greatest such relation (bisimulation), not equality of alias topology. In particular homogeneous cycles of different lengths can be equivalent.
+A node consists of its semantic kind, an ordered atom tuple and ordered edges. Each edge targets an atom, an opaque function, or a node. Property labels are part of the atom tuple. Two nodes are equivalent exactly when their kinds and atoms agree and corresponding edges contain SameValue atoms, the same function object, or equivalent nodes. Distinct functions are never equivalent, even when their source text and own properties are identical. Node equivalence is the greatest such relation (bisimulation), not equality of alias topology. In particular homogeneous cycles of different lengths can be equivalent.
 
-The output preserves all these observations and contains no distinct equivalent nodes. No output node is an input node. All representatives are allocated before any edges are installed. Allocation and representative order are unspecified.
+The output preserves all these observations and contains no distinct equivalent nodes. No output node is an input node. Forwarded functions are leaves, not nodes, and are the deliberate exception to freshness: their input identity is preserved. All representatives are allocated before any edges are installed. Allocation and representative order are unspecified.
 
-Identity-derived observations are those that can change solely because references denote one object rather than distinct equivalent objects. These observations, including identity-sensitive collection membership and subsequent mutation, are excluded. Primitive SameValue is not excluded. Outputs are mutable, not frozen; new sharing is visible through mutation. Separate calls never share a pool. Callers must not mutate the reachable input during the call.
+Identity-derived observations are those that can change solely because references denote one object rather than distinct equivalent objects. These observations, including identity-sensitive collection membership and subsequent mutation, are excluded for graph nodes. Primitive SameValue and forwarded function identity are not excluded. Outputs are mutable, not frozen; new sharing is visible through mutation. Separate calls never share a pool, although both calls forward the same input functions. Callers must not mutate the traversed input graph during the call; state reachable only through a function's own properties is not traversed.
 
 ## Extensions
 
@@ -51,6 +51,6 @@ The runtime checks array shape, atom membership, object allocation, source reuse
 
 Capture and cycle detection are iterative. DAGs use bottom-up collision-safe hash-consing, expected O(V + E + S) time and space including observation size S. Cyclic graphs use whole-graph partition refinement, at most V rounds and O(V * (V + E + S)) expected worst-case time, O(V + E + S) working space. Hash collisions always undergo full signature comparison. Reconstruction uses one allocation per class. Hashes, traversal and representative choice are private.
 
-Native structured clone is a differential oracle for the common domain, not the definition. No host-specific support is inferred. Map and Set need an explicit future policy because merging keys can change cardinality or overwrite values.
+Native structured clone is a differential oracle for the common domain, not the definition. Functions are deliberately outside that common domain: native structured clone rejects them, while `intern()` forwards them as opaque leaves. No host-specific support is inferred. Map and Set need an explicit future policy because merging keys can change cardinality or overwrite values.
 
 Changes to observations, equivalence, maximality, freshness, extension lifecycle or dispatch are breaking changes. Adding built-in support is semver-sensitive because it can claim values previously handled by extensions. Runtime support is Node.js 22 and later; browsers are not currently a tested support promise.

@@ -1,6 +1,7 @@
 import type { Atom } from '../types.js'
 
-export type Ref = { readonly atom: Atom } | { readonly node: number }
+export type Ref =
+  { readonly atom: Atom } | { readonly callable: unknown; readonly identity: number } | { readonly node: number }
 export interface Adapter {
   readonly kind: object
   readonly atoms: readonly Atom[]
