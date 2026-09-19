@@ -1,19 +1,23 @@
-import type { Atom } from '../types.js'
-import type { Node } from './model.js'
+import type { AtomObservation, DirectAtom, Node } from './model.js'
 
 // Type tags and JSON framing make this encoding unambiguous. Numbers do not
 // pass through Map's SameValueZero semantics or JSON's NaN/-0 normalization.
-function atomKey(value: Atom): string {
+function atomKey(value: DirectAtom): string {
   if (typeof value === 'number') return Object.is(value, -0) ? 'number:-0' : `number:${String(value)}`
   return `${typeof value}:${String(value)}`
+}
+
+function observationKey(value: AtomObservation): readonly [string, string | number] {
+  return 'symbol' in value ? ['s', value.identity] : ['a', atomKey(value.atom)]
 }
 
 export function signature(node: Node, classes?: readonly number[]): string {
   return JSON.stringify([
     node.kind,
-    node.atoms.map(atomKey),
+    node.atoms.map(observationKey),
     node.edges.map(edge => {
       if ('atom' in edge) return ['a', atomKey(edge.atom)]
+      if ('symbol' in edge) return ['s', edge.identity]
       if ('callable' in edge) return ['f', edge.identity]
       return ['n', classes ? classes[edge.node] : 0]
     }),

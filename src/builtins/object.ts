@@ -2,11 +2,10 @@ import type { Adapter } from '../graph/model.js'
 
 const kind = {}
 
-export function properties(value: object, location: string, array = false): { keys: string[]; values: unknown[] } {
-  const keys: string[] = []
+export function properties(value: object, location: string, array = false): { keys: PropertyKey[]; values: unknown[] } {
+  const keys: PropertyKey[] = []
   const values: unknown[] = []
   for (const key of Reflect.ownKeys(value)) {
-    if (typeof key !== 'string') throw new TypeError(`Unsupported symbol property at ${location}`)
     const desc = Object.getOwnPropertyDescriptor(value, key)!
     if (array && key === 'length') {
       if (!desc.writable || desc.enumerable || desc.configurable || !('value' in desc))
@@ -22,7 +21,7 @@ export function properties(value: object, location: string, array = false): { ke
   return { keys, values }
 }
 
-export function hydrateProperties(target: object, keys: readonly string[], edges: readonly unknown[]): void {
+export function hydrateProperties(target: object, keys: readonly PropertyKey[], edges: readonly unknown[]): void {
   keys.forEach((key, i) =>
     Object.defineProperty(target, key, {
       value: edges[i],

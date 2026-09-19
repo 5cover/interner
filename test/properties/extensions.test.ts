@@ -97,7 +97,6 @@ test('malformed definitions, descriptors and allocations fail; errors propagate'
     {},
     { atoms: {}, edges: [] },
     { atoms: [], edges: {} },
-    { atoms: [Symbol()], edges: [] },
     { atoms: [{}], edges: [] },
     { atoms: [() => 1], edges: [] },
     { atoms: new Array(1), edges: [] },
@@ -192,7 +191,6 @@ test('malformed boundaries diagnose their extension without calling match on pri
     1,
     { atoms: {}, edges: [] },
     { atoms: [], edges: {} },
-    { atoms: [Symbol()], edges: [] },
     { atoms: new Array(1), edges: [] },
   ]) {
     const ext = defineExtension({ ...base, describe: () => descriptor as unknown as ReturnType<typeof base.describe> })

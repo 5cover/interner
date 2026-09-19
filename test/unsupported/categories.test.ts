@@ -14,7 +14,6 @@ test('unsupported semantic categories reject predictably', () => {
     new ArraySubclass(),
     new DateSubclass(),
     new RegExpSubclass('a'),
-    Symbol('x'),
     Promise.resolve(),
     new WeakMap(),
     new WeakSet(),
@@ -75,19 +74,34 @@ test('descriptor rejection does not invoke structural accessors', () => {
   assert.throws(() => intern(Object.assign(/a/, { x: 1 })), TypeError)
 })
 
-test('normal symbol descriptors are rejected and failures carry useful locations', () => {
+test('abnormal symbol descriptors reject without invoking accessors', () => {
+  let calls = 0
   for (const value of [{}, []]) {
-    Object.defineProperty(value, Symbol('structural'), {
+    Object.defineProperty(value, Symbol('accessor'), {
+      enumerable: true,
+      configurable: true,
+      get() {
+        calls++
+        throw new Error('symbol getter invoked')
+      },
+    })
+    assert.throws(() => intern(value), TypeError)
+  }
+  assert.equal(calls, 0)
+  for (const flag of ['writable', 'enumerable', 'configurable']) {
+    const value = {}
+    Object.defineProperty(value, Symbol(flag), {
       value: 1,
       writable: true,
       enumerable: true,
       configurable: true,
+      [flag]: false,
     })
-    assert.throws(
-      () => intern(value),
-      error => error instanceof TypeError && /symbol.*node/i.test(error.message)
-    )
+    assert.throws(() => intern(value), TypeError)
   }
+})
+
+test('unsupported failures carry useful locations', () => {
   for (const value of [new Date(), /a/, {}, []]) {
     Object.defineProperty(value, 'hidden', { value: 1 })
     assert.throws(
@@ -104,14 +118,4 @@ test('normal symbol descriptors are rejected and failures carry useful locations
     () => intern(new Map()),
     error => error instanceof TypeError && /node/.test(error.message)
   )
-  for (const value of [Symbol()]) {
-    assert.throws(
-      () => intern(value),
-      error => error instanceof TypeError && /root/.test(error.message)
-    )
-    assert.throws(
-      () => intern({ value }),
-      error => error instanceof TypeError && /node.*edge/.test(error.message)
-    )
-  }
 })

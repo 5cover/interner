@@ -1,6 +1,6 @@
 import type { Extension } from './extension/define.js'
 
-export type Atom = undefined | null | boolean | number | bigint | string
+export type Atom = undefined | null | boolean | number | bigint | string | symbol
 
 export interface InternOptions {
   /** Ordered, per-call semantics for otherwise unsupported object kinds. */

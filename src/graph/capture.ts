@@ -1,14 +1,28 @@
-import { isAtom, type Adapter, type Graph, type Node, type Ref } from './model.js'
+import type { Atom } from '../types.js'
+import { isAtom, type Adapter, type AtomObservation, type Graph, type Node, type Ref } from './model.js'
 
 export function capture(value: unknown, describe: (value: object, location: string) => Adapter): Graph {
   const sources = new WeakMap<object, number>()
   const functions = new WeakMap<object, number>()
+  const symbols = new Map<symbol, number>()
   let functionCount = 0
   const queue: object[] = []
   const nodes: Node[] = []
   const kinds = new Map<object, number>()
+  function symbolIdentity(value: symbol): number {
+    let identity = symbols.get(value)
+    if (identity === undefined) {
+      identity = symbols.size
+      symbols.set(value, identity)
+    }
+    return identity
+  }
+  function observeAtom(value: Atom): AtomObservation {
+    return typeof value === 'symbol' ? { symbol: value, identity: symbolIdentity(value) } : { atom: value }
+  }
   function ref(value: unknown, location: string): Ref {
-    if (isAtom(value)) return { atom: value }
+    if (typeof value === 'symbol') return { symbol: value, identity: symbolIdentity(value) }
+    if (isAtom(value) && typeof value !== 'symbol') return { atom: value }
     if (typeof value === 'function') {
       let identity = functions.get(value)
       if (identity === undefined) {
@@ -36,7 +50,7 @@ export function capture(value: unknown, describe: (value: object, location: stri
     }
     nodes.push({
       kind,
-      atoms: adapter.atoms,
+      atoms: adapter.atoms.map(observeAtom),
       adapter,
       edges: adapter.edges.map((edge, index) => ref(edge, `node ${id}, edge ${index}`)),
     })

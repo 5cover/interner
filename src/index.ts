@@ -13,14 +13,15 @@ export type { Atom, ExtensionDefinition, InternOptions } from './types.js'
 
 /**
  * Returns a quotienting clone with maximal sharing of equivalent subvalues.
- * Reconstructed graph nodes are fresh; opaque function leaves are returned unchanged.
- * Supports primitives except symbols, normal data-only objects/arrays, Date and
- * RegExp. Functions are forwarded by identity as opaque leaves and never interned.
+ * Reconstructed graph nodes are fresh; opaque symbol and function leaves are returned unchanged.
+ * Supports primitives, normal data-only objects/arrays, Date and RegExp. Symbols
+ * and functions are forwarded by identity as opaque leaves and never interned.
  * Other unsupported values throw TypeError. Explicit extensions supply semantics
  * only for otherwise unsupported objects; their callback errors propagate unchanged.
  * Input is not intentionally mutated. Identity-derived observations are not preserved:
- * mutating the mutable output may expose new sharing. No identities are pooled across
- * calls. Cycles are minimized by bisimulation, not by preserving alias topology.
+ * mutating the mutable output may expose new sharing. No reconstructed identities are
+ * pooled across calls; input symbols and functions are forwarded. Cycles are minimized
+ * by bisimulation, not by preserving alias topology.
  * Expected DAG cost is O(V + E + S); cyclic refinement can cost O(V * (V + E + S)),
  * with O(V + E + S) space, where S is primitive/key observation size.
  */

@@ -27,6 +27,5 @@ void box
 
 // @ts-expect-error Handles cannot be manufactured structurally.
 const fake: Extension = {}
-// @ts-expect-error Symbols are not intrinsic atoms.
-const badAtom: Atom = Symbol('x')
-void [fake, badAtom]
+const symbolAtom: Atom = Symbol('x')
+void [fake, symbolAtom]

@@ -19,6 +19,7 @@ export function reconstruct(graph: Graph, classes: readonly number[]): unknown {
   }
   const resolve = (ref: Ref): unknown => {
     if ('atom' in ref) return ref.atom
+    if ('symbol' in ref) return ref.symbol
     if ('callable' in ref) return ref.callable
     return outputs.get(classes[ref.node]!)!
   }

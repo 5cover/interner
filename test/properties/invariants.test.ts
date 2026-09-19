@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { defineExtension, intern, type Atom } from '../../src/index.js'
+import { defineExtension, intern } from '../../src/index.js'
 import { graphs } from '../generators/graph.js'
-import { equivalent, materialize, observe, relation, Vertex } from '../reference/model.js'
+import { equivalent, materialize, observe, relation, Vertex, type Primitive } from '../reference/model.js'
 import { check } from './check.js'
 
-export const vertexExtension = defineExtension<Vertex, readonly Atom[], readonly unknown[]>({
+export const vertexExtension = defineExtension<Vertex, readonly Primitive[], readonly unknown[]>({
   name: 'Vertex',
   match: (value): value is Vertex => value instanceof Vertex,
   describe: value => ({ atoms: value.state, edges: value.links }),
