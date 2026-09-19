@@ -10,6 +10,7 @@ function atomKey(value: DirectAtom): string {
 function observationKey(value: AtomObservation): readonly [string, string | number] {
   if ('symbol' in value) return ['s', value.identity]
   if ('callable' in value) return ['f', value.identity]
+  if ('opaque' in value) return ['o', value.identity]
   return ['a', atomKey(value.atom)]
 }
 

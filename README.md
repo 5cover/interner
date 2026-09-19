@@ -14,7 +14,7 @@ Repetitive generated schemas are a natural use case: YAML serializers can emit a
 
 ## Guarantees
 
-- A fresh result, with no source graph nodes reused and no intentional input mutation. Unmatched opaque symbols and functions are forwarded by identity.
+- Fresh reconstructed structural nodes: an output structural node never reuses a source structural-node identity. Unmatched opaque symbols and functions are forwarded by identity. Preserved prototype references may retain input objects, including source structural nodes.
 - Preservation of the supported observations, including property order, array holes and the distinction between `0` and `-0`.
 - Maximal sharing, including for cyclic graphs, not best-effort deduplication.
 - No reconstructed identities are pooled across calls; unmatched input symbols and functions are forwarded on every call.
@@ -29,19 +29,19 @@ See [MODEL.md](MODEL.md) for the normative supported domain and equivalence laws
 
 ## Supported values
 
-| Kind                                             | Preserved observations                                                                                            |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| undefined, null, boolean, string, number, bigint | SameValue, including NaN and signed zero                                                                          |
-| Symbol                                           | Original identity by default; value, property key, edge, extension atom or extension node                         |
-| Plain object                                     | Ordered own string and symbol keys; complete data and accessor descriptors, including flags and referenced values |
-| Array                                            | Native Array brand and exact local `Array.prototype`; length, holes, ordered own keys and complete descriptors    |
-| Date                                             | Native time value, including invalid dates                                                                        |
-| RegExp                                           | Source and flags; `lastIndex` resets to zero like structured clone                                                |
-| Function                                         | Original identity by default; opaque forwarding or domain-specific extension node                                 |
+| Kind                                             | Preserved observations                                                                                         |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| undefined, null, boolean, string, number, bigint | SameValue, including NaN and signed zero                                                                       |
+| Symbol                                           | Original identity by default; value, property key, edge, extension atom or extension node                      |
+| Ordinary object                                  | Any prototype retained by identity; ordered own keys and complete data and accessor descriptors                |
+| Array                                            | Native Array brand and exact local `Array.prototype`; length, holes, ordered own keys and complete descriptors |
+| Date                                             | Native time value, including invalid dates                                                                     |
+| RegExp                                           | Source and flags; `lastIndex` resets to zero like structured clone                                             |
+| Function                                         | Original identity by default; opaque forwarding or domain-specific extension node                              |
 
-Built-ins require exact local standard prototypes. Object and Array descriptors are preserved exactly: data descriptor flags and values, or accessor descriptor flags and getter/setter references. No user getter or setter is evaluated during capture. Under default function semantics, accessor functions are forwarded by identity; an extension may instead claim them. Arrays additionally require the native Array brand, checked with `Array.isArray`; their standard non-enumerable, non-configurable `length` has preserved value and writable flag. Date has no own properties; RegExp has only normal writable `lastIndex`. Extra Date or RegExp properties and abnormal `lastIndex` are rejected with `TypeError`. String and symbol keys receive the same descriptor treatment; symbol-key identity and `Reflect.ownKeys` order are preserved. Proxies are outside the contract and cannot reliably be detected; traps may run.
+Arrays, Date and RegExp require exact local standard prototypes. An ordinary object may have any prototype, including null, custom and foreign-realm prototypes. Its prototype is preserved by reference as an opaque identity observation: it is not traversed, cloned, validated or interned. Object and Array descriptors are preserved exactly: data descriptor flags and values, or accessor descriptor flags and getter/setter references. No user getter or setter is evaluated during capture. Under default function semantics, accessor functions are forwarded by identity; an extension may instead claim them. Arrays additionally require the native Array brand, checked with `Array.isArray`; their standard non-enumerable, non-configurable `length` has preserved value and writable flag. Date has no own properties; RegExp has only normal writable `lastIndex`. Extra Date or RegExp properties, abnormal `lastIndex`, and detectable branded values with changed standard prototypes are rejected with `TypeError`. String and symbol keys receive the same descriptor treatment; symbol-key identity and `Reflect.ownKeys` order are preserved. Proxies are outside the contract and cannot reliably be detected; traps may run.
 
-Classes, null or foreign prototypes, boxed values, errors, promises, weak collections, buffers, views, shared memory and host objects are unsupported by default. “Unsupported” means that capture throws `TypeError` at the root or any reachable edge. A built-in adapter or extension failing to match is different: dispatch continues, and throws only when no adapter accepts the object. Map and Set are intentionally excluded: merging equivalent keys or elements can lose entries. Explicit extensions can supply semantics for otherwise unsupported objects.
+Detectable branded values such as boxed values, errors, promises, collections, buffers, views, shared memory and host objects are unsupported by default. “Unsupported” means that capture throws `TypeError` at the root or any reachable edge. A built-in adapter or extension failing to match is different: dispatch continues. Unmatched non-branded objects receive ordinary-object semantics. Map and Set are intentionally excluded: merging equivalent keys or elements can lose entries. Explicit extensions can supply semantics for otherwise unsupported objects.
 
 Symbols and functions use identity forwarding as their default semantics. When no extension matches, the original value is returned at the root and installed unchanged on every corresponding output edge. The same identity can permit containing nodes to merge; distinct identities keep otherwise equivalent containing nodes separate. Function own properties, prototypes, closures and behavior are not inspected by default.
 
@@ -72,7 +72,7 @@ Atoms are intrinsic observations, including symbols and functions compared by id
 
 Definitions must be deterministic, input-preserving, complete, position-stable and traversal-independent. Allocation must return fresh matching instances, without hidden input references. Reconstructed descriptions must retain the same atoms and equivalent edges. Do not mutate the registry from callbacks. Undetectable violations invalidate the extension's guarantees; detectable malformed descriptors or allocations throw `TypeError`. Callback exceptions propagate unchanged.
 
-Standard object built-ins take precedence, then the first matching extension in array order wins. Functions and symbols reach extensions before their opaque forwarding fallback. Each handle defines a distinct kind; names are diagnostic, not kind identifiers. There are no `equals` or `hash` callbacks: interner owns equivalence, collisions, cycles and maximality. See the callback JSDoc and [extension laws](MODEL.md#extensions).
+Standard built-ins take precedence, then the first matching extension in array order wins. Unmatched non-branded objects use ordinary-object semantics; functions and symbols reach extensions before their opaque forwarding fallback. Each handle defines a distinct kind; names are diagnostic, not kind identifiers. There are no `equals` or `hash` callbacks: interner owns equivalence, collisions, cycles and maximality. See the callback JSDoc and [extension laws](MODEL.md#extensions).
 
 ## Complexity and performance
 
@@ -130,7 +130,7 @@ CI checks Node 22, 24 and 26; scheduled/manual jobs run mutation tests and bench
 
 ## FAQ
 
-**Why not inspect arbitrary classes?** Enumerable properties are not a definition of application semantics. An explicit extension must supply that definition.
+**How are custom prototypes handled?** An ordinary object's own structure is interned while its prototype is retained as an opaque reference. Inherited behavior is neither inspected nor transformed; use an extension when it needs domain-specific semantics.
 
 **Why aren't mutation semantics preserved?** Sharing is the purpose of the transformation. Mutation reveals identity.
 

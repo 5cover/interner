@@ -1,16 +1,12 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { runInNewContext } from 'node:vm'
 import { intern } from '../../src/index.js'
 
 test('unsupported semantic categories reject predictably', () => {
-  class Custom {}
   class ArraySubclass extends Array {}
   class DateSubclass extends Date {}
   class RegExpSubclass extends RegExp {}
   const unsupported: unknown[] = [
-    new Custom(),
-    Object.create(null),
     new ArraySubclass(),
     new DateSubclass(),
     new RegExpSubclass('a'),
@@ -30,7 +26,6 @@ test('unsupported semantic categories reject predictably', () => {
     new DataView(new ArrayBuffer(4)),
     new SharedArrayBuffer(4),
     new URL('https://example.org'),
-    runInNewContext('({})'),
     Object.create(Date.prototype),
     Object.create(RegExp.prototype),
     Object.create(Array.prototype),

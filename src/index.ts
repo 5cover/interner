@@ -1,4 +1,5 @@
 import { builtin } from './builtins/index.js'
+import { objectAdapter } from './builtins/object.js'
 import { definition } from './extension/define.js'
 import { extensionAdapter } from './extension/runtime.js'
 import { acyclic, bottomUp } from './graph/acyclic.js'
@@ -13,9 +14,10 @@ export type { Atom, ExtensionDefinition, InternOptions } from './types.js'
 
 /**
  * Returns a quotienting clone with maximal sharing of equivalent subvalues.
- * Reconstructed graph nodes are fresh; unmatched opaque symbol and function leaves
- * are returned unchanged.
- * Supports primitives, plain objects/arrays with all own property descriptors, Date and RegExp. Unmatched
+ * Reconstructed structural nodes are fresh; unmatched opaque symbol and function
+ * leaves and ordinary-object prototype references are returned unchanged.
+ * Supports primitives, ordinary objects with opaque preserved prototypes, arrays with
+ * all own property descriptors, Date and RegExp. Unmatched
  * symbols and functions are forwarded by identity as opaque leaves. Extensions may
  * instead give matching symbols and functions domain-specific graph semantics.
  * Other unsupported values throw TypeError. Explicit extensions supply custom
@@ -30,12 +32,14 @@ export type { Atom, ExtensionDefinition, InternOptions } from './types.js'
 export function intern<const T>(value: T, options?: InternOptions): T {
   const extensions = [...(options?.extensions ?? [])].map(handle => ({ handle, runtime: definition(handle) }))
   const graph = capture(value, (candidate, location) => {
-    if (typeof candidate === 'object' && candidate !== null) {
+    const ordinary = typeof candidate === 'object' && candidate !== null
+    if (ordinary) {
       const adapter = builtin(candidate, location)
       if (adapter) return adapter
     }
     for (const { handle, runtime } of extensions)
       if (runtime.match(candidate)) return extensionAdapter(candidate, handle, runtime, location)
+    if (ordinary) return objectAdapter(candidate, location)
     if (typeof candidate === 'symbol' || typeof candidate === 'function') return undefined
     throw new TypeError(`Unsupported object prototype or kind at ${location}`)
   })

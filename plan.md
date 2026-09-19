@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-`interner` transforms a supported JavaScript value graph into a fresh, observationally equivalent graph with maximal sharing of equivalent subvalues.
+`interner` transforms a supported JavaScript value graph into fresh reconstructed structural nodes with maximal sharing of equivalent subvalues. Opaque preserved references, including ordinary-object prototypes, are intentionally retained from the input.
 
 The motivating example is repetitive generated data:
 
@@ -180,16 +180,12 @@ Version 1 should support:
 | `string`              | exact primitive value                                                                           |
 | `number`              | SameValue semantics, including `NaN` and `-0`                                                   |
 | `bigint`              | exact numeric value                                                                             |
-| ordinary plain object | ordered own property descriptors and recursively observed data values or accessor functions     |
+| ordinary object       | opaque prototype identity; ordered own property descriptors and recursively observed data values or accessor functions |
 | `Array`               | length, holes, ordered own elements/properties and descriptors, recursively observed edges      |
 | `Date`                | standard Date brand and time value                                                              |
 | `RegExp`              | standard RegExp brand, source and flags, with structured-clone-compatible `lastIndex` semantics |
 
-Plain object support requires the exact standard prototype:
-
-```ts
-Object.getPrototypeOf(value) === Object.prototype
-```
+Ordinary object support accepts any prototype, including null, custom and foreign-realm prototypes. The prototype is compared by reference identity, retained on allocation, and never traversed, cloned, validated or interned. Arrays, Date and RegExp retain their exact-local-prototype requirements.
 
 Every own string or symbol property participates through its complete descriptor. Data descriptors contribute their flags and value; accessor descriptors contribute their flags and getter/setter references without invoking either function.
 
@@ -206,7 +202,6 @@ It is not safe according to the package philosophy. That decision belongs to an 
 Reject rather than guess for:
 
 - application-defined class instances;
-- objects with unfamiliar prototypes;
 - promises;
 - proxies;
 - weak collections;
@@ -1218,7 +1213,7 @@ The README should explicitly answer:
 
 > Why doesn't `interner` inspect arbitrary class instances?
 
-Because properties alone are not a definition of an application's object semantics. `interner` refuses to invent one for unfamiliar prototypes; it fully specifies the standard plain-object and Array descriptor model.
+Because properties alone are not a definition of an application's object semantics. `interner` fully specifies ordinary own-property and opaque-prototype treatment, but an extension is needed when inherited behavior itself needs domain-specific semantics.
 
 > Why aren't mutation semantics preserved?
 
@@ -1361,7 +1356,7 @@ Implement in this order:
 
 Version 1 is ready when all of these statements are defensible:
 
-> For every value in the documented built-in domain, `intern()` returns a fresh value preserving every documented non-identity observation.
+> For every value in the documented built-in domain, `intern()` returns fresh reconstructed structural nodes preserving every documented non-identity observation. Opaque preserved references, including prototypes, are intentionally excluded from whole-graph freshness.
 
 > Every pair of mergeable equivalent nodes in the result has been coalesced.
 

@@ -12,7 +12,7 @@ export function reconstruct(graph: Graph, classes: readonly number[]): unknown {
   for (const [cls, node] of representatives) {
     const value = node.adapter.allocate()
     if ((typeof value === 'object' && value !== null) || typeof value === 'function') {
-      if (graph.sources.has(value) || allocatedObjects.has(value))
+      if (graph.sources.has(value) || graph.opaqueObjects.has(value) || allocatedObjects.has(value))
         throw new TypeError(`Allocation must be fresh for class ${cls}`)
       allocatedObjects.add(value)
     } else if (typeof value === 'symbol') {

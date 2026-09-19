@@ -3,11 +3,13 @@ import { isAtom, type Adapter, type AtomObservation, type Graph, type Node, type
 
 export function capture(value: unknown, classify: (value: unknown, location: string) => Adapter | undefined): Graph {
   const sources = new WeakMap<object, number>()
+  const opaqueObjects = new WeakMap<object, number>()
   const sourceSymbols = new Set<symbol>()
   const symbolNodes = new Map<symbol, number>()
   const functions = new WeakMap<object, number>()
   const symbols = new Map<symbol, number>()
   let functionCount = 0
+  let opaqueObjectCount = 0
   const queue: { readonly adapter: Adapter }[] = []
   const nodes: Node[] = []
   const kinds = new Map<object, number>()
@@ -34,6 +36,15 @@ export function capture(value: unknown, classify: (value: unknown, location: str
     if (typeof value === 'symbol') return { symbol: value, identity: symbolIdentity(value) }
     if (typeof value === 'function') return { callable: value, identity: functionIdentity(value) }
     return { atom: value }
+  }
+
+  function observeOpaque(value: object): AtomObservation {
+    let identity = opaqueObjects.get(value)
+    if (identity === undefined) {
+      identity = opaqueObjectCount++
+      opaqueObjects.set(value, identity)
+    }
+    return { opaque: value, identity }
   }
 
   function ref(value: unknown, location: string): Ref {
@@ -75,10 +86,10 @@ export function capture(value: unknown, classify: (value: unknown, location: str
     }
     nodes.push({
       kind,
-      atoms: adapter.atoms.map(observeAtom),
+      atoms: [...adapter.atoms.map(observeAtom), ...(adapter.opaque?.map(observeOpaque) ?? [])],
       adapter,
       edges: adapter.edges.map((edge, index) => ref(edge, `node ${id}, edge ${index}`)),
     })
   }
-  return { root, nodes, sources, sourceSymbols }
+  return { root, nodes, sources, opaqueObjects, sourceSymbols }
 }

@@ -4,6 +4,8 @@ import type { Adapter } from '../graph/model.js'
 const kind = {}
 const data = 'data'
 const accessor = 'accessor'
+const nullPrototype = 'prototype:null'
+const objectPrototype = 'prototype:object'
 
 interface DataProperty {
   readonly kind: typeof data
@@ -109,11 +111,13 @@ export function hydrateProperties(target: object, layout: readonly PropertyLayou
 
 export function objectAdapter(value: object, location: string): Adapter {
   const captured = properties(value, location)
+  const prototype = Object.getPrototypeOf(value)
   return {
     kind,
-    atoms: captured.atoms,
+    atoms: [...captured.atoms, prototype === null ? nullPrototype : objectPrototype],
+    opaque: prototype === null ? [] : [prototype],
     edges: captured.edges,
-    allocate: () => ({}),
+    allocate: () => Object.create(prototype),
     hydrate: (target, edges) => hydrateProperties(target as object, captured.layout, edges),
   }
 }
