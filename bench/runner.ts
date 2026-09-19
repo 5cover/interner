@@ -1,5 +1,5 @@
 import { performance } from 'node:perf_hooks'
-import { stringify } from 'yaml'
+import { dump } from 'js-yaml'
 import { intern } from '../src/index.js'
 import { measureRetainedHeap, unavailableRetainedHeap } from './memory/measure.js'
 import { timingMetrics } from './statistics.js'
@@ -23,7 +23,7 @@ export async function runFixture(fixture: BenchmarkFixture, options: RunnerOptio
     ? { beforeBytes: utf8(JSON.stringify(source)), afterBytes: utf8(JSON.stringify(quotient)) }
     : undefined
   const yaml = fixture.capabilities.yaml
-    ? { beforeBytes: utf8(stringify(source)), afterBytes: utf8(stringify(quotient)) }
+    ? { beforeBytes: utf8(dump(source)), afterBytes: utf8(dump(quotient)) }
     : undefined
   const serialization: BenchmarkResult['serialization'] = { ...(json ? { json } : {}), ...(yaml ? { yaml } : {}) }
 
@@ -36,14 +36,14 @@ export async function runFixture(fixture: BenchmarkFixture, options: RunnerOptio
   if (fixture.capabilities.yaml && options.only === 'all') {
     yamlBefore = time(warmupSamples, timingSamples, () => {
       const value = fixture.create()
-      stringify(value)
+      dump(value)
     })
     yamlAfter = time(warmupSamples, timingSamples, () => {
       const value = intern(fixture.create())
-      stringify(value)
+      dump(value)
     })
     internAndYaml = time(warmupSamples, timingSamples, () => {
-      stringify(intern(fixture.create()))
+      dump(intern(fixture.create()))
     })
   }
   const timing: BenchmarkResult['timing'] = {

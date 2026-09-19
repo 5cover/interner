@@ -67,7 +67,7 @@ Timing uses `performance.now()`, warmup iterations and repeated measured iterati
 
 Each intern sample calls the fixture factory before starting the timer, then measures only `intern(value)`. The source is therefore equivalent and fresh rather than an already-interned result. YAML measurements separately time source serialization, interned serialization, and the end-to-end `intern()` plus YAML workflow.
 
-Serialized sizes use `Buffer.byteLength(text, 'utf8')`. JSON is a control because ordinary JSON cannot preserve sharing. YAML uses the `yaml` package with its normal alias support.
+Serialized sizes use `Buffer.byteLength(text, 'utf8')`. JSON is a control because ordinary JSON cannot preserve sharing. YAML uses `js-yaml` with its normal alias support.
 
 ## Results and plots
 

@@ -70,6 +70,7 @@ export interface BenchmarkEnvironment {
   readonly benchmarkSchemaVersion: string
   readonly structuralSizeModelVersion: string | null
   readonly memlabVersion: string
+  readonly yamlLibrary: string
   readonly yamlVersion: string
   readonly zodVersion: string
 }

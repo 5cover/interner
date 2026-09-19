@@ -61,11 +61,11 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 41.6 KiB | 2.3 KiB | -39.3 KiB | -94.5% |
+| YAML UTF-8 bytes | 41.6 KiB | 2.4 KiB | -39.3 KiB | -94.3% |
 | JSON UTF-8 bytes | 25.6 KiB | 25.6 KiB | 0 B | 0.0% |
-| Intern transformation time | n/a | 8.82 ms | n/a | n/a |
-| YAML serialization time | 18.0 ms | 9.31 ms | -8.71 ms | -48.3% |
-| End-to-end YAML time | 18.0 ms | 9.58 ms | -8.43 ms | -46.8% |
+| Intern transformation time | n/a | 9.78 ms | n/a | n/a |
+| YAML serialization time | 11.4 ms | 9.59 ms | -1.86 ms | -16.2% |
+| End-to-end YAML time | 11.4 ms | 9.25 ms | -2.20 ms | -19.2% |
 
 ## openapi-document
 
@@ -108,11 +108,11 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 31.6 KiB | 1.5 KiB | -30.1 KiB | -95.2% |
+| YAML UTF-8 bytes | 31.6 KiB | 1.6 KiB | -30.0 KiB | -94.9% |
 | JSON UTF-8 bytes | 17.1 KiB | 17.1 KiB | 0 B | 0.0% |
-| Intern transformation time | n/a | 2.30 ms | n/a | n/a |
-| YAML serialization time | 9.44 ms | 2.74 ms | -6.71 ms | -71.0% |
-| End-to-end YAML time | 9.44 ms | 2.79 ms | -6.66 ms | -70.5% |
+| Intern transformation time | n/a | 2.16 ms | n/a | n/a |
+| YAML serialization time | 4.12 ms | 2.33 ms | -1.79 ms | -43.4% |
+| End-to-end YAML time | 4.12 ms | 2.11 ms | -2.00 ms | -48.7% |
 
 ## typescript-source-ast
 
@@ -155,11 +155,11 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 19.2 KiB | 13.4 KiB | -5.8 KiB | -30.1% |
+| YAML UTF-8 bytes | 19.2 KiB | 13.8 KiB | -5.4 KiB | -28.2% |
 | JSON UTF-8 bytes | 9.9 KiB | 9.9 KiB | 0 B | 0.0% |
-| Intern transformation time | n/a | 3.77 ms | n/a | n/a |
-| YAML serialization time | 7.84 ms | 7.38 ms | -0.46 ms | -5.8% |
-| End-to-end YAML time | 7.84 ms | 6.74 ms | -1.10 ms | -14.0% |
+| Intern transformation time | n/a | 3.26 ms | n/a | n/a |
+| YAML serialization time | 3.16 ms | 4.38 ms | 1.21 ms | 38.4% |
+| End-to-end YAML time | 3.16 ms | 4.54 ms | 1.38 ms | 43.5% |
 
 ## configuration-tree
 
@@ -202,11 +202,11 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 6.6 KiB | 699 B | -5.9 KiB | -89.6% |
+| YAML UTF-8 bytes | 6.6 KiB | 771 B | -5.8 KiB | -88.6% |
 | JSON UTF-8 bytes | 5.5 KiB | 5.5 KiB | 0 B | 0.0% |
-| Intern transformation time | n/a | 0.72 ms | n/a | n/a |
-| YAML serialization time | 3.73 ms | 1.37 ms | -2.36 ms | -63.3% |
-| End-to-end YAML time | 3.73 ms | 1.33 ms | -2.39 ms | -64.2% |
+| Intern transformation time | n/a | 0.67 ms | n/a | n/a |
+| YAML serialization time | 1.29 ms | 0.94 ms | -0.34 ms | -26.7% |
+| End-to-end YAML time | 1.29 ms | 0.96 ms | -0.33 ms | -25.3% |
 
 ## duplicate-small-subtrees
 
@@ -249,11 +249,11 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 146.1 KiB | 4.9 KiB | -141.2 KiB | -96.7% |
+| YAML UTF-8 bytes | 146.1 KiB | 7.2 KiB | -138.9 KiB | -95.1% |
 | JSON UTF-8 bytes | 127.3 KiB | 127.3 KiB | 0 B | 0.0% |
-| Intern transformation time | n/a | 9.91 ms | n/a | n/a |
-| YAML serialization time | 55.2 ms | 11.2 ms | -43.98 ms | -79.7% |
-| End-to-end YAML time | 55.2 ms | 11.4 ms | -43.77 ms | -79.3% |
+| Intern transformation time | n/a | 11.4 ms | n/a | n/a |
+| YAML serialization time | 13.2 ms | 10.9 ms | -2.36 ms | -17.8% |
+| End-to-end YAML time | 13.2 ms | 11.2 ms | -2.02 ms | -15.2% |
 
 ## already-shared
 
@@ -296,11 +296,11 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 5.0 KiB | 5.0 KiB | -57 B | -1.1% |
+| YAML UTF-8 bytes | 7.4 KiB | 7.3 KiB | -51 B | -0.7% |
 | JSON UTF-8 bytes | 223.4 KiB | 223.4 KiB | 0 B | 0.0% |
-| Intern transformation time | n/a | 0.92 ms | n/a | n/a |
-| YAML serialization time | 1.99 ms | 2.64 ms | 0.65 ms | 32.8% |
-| End-to-end YAML time | 1.99 ms | 2.64 ms | 0.65 ms | 32.6% |
+| Intern transformation time | n/a | 1.35 ms | n/a | n/a |
+| YAML serialization time | 0.62 ms | 1.75 ms | 1.13 ms | 182.1% |
+| End-to-end YAML time | 0.62 ms | 1.38 ms | 0.76 ms | 122.3% |
 
 ## self-cycles
 
@@ -343,10 +343,10 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 17.4 KiB | 3.0 KiB | -14.4 KiB | -83.0% |
-| Intern transformation time | n/a | 2.41 ms | n/a | n/a |
-| YAML serialization time | 17.7 ms | 3.16 ms | -14.52 ms | -82.2% |
-| End-to-end YAML time | 17.7 ms | 3.01 ms | -14.67 ms | -83.0% |
+| YAML UTF-8 bytes | 20.3 KiB | 4.4 KiB | -15.9 KiB | -78.2% |
+| Intern transformation time | n/a | 3.20 ms | n/a | n/a |
+| YAML serialization time | 4.23 ms | 2.54 ms | -1.69 ms | -40.0% |
+| End-to-end YAML time | 4.23 ms | 3.16 ms | -1.08 ms | -25.4% |
 
 ## scaling-duplicate-small-1000
 
@@ -389,11 +389,11 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 150.4 KiB | 6.0 KiB | -144.4 KiB | -96.0% |
+| YAML UTF-8 bytes | 150.4 KiB | 8.9 KiB | -141.5 KiB | -94.1% |
 | JSON UTF-8 bytes | 133.8 KiB | 133.8 KiB | 0 B | 0.0% |
-| Intern transformation time | n/a | 9.83 ms | n/a | n/a |
-| YAML serialization time | 58.8 ms | 11.5 ms | -47.37 ms | -80.5% |
-| End-to-end YAML time | 58.8 ms | 11.6 ms | -47.24 ms | -80.3% |
+| Intern transformation time | n/a | 12.5 ms | n/a | n/a |
+| YAML serialization time | 12.8 ms | 11.5 ms | -1.28 ms | -10.0% |
+| End-to-end YAML time | 12.8 ms | 11.1 ms | -1.68 ms | -13.1% |
 
 ## scaling-duplicate-small-2500
 
@@ -436,11 +436,11 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 376.0 KiB | 14.8 KiB | -361.2 KiB | -96.1% |
+| YAML UTF-8 bytes | 376.0 KiB | 22.1 KiB | -353.9 KiB | -94.1% |
 | JSON UTF-8 bytes | 334.5 KiB | 334.5 KiB | 0 B | 0.0% |
-| Intern transformation time | n/a | 29.0 ms | n/a | n/a |
-| YAML serialization time | 122.0 ms | 32.1 ms | -89.90 ms | -73.7% |
-| End-to-end YAML time | 122.0 ms | 33.3 ms | -88.73 ms | -72.7% |
+| Intern transformation time | n/a | 33.3 ms | n/a | n/a |
+| YAML serialization time | 33.2 ms | 36.5 ms | 3.31 ms | 10.0% |
+| End-to-end YAML time | 33.2 ms | 34.4 ms | 1.17 ms | 3.5% |
 
 ## seed-highly-duplicated
 
@@ -483,11 +483,11 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 9.3 KiB | 4.0 KiB | -5.3 KiB | -56.9% |
+| YAML UTF-8 bytes | 10.1 KiB | 4.8 KiB | -5.3 KiB | -52.7% |
 | JSON UTF-8 bytes | 24.8 KiB | 24.8 KiB | 0 B | 0.0% |
-| Intern transformation time | n/a | 1.22 ms | n/a | n/a |
-| YAML serialization time | 5.98 ms | 3.30 ms | -2.68 ms | -44.9% |
-| End-to-end YAML time | 5.98 ms | 3.35 ms | -2.63 ms | -44.0% |
+| Intern transformation time | n/a | 1.27 ms | n/a | n/a |
+| YAML serialization time | 2.29 ms | 2.28 ms | -0.00 ms | -0.2% |
+| End-to-end YAML time | 2.29 ms | 2.69 ms | 0.41 ms | 17.7% |
 
 ## seed-cyclic
 
@@ -530,8 +530,8 @@ Percentage deltas use `(after - before) / before * 100`. End-to-end YAML time co
 
 | Measurement | Before | After | Absolute delta | Percentage delta |
 | --- | ---: | ---: | ---: | ---: |
-| YAML UTF-8 bytes | 10.2 KiB | 8.0 KiB | -2.1 KiB | -21.1% |
-| Intern transformation time | n/a | 2.23 ms | n/a | n/a |
-| YAML serialization time | 5.94 ms | 5.57 ms | -0.37 ms | -6.3% |
-| End-to-end YAML time | 5.94 ms | 6.53 ms | 0.59 ms | 10.0% |
+| YAML UTF-8 bytes | 11.2 KiB | 9.0 KiB | -2.2 KiB | -19.7% |
+| Intern transformation time | n/a | 3.08 ms | n/a | n/a |
+| YAML serialization time | 3.26 ms | 4.68 ms | 1.42 ms | 43.7% |
+| End-to-end YAML time | 3.26 ms | 4.12 ms | 0.86 ms | 26.5% |
 

@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "run": {
-    "id": "2026-09-18T22-31-34.468Z-de32f285",
-    "createdAt": "2026-09-18T22:31:34.468Z",
+    "id": "2026-09-19T07-25-05.774Z-304e0b36",
+    "createdAt": "2026-09-19T07:25:05.774Z",
     "profile": "quick",
     "only": "all"
   },
@@ -13,11 +13,12 @@
     "platform": "linux",
     "architecture": "x64",
     "packageVersion": "1.0.0",
-    "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+    "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
     "benchmarkSchemaVersion": "1.0.0",
     "structuralSizeModelVersion": null,
     "memlabVersion": "2.0.5",
-    "yamlVersion": "2.9.1",
+    "yamlLibrary": "js-yaml",
+    "yamlVersion": "5.4.2",
     "zodVersion": "4.6.5"
   },
   "results": [
@@ -37,11 +38,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -103,64 +105,64 @@
         },
         "yaml": {
           "beforeBytes": 42646,
-          "afterBytes": 2354
+          "afterBytes": 2441
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 8.823525000000018,
-          "minimumMilliseconds": 8.66644999999994,
-          "maximumMilliseconds": 9.575286000000006,
+          "medianMilliseconds": 9.779818999999975,
+          "minimumMilliseconds": 9.42159700000002,
+          "maximumMilliseconds": 11.386703999999895,
           "samplesMilliseconds": [
-            9.575286000000006,
-            8.756139000000076,
-            8.66644999999994,
-            8.741461999999956,
-            8.928442999999788,
-            9.266415999999936,
-            8.823525000000018
+            11.386703999999895,
+            9.779818999999975,
+            9.673048999999992,
+            9.42159700000002,
+            9.885978999999907,
+            11.349995000000035,
+            9.6546850000002
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 18.014159999999947,
-          "minimumMilliseconds": 16.88070300000004,
-          "maximumMilliseconds": 18.561866999999893,
+          "medianMilliseconds": 11.445774999999912,
+          "minimumMilliseconds": 10.203144000000066,
+          "maximumMilliseconds": 13.444907000000057,
           "samplesMilliseconds": [
-            18.561866999999893,
-            18.103746999999885,
-            18.13355300000012,
-            18.014159999999947,
-            17.889445000000023,
-            16.88070300000004,
-            17.689370999999937
+            11.17165100000011,
+            11.445774999999912,
+            13.444907000000057,
+            12.558193000000074,
+            10.993496999999934,
+            10.203144000000066,
+            12.008700999999974
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 9.306641000000127,
-          "minimumMilliseconds": 9.155177999999978,
-          "maximumMilliseconds": 9.876271000000088,
+          "medianMilliseconds": 9.588629999999966,
+          "minimumMilliseconds": 9.028500000000122,
+          "maximumMilliseconds": 10.654551000000083,
           "samplesMilliseconds": [
-            9.616473000000042,
-            9.580105000000003,
-            9.876271000000088,
-            9.306641000000127,
-            9.233715000000075,
-            9.155177999999978,
-            9.255585999999994
+            9.588629999999966,
+            9.936613999999963,
+            10.133342999999968,
+            10.654551000000083,
+            9.121353999999883,
+            9.24394499999994,
+            9.028500000000122
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 9.58288000000016,
-          "minimumMilliseconds": 9.132444000000078,
-          "maximumMilliseconds": 9.814404999999851,
+          "medianMilliseconds": 9.247009999999818,
+          "minimumMilliseconds": 9.003703000000087,
+          "maximumMilliseconds": 10.124847000000045,
           "samplesMilliseconds": [
-            9.270453999999972,
-            9.40075899999988,
-            9.814404999999851,
-            9.132444000000078,
-            9.748029999999972,
-            9.58288000000016,
-            9.597968000000037
+            9.003703000000087,
+            9.123368000000028,
+            9.72875399999998,
+            9.247009999999818,
+            9.820095000000038,
+            9.236509999999953,
+            10.124847000000045
           ]
         }
       }
@@ -181,11 +183,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -247,64 +250,64 @@
         },
         "yaml": {
           "beforeBytes": 32371,
-          "afterBytes": 1567
+          "afterBytes": 1651
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 2.300336000000243,
-          "minimumMilliseconds": 2.10627199999999,
-          "maximumMilliseconds": 2.408429000000069,
+          "medianMilliseconds": 2.1629979999997886,
+          "minimumMilliseconds": 2.1184049999992567,
+          "maximumMilliseconds": 2.3061870000001363,
           "samplesMilliseconds": [
-            2.135465999999724,
-            2.3455599999997503,
-            2.2027829999997266,
-            2.408429000000069,
-            2.305475000000115,
-            2.300336000000243,
-            2.10627199999999
+            2.3061870000001363,
+            2.1629979999997886,
+            2.1184049999992567,
+            2.171613999999863,
+            2.161485000000539,
+            2.1733280000007653,
+            2.150966000000153
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 9.443778999999267,
-          "minimumMilliseconds": 9.106657000000268,
-          "maximumMilliseconds": 9.662900000000263,
+          "medianMilliseconds": 4.118677000000389,
+          "minimumMilliseconds": 3.469528999999966,
+          "maximumMilliseconds": 4.550969000000805,
           "samplesMilliseconds": [
-            9.662900000000263,
-            9.215119999999843,
-            9.443778999999267,
-            9.584202999999434,
-            9.64176100000077,
-            9.171108000000459,
-            9.106657000000268
+            4.356464000000415,
+            3.742833000000246,
+            3.6665800000000672,
+            3.469528999999966,
+            4.38428599999952,
+            4.118677000000389,
+            4.550969000000805
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 2.7382669999997233,
-          "minimumMilliseconds": 2.347404000000097,
-          "maximumMilliseconds": 2.999268000000484,
+          "medianMilliseconds": 2.33260700000028,
+          "minimumMilliseconds": 1.919742000000042,
+          "maximumMilliseconds": 2.6320089999999254,
           "samplesMilliseconds": [
-            2.999268000000484,
-            2.5658439999997427,
-            2.7382669999997233,
-            2.71885199999997,
-            2.795606000000589,
-            2.347404000000097,
-            2.921911999999793
+            2.6320089999999254,
+            2.33260700000028,
+            2.2289220000002388,
+            2.5268409999998767,
+            2.4547759999995833,
+            1.919742000000042,
+            2.1434110000000146
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 2.78503499999988,
-          "minimumMilliseconds": 2.5291660000002594,
-          "maximumMilliseconds": 2.955434999999852,
+          "medianMilliseconds": 2.1146779999999126,
+          "minimumMilliseconds": 1.864849000000504,
+          "maximumMilliseconds": 2.2015510000001086,
           "samplesMilliseconds": [
-            2.78503499999988,
-            2.610347000000729,
-            2.925760000000082,
-            2.5291660000002594,
-            2.785627000000204,
-            2.7665509999997084,
-            2.955434999999852
+            2.199536999999509,
+            2.0127870000005714,
+            2.1146779999999126,
+            2.097555999999713,
+            2.12623000000076,
+            1.864849000000504,
+            2.2015510000001086
           ]
         }
       }
@@ -323,11 +326,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -389,64 +393,64 @@
         },
         "yaml": {
           "beforeBytes": 19680,
-          "afterBytes": 13766
+          "afterBytes": 14139
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 3.7711550000003626,
-          "minimumMilliseconds": 3.09441599999991,
-          "maximumMilliseconds": 4.159123999999792,
+          "medianMilliseconds": 3.2620500000011816,
+          "minimumMilliseconds": 3.1311040000000503,
+          "maximumMilliseconds": 3.4848390000006475,
           "samplesMilliseconds": [
-            4.159123999999792,
-            3.7711550000003626,
-            3.4557629999999335,
-            4.037514999999985,
-            3.9121799999993527,
-            3.3367809999999736,
-            3.09441599999991
+            3.4848390000006475,
+            3.480330000000322,
+            3.375694000000294,
+            3.1311040000000503,
+            3.22145399999863,
+            3.2620500000011816,
+            3.136003999999957
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 7.843086000000767,
-          "minimumMilliseconds": 7.155556000001525,
-          "maximumMilliseconds": 9.549978999999439,
+          "medianMilliseconds": 3.1615419999998267,
+          "minimumMilliseconds": 2.949214000000211,
+          "maximumMilliseconds": 4.211081000001286,
           "samplesMilliseconds": [
-            7.155556000001525,
-            7.7024820000006,
-            7.265801999999894,
-            8.17634100000032,
-            7.843086000000767,
-            8.678242999998474,
-            9.549978999999439
+            3.1615419999998267,
+            2.9824859999989712,
+            2.949214000000211,
+            3.0399639999995998,
+            3.25342400000045,
+            4.211081000001286,
+            3.8171720000009373
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 7.38489600000139,
-          "minimumMilliseconds": 6.849592000000484,
-          "maximumMilliseconds": 8.215274000000136,
+          "medianMilliseconds": 4.375508999999511,
+          "minimumMilliseconds": 3.934192000000621,
+          "maximumMilliseconds": 4.582126999999673,
           "samplesMilliseconds": [
-            7.198706000001039,
-            7.463192999999592,
-            7.82897899999989,
-            7.027165000001332,
-            6.849592000000484,
-            7.38489600000139,
-            8.215274000000136
+            4.582126999999673,
+            4.460608999999749,
+            4.070005999999921,
+            4.4551789999986795,
+            4.375508999999511,
+            4.091647000001103,
+            3.934192000000621
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 6.7415989999990416,
-          "minimumMilliseconds": 6.297024999999849,
-          "maximumMilliseconds": 9.043817999998282,
+          "medianMilliseconds": 4.5371330000016314,
+          "minimumMilliseconds": 3.8559750000003987,
+          "maximumMilliseconds": 5.290997000000061,
           "samplesMilliseconds": [
-            6.876341999999568,
-            6.537145000000237,
-            6.7415989999990416,
-            6.404936999999336,
-            6.297024999999849,
-            6.798316000000341,
-            9.043817999998282
+            3.8559750000003987,
+            4.538375000000087,
+            4.380518999998458,
+            4.36687399999937,
+            4.5371330000016314,
+            5.290997000000061,
+            4.625108000000182
           ]
         }
       }
@@ -467,11 +471,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -533,64 +538,64 @@
         },
         "yaml": {
           "beforeBytes": 6744,
-          "afterBytes": 699
+          "afterBytes": 771
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 0.7195600000013656,
-          "minimumMilliseconds": 0.6639260000010836,
-          "maximumMilliseconds": 1.0854160000017146,
+          "medianMilliseconds": 0.6734140000007756,
+          "minimumMilliseconds": 0.6060270000016317,
+          "maximumMilliseconds": 0.7440060000008089,
           "samplesMilliseconds": [
-            1.0854160000017146,
-            0.6639260000010836,
-            0.6891530000029888,
-            0.8326719999968191,
-            0.6928700000025856,
-            0.86039399999936,
-            0.7195600000013656
+            0.6060270000016317,
+            0.6898240000009537,
+            0.6596479999971052,
+            0.658556000002136,
+            0.6734140000007756,
+            0.7440060000008089,
+            0.7238989999968908
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 3.727363999998488,
-          "minimumMilliseconds": 3.3337849999988975,
-          "maximumMilliseconds": 3.8784670000022743,
+          "medianMilliseconds": 1.2889779999968596,
+          "minimumMilliseconds": 1.1390969999993104,
+          "maximumMilliseconds": 2.4247899999973015,
           "samplesMilliseconds": [
-            3.3337849999988975,
-            3.7903109999970184,
-            3.5270979999986594,
-            3.8784670000022743,
-            3.591308000002755,
-            3.727363999998488,
-            3.835426000001462
+            1.2788889999974344,
+            1.4083019999998214,
+            1.1390969999993104,
+            1.1446079999986978,
+            1.2889779999968596,
+            2.4247899999973015,
+            1.4451019999978598
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 1.369609000001219,
-          "minimumMilliseconds": 1.0610909999995783,
-          "maximumMilliseconds": 1.637061999997968,
+          "medianMilliseconds": 0.9448329999977432,
+          "minimumMilliseconds": 0.8080670000017562,
+          "maximumMilliseconds": 1.098560999998881,
           "samplesMilliseconds": [
-            1.637061999997968,
-            1.0610909999995783,
-            1.369609000001219,
-            1.3359359999994922,
-            1.47099999999773,
-            1.2369109999999637,
-            1.5034210000012536
+            1.0332079999971029,
+            0.9246649999986403,
+            0.8795400000017253,
+            1.098560999998881,
+            0.8080670000017562,
+            0.9942050000026939,
+            0.9448329999977432
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 1.33382299999721,
-          "minimumMilliseconds": 1.1415219999980764,
-          "maximumMilliseconds": 1.4863489999988815,
+          "medianMilliseconds": 0.9630169999982172,
+          "minimumMilliseconds": 0.803527000000031,
+          "maximumMilliseconds": 1.7219110000005458,
           "samplesMilliseconds": [
-            1.4863489999988815,
-            1.1415219999980764,
-            1.2478009999977075,
-            1.33382299999721,
-            1.2938069999981963,
-            1.4212770000012824,
-            1.4042450000015378
+            1.5277060000007623,
+            1.7219110000005458,
+            0.803527000000031,
+            0.8998990000000049,
+            0.8660049999998591,
+            0.9630169999982172,
+            1.0586469999980181
           ]
         }
       }
@@ -611,11 +616,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -677,64 +683,64 @@
         },
         "yaml": {
           "beforeBytes": 149600,
-          "afterBytes": 4987
+          "afterBytes": 7387
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 9.905334999999468,
-          "minimumMilliseconds": 9.641701000000467,
-          "maximumMilliseconds": 10.699165000001813,
+          "medianMilliseconds": 11.398636999998416,
+          "minimumMilliseconds": 9.866622000001371,
+          "maximumMilliseconds": 13.375165000001289,
           "samplesMilliseconds": [
-            10.699165000001813,
-            10.511442999999417,
-            9.708466000000044,
-            10.136197999996511,
-            9.641701000000467,
-            9.905334999999468,
-            9.867914999998902
+            11.124693000001571,
+            12.007058000002871,
+            11.356908999998268,
+            11.398636999998416,
+            13.375165000001289,
+            11.440935999999056,
+            9.866622000001371
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 55.21297400000185,
-          "minimumMilliseconds": 40.83744300000035,
-          "maximumMilliseconds": 60.830073999997694,
+          "medianMilliseconds": 13.241884999999456,
+          "minimumMilliseconds": 10.934035999998741,
+          "maximumMilliseconds": 22.15646199999901,
           "samplesMilliseconds": [
-            60.830073999997694,
-            40.83744300000035,
-            54.33027800000127,
-            56.92246199999863,
-            56.436729999997624,
-            54.88697200000024,
-            55.21297400000185
+            13.57430899999963,
+            13.241884999999456,
+            11.101749999997992,
+            22.15646199999901,
+            14.283759999998438,
+            11.43379300000015,
+            10.934035999998741
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 11.232866000002105,
-          "minimumMilliseconds": 10.475235000001703,
-          "maximumMilliseconds": 11.71904799999902,
+          "medianMilliseconds": 10.883791000000201,
+          "minimumMilliseconds": 10.277452999998786,
+          "maximumMilliseconds": 12.352767000000313,
           "samplesMilliseconds": [
-            11.008464999998978,
-            11.035957000000053,
-            11.550771999998688,
-            11.71904799999902,
-            11.232866000002105,
-            10.475235000001703,
-            11.35193900000013
+            10.277452999998786,
+            11.228508000000147,
+            10.62753000000157,
+            10.883791000000201,
+            10.455447000000277,
+            11.390621999998984,
+            12.352767000000313
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 11.447098000000551,
-          "minimumMilliseconds": 10.750230000001466,
-          "maximumMilliseconds": 11.826960999998846,
+          "medianMilliseconds": 11.22414999999819,
+          "minimumMilliseconds": 10.137340000001132,
+          "maximumMilliseconds": 12.349772000001394,
           "samplesMilliseconds": [
-            11.532557999998971,
-            11.826960999998846,
-            11.447098000000551,
-            11.13599400000021,
-            11.617216999999073,
-            10.806966000000102,
-            10.750230000001466
+            10.137340000001132,
+            10.906192999998893,
+            10.53190099999847,
+            11.597180000000662,
+            11.22414999999819,
+            12.349772000001394,
+            12.284669000000576
           ]
         }
       }
@@ -755,11 +761,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -820,65 +827,65 @@
           "afterBytes": 228801
         },
         "yaml": {
-          "beforeBytes": 5160,
-          "afterBytes": 5103
+          "beforeBytes": 7560,
+          "afterBytes": 7509
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 0.9198450000003504,
-          "minimumMilliseconds": 0.869751999998698,
-          "maximumMilliseconds": 1.3764629999968747,
+          "medianMilliseconds": 1.349982000003365,
+          "minimumMilliseconds": 0.7961640000030457,
+          "maximumMilliseconds": 1.4888040000005276,
           "samplesMilliseconds": [
-            1.3764629999968747,
-            0.9198450000003504,
-            0.9368880000001809,
-            0.9890459999987797,
-            0.904688000002352,
-            0.8921140000020387,
-            0.869751999998698
+            0.7961640000030457,
+            1.4888040000005276,
+            1.44110400000136,
+            1.4398010000004433,
+            1.349982000003365,
+            0.878657999997813,
+            0.9336509999993723
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 1.9895329999999376,
-          "minimumMilliseconds": 1.8664620000017749,
-          "maximumMilliseconds": 2.19895600000018,
+          "medianMilliseconds": 0.6185299999997369,
+          "minimumMilliseconds": 0.49506900000051246,
+          "maximumMilliseconds": 1.10557400000107,
           "samplesMilliseconds": [
-            2.19895600000018,
-            2.060947000001761,
-            2.0060039999989385,
-            1.8664620000017749,
-            1.9810270000016317,
-            1.879265999999916,
-            1.9895329999999376
+            0.4977340000004915,
+            0.5062800000014249,
+            1.10557400000107,
+            1.0473449999990407,
+            0.6185299999997369,
+            0.8972029999968072,
+            0.49506900000051246
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 2.6418269999994664,
-          "minimumMilliseconds": 2.176915000000008,
-          "maximumMilliseconds": 2.7226279999995313,
+          "medianMilliseconds": 1.7451750000000175,
+          "minimumMilliseconds": 1.1587340000005497,
+          "maximumMilliseconds": 1.981246999999712,
           "samplesMilliseconds": [
-            2.656003000000055,
-            2.176915000000008,
-            2.6907089999986056,
-            2.6418269999994664,
-            2.7226279999995313,
-            2.5951999999997497,
-            2.5465880000010657
+            1.4418949999999313,
+            1.5727100000003702,
+            1.1587340000005497,
+            1.900857000000542,
+            1.9057959999990999,
+            1.7451750000000175,
+            1.981246999999712
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 2.6381000000001222,
-          "minimumMilliseconds": 2.4587139999966894,
-          "maximumMilliseconds": 2.7629940000006172,
+          "medianMilliseconds": 1.3751109999975597,
+          "minimumMilliseconds": 1.1099020000001474,
+          "maximumMilliseconds": 2.163959999998042,
           "samplesMilliseconds": [
-            2.7629940000006172,
-            2.667685000000347,
-            2.7272369999991497,
-            2.5044589999997697,
-            2.5813230000021576,
-            2.4587139999966894,
-            2.6381000000001222
+            2.163959999998042,
+            1.2250679999997374,
+            1.3751109999975597,
+            1.4259149999998044,
+            1.4812290000008943,
+            1.1099020000001474,
+            1.2991079999992508
           ]
         }
       }
@@ -899,11 +906,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -960,65 +968,65 @@
       },
       "serialization": {
         "yaml": {
-          "beforeBytes": 17784,
-          "afterBytes": 3026
+          "beforeBytes": 20780,
+          "afterBytes": 4529
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 2.4071469999980764,
-          "minimumMilliseconds": 2.283906000004208,
-          "maximumMilliseconds": 2.9501759999984642,
+          "medianMilliseconds": 3.199723999998241,
+          "minimumMilliseconds": 2.4198010000036447,
+          "maximumMilliseconds": 3.5755890000000363,
           "samplesMilliseconds": [
-            2.4071469999980764,
-            2.9501759999984642,
-            2.283906000004208,
-            2.767572000004293,
-            2.7517730000035954,
-            2.3486069999999017,
-            2.3708479999986594
+            2.641616000000795,
+            3.415117000004102,
+            3.375722999997379,
+            3.199723999998241,
+            3.5755890000000363,
+            2.4198010000036447,
+            2.4559379999991506
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 17.679121000001032,
-          "minimumMilliseconds": 17.32861299999786,
-          "maximumMilliseconds": 19.102019999998447,
+          "medianMilliseconds": 4.232650999998441,
+          "minimumMilliseconds": 3.8446340000009513,
+          "maximumMilliseconds": 4.891578000002482,
           "samplesMilliseconds": [
-            17.845092000003206,
-            17.679121000001032,
-            17.32861299999786,
-            17.431385999996564,
-            17.809144999999262,
-            17.570266000002448,
-            19.102019999998447
+            4.891578000002482,
+            4.425092000004952,
+            4.80221999999776,
+            4.232650999998441,
+            4.052423000000999,
+            3.8446340000009513,
+            4.229787000003853
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 3.155030000001716,
-          "minimumMilliseconds": 2.747274000001198,
-          "maximumMilliseconds": 3.4541410000019823,
+          "medianMilliseconds": 2.5389629999990575,
+          "minimumMilliseconds": 2.32887999999366,
+          "maximumMilliseconds": 2.92822399999568,
           "samplesMilliseconds": [
-            2.747274000001198,
-            3.259104999997362,
-            3.037107999996806,
-            3.145881999997073,
-            3.2028490000011516,
-            3.4541410000019823,
-            3.155030000001716
+            2.4936779999989085,
+            2.508106000001135,
+            2.7930410000044503,
+            2.32887999999366,
+            2.92822399999568,
+            2.5999989999982063,
+            2.5389629999990575
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 3.008764999998675,
-          "minimumMilliseconds": 2.955686000001151,
-          "maximumMilliseconds": 3.189044000006106,
+          "medianMilliseconds": 3.155631000001449,
+          "minimumMilliseconds": 2.3408219999982975,
+          "maximumMilliseconds": 3.3547340000004624,
           "samplesMilliseconds": [
-            3.0709119999955874,
-            3.008764999998675,
-            3.013162999995984,
-            2.955686000001151,
-            2.9873349999979837,
-            2.981353000002855,
-            3.189044000006106
+            2.402347999995982,
+            3.1628340000024764,
+            2.3408219999982975,
+            2.5808319999996456,
+            3.3547340000004624,
+            3.155631000001449,
+            3.331381000003603
           ]
         }
       }
@@ -1040,11 +1048,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -1106,64 +1115,64 @@
         },
         "yaml": {
           "beforeBytes": 154000,
-          "afterBytes": 6154
+          "afterBytes": 9154
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 9.831016000003729,
-          "minimumMilliseconds": 9.495686000002024,
-          "maximumMilliseconds": 10.757674999993469,
+          "medianMilliseconds": 12.52573200000188,
+          "minimumMilliseconds": 10.850558999998611,
+          "maximumMilliseconds": 15.509139000001596,
           "samplesMilliseconds": [
-            9.719868000000133,
-            10.439877999997407,
-            9.831016000003729,
-            10.757674999993469,
-            10.63767899999948,
-            9.794957999998587,
-            9.495686000002024
+            10.850558999998611,
+            12.52573200000188,
+            15.509139000001596,
+            13.596550999995088,
+            13.495570999999472,
+            12.414854000002379,
+            11.545502000000852
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 58.83322700000281,
-          "minimumMilliseconds": 40.36329299999488,
-          "maximumMilliseconds": 62.95173500000237,
+          "medianMilliseconds": 12.799455000000307,
+          "minimumMilliseconds": 12.273669000001973,
+          "maximumMilliseconds": 25.747308999998495,
           "samplesMilliseconds": [
-            40.36329299999488,
-            62.95173500000237,
-            61.43461799999932,
-            58.83322700000281,
-            61.4737310000055,
-            57.71303500000067,
-            48.61691900000005
+            13.205898000000161,
+            12.273669000001973,
+            25.747308999998495,
+            15.59084299999813,
+            12.375750999999582,
+            12.799455000000307,
+            12.774257999997644
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 11.464860999993107,
-          "minimumMilliseconds": 11.25550800000201,
-          "maximumMilliseconds": 11.809296999999788,
+          "medianMilliseconds": 11.52198800000042,
+          "minimumMilliseconds": 11.154949999996461,
+          "maximumMilliseconds": 12.323743000000832,
           "samplesMilliseconds": [
-            11.464860999993107,
-            11.446375999999873,
-            11.25550800000201,
-            11.333795999998983,
-            11.63776499999949,
-            11.809296999999788,
-            11.652603000002273
+            11.52198800000042,
+            11.759083999997529,
+            11.154949999996461,
+            11.449261999994633,
+            11.480008999998972,
+            11.536726000005729,
+            12.323743000000832
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 11.592540999998164,
-          "minimumMilliseconds": 10.968619999999646,
-          "maximumMilliseconds": 12.342386999996961,
+          "medianMilliseconds": 11.116798000002746,
+          "minimumMilliseconds": 10.612131000001682,
+          "maximumMilliseconds": 12.09331000000384,
           "samplesMilliseconds": [
-            12.342386999996961,
-            12.275502000004053,
-            11.592540999998164,
-            10.968619999999646,
-            11.724608000004082,
-            11.299802000001364,
-            11.548287999998138
+            11.06463999999687,
+            10.612131000001682,
+            11.023523000003479,
+            12.09331000000384,
+            11.786715000002005,
+            11.116798000002746,
+            11.336701000000176
           ]
         }
       }
@@ -1185,11 +1194,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -1251,64 +1261,64 @@
         },
         "yaml": {
           "beforeBytes": 385000,
-          "afterBytes": 15154
+          "afterBytes": 22654
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 28.95269299999927,
-          "minimumMilliseconds": 28.338791000001947,
-          "maximumMilliseconds": 30.501900000002934,
+          "medianMilliseconds": 33.25052699999651,
+          "minimumMilliseconds": 33.00697999999829,
+          "maximumMilliseconds": 35.237234999993234,
           "samplesMilliseconds": [
-            29.284676000002946,
-            28.50869000000239,
-            28.338791000001947,
-            30.501900000002934,
-            28.95269299999927,
-            29.656182999999146,
-            28.93173399999796
+            33.20297800000117,
+            33.25052699999651,
+            34.11388699999952,
+            33.85936899999797,
+            35.237234999993234,
+            33.00697999999829,
+            33.068756000000576
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 121.99479599999904,
-          "minimumMilliseconds": 103.31870399999752,
-          "maximumMilliseconds": 131.4069260000033,
+          "medianMilliseconds": 33.23701200000505,
+          "minimumMilliseconds": 32.077957000001334,
+          "maximumMilliseconds": 53.394351999995706,
           "samplesMilliseconds": [
-            131.4069260000033,
-            129.35158899999806,
-            105.41458599999896,
-            103.31870399999752,
-            130.9382259999984,
-            105.53736700000445,
-            121.99479599999904
+            32.077957000001334,
+            33.23701200000505,
+            51.29168799999752,
+            34.408118999999715,
+            32.500911000002816,
+            53.394351999995706,
+            33.00045799999498
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 32.09524899999815,
-          "minimumMilliseconds": 31.714765999997326,
-          "maximumMilliseconds": 33.36576300000161,
+          "medianMilliseconds": 36.54967699999543,
+          "minimumMilliseconds": 33.35199699999794,
+          "maximumMilliseconds": 37.86621700000251,
           "samplesMilliseconds": [
-            32.09524899999815,
-            31.714765999997326,
-            31.837354999996023,
-            32.511399999995774,
-            33.36576300000161,
-            31.782572999996773,
-            32.398078000005626
+            37.86621700000251,
+            33.81213099999877,
+            33.35199699999794,
+            35.27058800000668,
+            36.54967699999543,
+            36.95509799999854,
+            37.26208400000178
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 33.269733000001,
-          "minimumMilliseconds": 31.68870700000116,
-          "maximumMilliseconds": 35.5306849999979,
+          "medianMilliseconds": 34.40907100000186,
+          "minimumMilliseconds": 34.02512099999876,
+          "maximumMilliseconds": 36.25976300000184,
           "samplesMilliseconds": [
-            35.5306849999979,
-            35.49144200000592,
-            33.665947000001324,
-            31.84541100000206,
-            31.68870700000116,
-            32.77212999999756,
-            33.269733000001
+            35.01691199999914,
+            34.548031999998784,
+            34.28541899999982,
+            34.40907100000186,
+            36.25976300000184,
+            34.02512099999876,
+            34.32671699999628
           ]
         }
       }
@@ -1335,11 +1345,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -1400,65 +1411,65 @@
           "afterBytes": 25424
         },
         "yaml": {
-          "beforeBytes": 9557,
-          "afterBytes": 4122
+          "beforeBytes": 10384,
+          "afterBytes": 4908
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 1.223576000003959,
-          "minimumMilliseconds": 1.0818099999960396,
-          "maximumMilliseconds": 1.5417020000022603,
+          "medianMilliseconds": 1.270262999998522,
+          "minimumMilliseconds": 1.1822890000039479,
+          "maximumMilliseconds": 1.6071450000017649,
           "samplesMilliseconds": [
-            1.223576000003959,
-            1.5417020000022603,
-            1.2309590000004391,
-            1.0818099999960396,
-            1.2039589999985765,
-            1.1915350000053877,
-            1.493121000006795
+            1.6071450000017649,
+            1.2788189999992028,
+            1.270262999998522,
+            1.2317609999954584,
+            1.1822890000039479,
+            1.2173639999964507,
+            1.4057279999979073
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 5.984287999999651,
-          "minimumMilliseconds": 5.16371899999649,
-          "maximumMilliseconds": 6.594893999994383,
+          "medianMilliseconds": 2.289084999996703,
+          "minimumMilliseconds": 2.0814249999966705,
+          "maximumMilliseconds": 2.8782800000044517,
           "samplesMilliseconds": [
-            6.594893999994383,
-            6.38942799999495,
-            5.16371899999649,
-            6.5253930000035325,
-            5.984287999999651,
-            5.934324999994715,
-            5.707518999995955
+            2.0814249999966705,
+            2.2716719999953057,
+            2.627489999998943,
+            2.8782800000044517,
+            2.289084999996703,
+            2.547339999997348,
+            2.1603939999986324
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 3.300122000000556,
-          "minimumMilliseconds": 2.3644659999990836,
-          "maximumMilliseconds": 3.638967999999295,
+          "medianMilliseconds": 2.284375999995973,
+          "minimumMilliseconds": 1.9035420000000158,
+          "maximumMilliseconds": 3.345246999997471,
           "samplesMilliseconds": [
-            3.638967999999295,
-            2.3644659999990836,
-            3.3018750000046566,
-            2.9596529999980703,
-            3.4809909999967203,
-            3.300122000000556,
-            3.0690279999980703
+            2.360690000001341,
+            2.422043999999005,
+            2.013178000001062,
+            2.284375999995973,
+            3.345246999997471,
+            1.9035420000000158,
+            2.1123939999961294
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 3.352029000001494,
-          "minimumMilliseconds": 2.883459999997285,
-          "maximumMilliseconds": 4.50872900000104,
+          "medianMilliseconds": 2.6945160000032047,
+          "minimumMilliseconds": 1.905494999999064,
+          "maximumMilliseconds": 3.3534120000040275,
           "samplesMilliseconds": [
-            3.401913000001514,
-            3.352029000001494,
-            2.883459999997285,
-            2.9118129999988014,
-            4.50872900000104,
-            3.404167000000598,
-            3.2334870000049705
+            2.843224000003829,
+            3.3534120000040275,
+            1.905494999999064,
+            2.6945160000032047,
+            2.7046449999979814,
+            2.058261999998649,
+            2.5705830000006245
           ]
         }
       }
@@ -1485,11 +1496,12 @@
         "platform": "linux",
         "architecture": "x64",
         "packageVersion": "1.0.0",
-        "commit": "de32f28541d329b6db8c0d775e93f7d44bf2cbc1",
+        "commit": "304e0b36d8aec27f69d9fe4885950623a6baf375",
         "benchmarkSchemaVersion": "1.0.0",
         "structuralSizeModelVersion": null,
         "memlabVersion": "2.0.5",
-        "yamlVersion": "2.9.1",
+        "yamlLibrary": "js-yaml",
+        "yamlVersion": "5.4.2",
         "zodVersion": "4.6.5"
       },
       "structure": {
@@ -1546,65 +1558,65 @@
       },
       "serialization": {
         "yaml": {
-          "beforeBytes": 10427,
-          "afterBytes": 8227
+          "beforeBytes": 11437,
+          "afterBytes": 9181
         }
       },
       "timing": {
         "intern": {
-          "medianMilliseconds": 2.2301139999981388,
-          "minimumMilliseconds": 2.0545950000014273,
-          "maximumMilliseconds": 2.368554000000586,
+          "medianMilliseconds": 3.0773540000081994,
+          "minimumMilliseconds": 2.268156000005547,
+          "maximumMilliseconds": 3.2081900000048336,
           "samplesMilliseconds": [
-            2.2301139999981388,
-            2.2574059999969904,
-            2.342625000004773,
-            2.0545950000014273,
-            2.131089000002248,
-            2.2147249999979977,
-            2.368554000000586
+            2.539143999994849,
+            2.268156000005547,
+            3.102150000006077,
+            2.810362999996869,
+            3.0773540000081994,
+            3.198971999998321,
+            3.2081900000048336
           ]
         },
         "yamlBefore": {
-          "medianMilliseconds": 5.938262000003306,
-          "minimumMilliseconds": 5.329019000004337,
-          "maximumMilliseconds": 6.286505000003672,
+          "medianMilliseconds": 3.2576830000034533,
+          "minimumMilliseconds": 2.2379689999943366,
+          "maximumMilliseconds": 4.560375999993994,
           "samplesMilliseconds": [
-            6.286505000003672,
-            5.4442049999997835,
-            6.19189699999697,
-            5.329019000004337,
-            6.037638000001607,
-            5.3592550000030315,
-            5.938262000003306
+            3.2131390000140527,
+            2.2379689999943366,
+            3.296785999991698,
+            3.2576830000034533,
+            4.560375999993994,
+            3.258883999995305,
+            3.145161000007647
           ]
         },
         "yamlAfter": {
-          "medianMilliseconds": 5.566553999997268,
-          "minimumMilliseconds": 5.147809000001871,
-          "maximumMilliseconds": 6.3849000000045635,
+          "medianMilliseconds": 4.681944000010844,
+          "minimumMilliseconds": 3.827350999999908,
+          "maximumMilliseconds": 5.807216000001063,
           "samplesMilliseconds": [
-            5.147809000001871,
-            5.364886000003025,
-            6.272218000005523,
-            5.566553999997268,
-            5.992713999999978,
-            5.498797000000195,
-            6.3849000000045635
+            4.681944000010844,
+            5.033884999997099,
+            4.808653000000049,
+            4.047985000011977,
+            4.04624199999671,
+            5.807216000001063,
+            3.827350999999908
           ]
         },
         "internAndYaml": {
-          "medianMilliseconds": 6.529891999998654,
-          "minimumMilliseconds": 5.588584999997693,
-          "maximumMilliseconds": 6.650308000003861,
+          "medianMilliseconds": 4.122053999992204,
+          "minimumMilliseconds": 3.7131369999988237,
+          "maximumMilliseconds": 5.264897999993991,
           "samplesMilliseconds": [
-            6.569977999999537,
-            6.009806000001845,
-            6.529891999998654,
-            5.608132000001206,
-            6.544679999999062,
-            5.588584999997693,
-            6.650308000003861
+            4.490395000000717,
+            3.7141390000033425,
+            4.255304000005708,
+            4.122053999992204,
+            3.910255999988294,
+            5.264897999993991,
+            3.7131369999988237
           ]
         }
       }

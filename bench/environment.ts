@@ -31,7 +31,8 @@ export function benchmarkEnvironment(): BenchmarkEnvironment {
     benchmarkSchemaVersion: BENCHMARK_SCHEMA_VERSION,
     structuralSizeModelVersion: null,
     memlabVersion: dependencyVersion('@memlab/core'),
-    yamlVersion: dependencyVersion('yaml'),
+    yamlLibrary: 'js-yaml',
+    yamlVersion: dependencyVersion('js-yaml'),
     zodVersion: dependencyVersion('zod'),
   }
 }
